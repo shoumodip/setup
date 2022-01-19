@@ -1,0 +1,6 @@
+#ifndef ${:toupper(substitute(expand("%:t"), "\\.", "_", "g"))}
+#define ${:toupper(substitute(expand("%:t"), "\\.", "_", "g"))}
+
+${~}
+
+#endif // ${:toupper(substitute(expand("%:t"), "\\.", "_", "g"))}

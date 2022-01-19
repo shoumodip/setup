@@ -1,0 +1,98 @@
+let plug_path = stdpath('data') . '/site/autoload/plug.vim'
+if !filereadable(plug_path)
+    silent execute '!curl -fLo ' . plug_path . ' --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin(stdpath('data') . '/plugins')
+Plug 'morhetz/gruvbox'
+Plug 'godlygeek/tabular'
+Plug 'airblade/vim-rooter'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'junegunn/fzf.vim'
+
+Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+
+Plug 'shoumodip/vim-snippet'
+Plug 'shoumodip/vim-man'
+call plug#end()
+
+silent! colorscheme gruvbox
+
+set noswapfile nohlsearch noswapfile
+set number relativenumber termguicolors
+set splitright splitbelow
+set mouse=a guicursor= clipboard=unnamedplus
+set expandtab tabstop=4 softtabstop=4 shiftwidth=4
+set ignorecase smartcase wildignorecase
+set cinoptions=l1;(0
+
+let mapleader = ' '
+let c_no_curly_error = 1
+let c_syntax_for_h = 1
+
+let g:asyncrun_open = 15
+
+tnoremap <esc> <c-\><c-n>
+
+noremap Q gq
+noremap <leader>r :%s//g<left><left>
+noremap <leader>R :s//g<left><left>
+noremap <leader>s :%S//g<left><left>
+noremap <leader>S :S//g<left><left>
+
+nnoremap <silent> <c-j> :m .+1<cr>==
+nnoremap <silent> <c-k> :m .-2<cr>==
+vnoremap <silent> <c-j> :m '>+1<cr>gv=gv
+vnoremap <silent> <c-k> :m '<-2<cr>gv=gv
+
+noremap <leader>u :G remote add origin git@github.com:
+noremap <leader>p :term git push origin main
+noremap <silent> <leader>g :G<cr>
+
+noremap <leader>l :wa<cr>:AsyncRun <up>
+noremap <silent> <leader>j :cn<bar>copen<cr>zt<c-w><c-p>
+noremap <silent> <leader>k :cp<bar>copen<cr>zt<c-w><c-p>
+
+noremap ga :Tabularize /
+
+noremap <silent> <leader>w :w<cr>
+noremap <silent> <leader>d :bd!<cr>
+
+noremap <silent> <leader>. :GFiles --cached --others --exclude-standard<cr>
+noremap <silent> <leader>, :Buffers<cr>
+noremap <silent> <leader>n :Lines<cr>
+noremap <silent> <leader>h :Helptags<cr>
+noremap <silent> <leader>h :Helptags<cr>
+noremap <silent> <leader>v :Filetypes<cr>
+noremap <silent> <leader>c :Commits<cr>
+
+noremap <silent> <leader>t :Snippet<cr><cr>
+noremap K :SigmaMan<cr><c-left>
+
+augroup shoumodip
+    autocmd!
+    autocmd FileType c setlocal commentstring=//%s
+    autocmd FileType go setlocal noexpandtab
+    autocmd FileType fasm setlocal commentstring=;%s
+    autocmd BufEnter *.fasm setlocal filetype=fasm
+    autocmd BufEnter *.nasm setlocal filetype=nasm
+    autocmd FileType fzf tnoremap <buffer> <esc> <c-c>
+    autocmd BufWritePre * call FixCode()
+augroup END
+
+function! FixCode()
+    if index(['c', 'go', 'rust'], &filetype) != -1
+        let save = winsaveview()
+        keeppatterns %s/\s\+$//e
+        keeppatterns %s/\n\+\%$//e
+        normal! gg=G
+        call winrestview(save)
+    endif
+endfunction
