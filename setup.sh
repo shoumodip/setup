@@ -46,9 +46,9 @@ install_packages() {
     fi
 }
 
-if [ "$1" = "push" ]; then
-    cd $(dirname $(realpath $0))
+cd "$(dirname $(realpath $0))"
 
+if [ "$1" = "push" ]; then
     xbps-query -m | sed 's/^\([^ ]*\)-.*/\1/' > packages.txt
 
     if [ $(git status -s | wc -l) -gt 0 ]; then
