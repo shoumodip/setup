@@ -21,11 +21,12 @@ Plug 'tpope/vim-commentary'
 
 Plug 'shoumodip/vim-snippet'
 Plug 'shoumodip/vim-man'
+Plug 'shoumodip/fm.vim'
 call plug#end()
 
 silent! colorscheme gruvbox
 
-set noswapfile nohlsearch noswapfile
+set noswapfile nohlsearch
 set number relativenumber termguicolors
 set splitright splitbelow
 set mouse=a guicursor= clipboard=unnamedplus
@@ -52,7 +53,7 @@ nnoremap <silent> <c-k> :m .-2<cr>==
 vnoremap <silent> <c-j> :m '>+1<cr>gv=gv
 vnoremap <silent> <c-k> :m '<-2<cr>gv=gv
 
-noremap <leader>u :G remote add origin git@github.com:
+noremap <leader>u :G remote add origin git@github.com:shoumodip/
 noremap <leader>p :term git push origin main
 noremap <silent> <leader>g :G<cr>
 
@@ -60,7 +61,7 @@ noremap <leader>l :wa<cr>:AsyncRun <up>
 noremap <silent> <leader>j :cn<bar>copen<cr>zt<c-w><c-p>
 noremap <silent> <leader>k :cp<bar>copen<cr>zt<c-w><c-p>
 
-noremap ga :Tabularize /
+noremap <leader>a :Tabularize /
 
 noremap <silent> <leader>w :w<cr>
 noremap <silent> <leader>d :bd!<cr>
@@ -73,6 +74,13 @@ noremap <silent> <leader>h :Helptags<cr>
 noremap <silent> <leader>v :Filetypes<cr>
 noremap <silent> <leader>c :Commits<cr>
 
+command! -bang -nargs=* GGrep
+            \ call fzf#vim#grep(
+            \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+noremap <silent> <leader>f :GGrep<cr>
+
 noremap <silent> <leader>t :Snippet<cr><cr>
 noremap K :SigmaMan<cr><c-left>
 
@@ -84,15 +92,14 @@ augroup shoumodip
     autocmd BufEnter *.fasm setlocal filetype=fasm
     autocmd BufEnter *.nasm setlocal filetype=nasm
     autocmd FileType fzf tnoremap <buffer> <esc> <c-c>
-    autocmd BufWritePre * call FixCode()
 augroup END
 
 function! FixCode()
-    if index(['c', 'go', 'rust'], &filetype) != -1
-        let save = winsaveview()
-        keeppatterns %s/\s\+$//e
-        keeppatterns %s/\n\+\%$//e
-        normal! gg=G
-        call winrestview(save)
-    endif
+    let save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    keeppatterns %s/\n\+\%$//e
+    normal! gg=G
+    call winrestview(save)
 endfunction
+
+noremap <silent> <leader>e :call FixCode()<cr>:w<cr>

@@ -1,0 +1,5 @@
+CFLAGS=-Wall -Wextra -std=c11 -pedantic
+LIBS=${~}
+
+${:expand("%:p:h:t")}: ${~}
+	$(CC) $(CFLAGS) -o ${:expand("%:p:h:t")} ${~} $(LIBS)

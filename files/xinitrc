@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Keyboard configuration
+xset r rate 300 50
+setxkbmap -option "ctrl:nocaps"
+xcape -e "Control_L=Escape"
+
+# Applications
+pgrep tranmission-da || transmission-daemon -w ~/downloads
+
+i3

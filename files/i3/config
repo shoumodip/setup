@@ -1,0 +1,71 @@
+set $mod Mod4
+floating_modifier $mod
+workspace_layout tabbed
+
+font pango:monospace 12
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer --allow-boost -i 10 && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer --allow-boost -d 10 && killall -SIGUSR1 i3status
+bindsym XF86AudioMute        exec --no-startup-id pamixer --allow-boost -t    && killall -SIGUSR1 i3status
+
+bindsym $mod+d       exec --no-startup-id dmenu_run
+bindsym $mod+Return  exec --no-startup-id $TERMINAL
+bindsym $mod+w       exec --no-startup-id $BROWSER
+bindsym $mod+t       exec --no-startup-id thono
+bindsym Print        exec --no-startup-id thono -snap
+bindsym $mod+shift+q exec --no-startup-id sudo poweroff
+bindsym $mod+shift+r exec --no-startup-id sudo reboot
+bindsym $mod+m       exec --no-startup-id notflix download
+bindsym $mod+p       exec --no-startup-id notflix play
+bindsym $mod+s       exec --no-startup-id notflix stop
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+f     fullscreen toggle
+bindsym $mod+space floating toggle
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+bindsym $mod+q kill
+bindsym $mod+r mode resize
+
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+
+bar {
+    status_command i3status
+}

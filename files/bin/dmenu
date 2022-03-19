@@ -1,0 +1,4 @@
+#!/bin/sh
+# Dmenu with custom colors and fonts
+
+/usr/bin/dmenu -fn "Monospace:size=12" -i $@
