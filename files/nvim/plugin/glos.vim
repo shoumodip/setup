@@ -3,10 +3,11 @@ function! GlosSyntax()
     setlocal expandtab
     setlocal filetype=glos
     setlocal commentstring=#%s
+    setlocal suffixesadd=.glos
 
     syntax clear
-    syntax keyword Keyword if else while as fn var use enum const break return struct sizeof
-    syntax keyword Special self argc argv syscall panic
+    syntax keyword Keyword if else while match as fn var use enum const break return struct
+    syntax keyword Special self argc argv syscall panic sizeof
     syntax keyword Constant true false
     syntax keyword Type u8 u64 bool
 
