@@ -131,6 +131,7 @@ noremap <silent> <leader>j :cn<bar>copen<cr>zt<c-w><c-p>
 noremap <silent> <leader>k :cp<bar>copen<cr>zt<c-w><c-p>
 
 noremap <leader>; :AsyncRun <up>
+noremap <leader>: :terminal <up>
 
 augroup shoumodip
     autocmd!
