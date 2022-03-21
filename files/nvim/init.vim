@@ -1,6 +1,6 @@
 let plug_path = stdpath('data') . '/site/autoload/plug.vim'
 if !filereadable(plug_path)
-    silent execute '!curl -fLo ' . plug_path . ' --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    silent execute '!curl -fLo ' . plug_path . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -57,10 +57,6 @@ noremap <leader>u :G remote add origin git@github.com:shoumodip/
 noremap <leader>p :term git push origin main
 noremap <silent> <leader>g :G<cr>
 
-noremap <leader>l :wa<cr>:AsyncRun <up>
-noremap <silent> <leader>j :cn<bar>copen<cr>zt<c-w><c-p>
-noremap <silent> <leader>k :cp<bar>copen<cr>zt<c-w><c-p>
-
 noremap <leader>a :Tabularize /
 
 noremap <silent> <leader>w :w<cr>
@@ -69,7 +65,6 @@ noremap <silent> <leader>d :bd!<cr>
 noremap <silent> <leader>. :GFiles --cached --others --exclude-standard<cr>
 noremap <silent> <leader>, :Buffers<cr>
 noremap <silent> <leader>n :Lines<cr>
-noremap <silent> <leader>h :Helptags<cr>
 noremap <silent> <leader>h :Helptags<cr>
 noremap <silent> <leader>v :Filetypes<cr>
 noremap <silent> <leader>c :Commits<cr>
@@ -81,18 +76,8 @@ command! -bang -nargs=* GGrep
 
 noremap <silent> <leader>f :GGrep<cr>
 
-noremap <silent> <leader>t :Snippet<cr><cr>
+noremap <silent> <leader>T :Snippet<cr><cr>
 noremap K :SigmaMan<cr><c-left>
-
-augroup shoumodip
-    autocmd!
-    autocmd FileType c setlocal commentstring=//%s
-    autocmd FileType go setlocal noexpandtab
-    autocmd FileType fasm setlocal commentstring=;%s
-    autocmd BufEnter *.fasm setlocal filetype=fasm
-    autocmd BufEnter *.nasm setlocal filetype=nasm
-    autocmd FileType fzf tnoremap <buffer> <esc> <c-c>
-augroup END
 
 function! FixCode()
     let save = winsaveview()
@@ -103,3 +88,56 @@ function! FixCode()
 endfunction
 
 noremap <silent> <leader>e :call FixCode()<cr>:w<cr>
+
+function! ProjectRun(build, overwrite)
+    silent! wa
+    let command = ""
+
+    if a:build
+        if !exists("g:project_build_cmd") || g:project_build_cmd == "" || a:overwrite
+            let input = input("Build: ")
+
+            if input == ""
+                return
+            endif
+
+            let g:project_build_cmd = input
+        endif
+
+        let command = g:project_build_cmd
+    else
+        if !exists("g:project_test_cmd") || g:project_test_cmd == "" || a:overwrite
+            let input = input("Test: ")
+
+            if input == ""
+                return
+            endif
+
+            let g:project_test_cmd = input
+        endif
+
+        let command = g:project_test_cmd
+    endif
+
+    execute "AsyncRun " . command
+endfunction
+
+noremap <silent> <leader>h :call ProjectRun(1, 0)<cr>
+noremap <silent> <leader>l :call ProjectRun(0, 0)<cr>
+noremap <silent> <leader>H :call ProjectRun(1, 1)<cr>
+noremap <silent> <leader>L :call ProjectRun(0, 1)<cr>
+
+noremap <silent> <leader>j :cn<bar>copen<cr>zt<c-w><c-p>
+noremap <silent> <leader>k :cp<bar>copen<cr>zt<c-w><c-p>
+
+noremap <leader>; :AsyncRun <up>
+
+augroup shoumodip
+    autocmd!
+    autocmd FileType c setlocal commentstring=//%s
+    autocmd FileType go setlocal noexpandtab
+    autocmd FileType fasm setlocal commentstring=;%s
+    autocmd BufEnter *.fasm setlocal filetype=fasm
+    autocmd BufEnter *.nasm setlocal filetype=nasm
+    autocmd FileType fzf tnoremap <buffer> <esc> <c-c>
+augroup END
