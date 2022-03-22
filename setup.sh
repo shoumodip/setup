@@ -11,8 +11,8 @@ link() {
         dest="$dest$(basename "$1")"
     fi
 
-    mkdir -p "$(dirname "$dest")"
-    ln -sf "$PWD/files/$1" "$dest"
+    echo mkdir -p "$(dirname "$dest")"
+    echo ln -sf "$PWD/files/$1" "$dest"
 }
 
 link_dotfiles() {
@@ -57,14 +57,14 @@ if [ "$1" = "push" ]; then
         git push origin main
     fi
 else
-    sudo sed -i 's/^# \(%wheel ALL=(ALL) NOPASSWD: ALL\)/\1/g' /etc/sudoers
-    sudo sed -i 's/^\(GETTY_ARGS\)=.*/\1="--autologin shoumodip"/g' /etc/sv/agetty-tty1/conf
-    sudo sed -i 's/^\(GRUB_TIMEOUT\)=.*/\1=0/g' /etc/default/grub
+    # sudo sed -i 's/^# \(%wheel ALL=(ALL) NOPASSWD: ALL\)/\1/g' /etc/sudoers
+    # sudo sed -i 's/^\(GETTY_ARGS\)=.*/\1="--autologin shoumodip"/g' /etc/sv/agetty-tty1/conf
+    # sudo sed -i 's/^\(GRUB_TIMEOUT\)=.*/\1=0/g' /etc/default/grub
 
-    rm -rf ~/*bash*
+    # rm -rf ~/*bash*
 
     link_dotfiles
-    install_packages
+    # install_packages
 
-    sudo chsh -s /bin/zsh $USER
+    # sudo chsh -s /bin/zsh $USER
 fi
