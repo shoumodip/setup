@@ -43,6 +43,7 @@ let g:asyncrun_open = 15
 tnoremap <esc> <c-\><c-n>
 
 noremap Q gq
+noremap <c-l> :cclose<cr><c-l>
 noremap <leader>r :%s//g<left><left>
 noremap <leader>R :s//g<left><left>
 noremap <leader>s :%S//g<left><left>
