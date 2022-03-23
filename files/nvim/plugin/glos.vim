@@ -6,7 +6,7 @@ function! GlosSyntax()
     setlocal suffixesadd=.glos
 
     syntax clear
-    syntax keyword Keyword if else while match as fn var use enum const break return struct
+    syntax keyword Keyword if else while match as fn let use enum const break return struct
     syntax keyword Special self argc argv syscall panic sizeof
     syntax keyword Constant true false
     syntax keyword Type u8 u64 bool
