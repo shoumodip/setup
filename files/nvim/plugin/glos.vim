@@ -6,10 +6,10 @@ function! GlosSyntax()
     setlocal suffixesadd=.glos
 
     syntax clear
-    syntax keyword Keyword if else while match as let use enum const break return struct
-    syntax keyword Special self argc argv syscall panic sizeof
+    syntax keyword Keyword if else while as let impor const break return struct
+    syntax keyword Special argc argv syscall panic sizeof
     syntax keyword Constant true false
-    syntax keyword Type u8 u64 bool
+    syntax keyword Type char uint bool
 
     syntax region  String start='"' skip='\\\\\|\\"' end='"'
     syntax match   Character "'\(.\|\\[nrt0\\]\)'"
