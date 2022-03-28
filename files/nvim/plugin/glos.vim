@@ -6,14 +6,17 @@ function! GlosSyntax()
     setlocal suffixesadd=.glos
 
     syntax clear
-    syntax keyword Keyword if else while for as let import const break return struct
-    syntax keyword Special argc argv syscall panic sizeof
+    syntax keyword Keyword if else while for as let import const return struct
+    syntax keyword Special syscall assert sizeof
     syntax keyword Constant true false
     syntax keyword Type char uint bool
 
     syntax region  String start='"' skip='\\\\\|\\"' end='"'
     syntax match   Character "'\(.\|\\[nrt0\\]\)'"
     syntax match   Number "\<[0-9_]\+\>"
+
+    " The syscalls
+    syntax keyword Function exit write
 
     syntax match Comment '#.*'
 endfunction
