@@ -8,7 +8,7 @@ function! GlosSyntax()
     syntax clear
     syntax keyword Keyword if else while for as let import const return struct
     syntax keyword Special syscall assert sizeof
-    syntax keyword Constant true false
+    syntax keyword Constant true false argc argv
     syntax keyword Type char uint bool
 
     syntax region  String start='"' skip='\\\\\|\\"' end='"'

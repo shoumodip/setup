@@ -34,6 +34,7 @@ nasm
 ncurses-devel
 neovim
 pamixer
+pax-utils
 pdf.js
 pulseaudio
 python3-adblock
