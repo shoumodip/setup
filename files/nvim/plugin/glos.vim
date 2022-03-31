@@ -16,7 +16,8 @@ function! GlosSyntax()
     syntax match   Number "\<[0-9][0-9_]*\>"
 
     " The syscalls
-    syntax keyword Function read write open close fstat mmap exit creat
+    syntax keyword Function read write open close fstat mmap fork execve exit wait4 creat unlink
+    syntax keyword Macro WIFEXITED WEXITSTATUS
 
     syntax match Comment '#.*'
 endfunction
