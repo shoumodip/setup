@@ -45,6 +45,7 @@ strace
 sxiv
 tmux
 transmission
+tree
 valgrind
 void-docs-browse
 xcape
