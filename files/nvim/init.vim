@@ -32,7 +32,7 @@ set splitright splitbelow
 set mouse=a guicursor= clipboard=unnamedplus
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set ignorecase smartcase wildignorecase
-set cinoptions=l1;(0
+set cinoptions=l1;(0 exrc secure
 
 let mapleader = ' '
 let c_no_curly_error = 1

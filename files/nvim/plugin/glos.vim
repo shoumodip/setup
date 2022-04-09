@@ -25,4 +25,4 @@ endfunction
 augroup glos
     autocmd!
     autocmd BufRead,BufNewFile *.glos call GlosSyntax()
-augroup END
+augroup end
