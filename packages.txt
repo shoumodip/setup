@@ -7,6 +7,7 @@ cryptsetup
 curl
 dbus
 dmenu
+emacs-x11
 fasm
 font-iosevka
 fonts-roboto-ttf
