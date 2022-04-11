@@ -136,7 +136,7 @@ noremap <leader>: :wa<cr>:terminal <up>
 
 augroup shoumodip
     autocmd!
-    autocmd FileType c setlocal commentstring=//%s
+    autocmd FileType c,cpp setlocal commentstring=//%s
     autocmd FileType go setlocal noexpandtab
     autocmd FileType fasm setlocal commentstring=;%s
     autocmd BufEnter *.fasm setlocal filetype=fasm
