@@ -6,9 +6,6 @@ endif
 
 call plug#begin(stdpath('data') . '/plugins')
 Plug 'morhetz/gruvbox'
-Plug 'godlygeek/tabular'
-Plug 'airblade/vim-rooter'
-Plug 'skywind3000/asyncrun.vim'
 Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-rsi'
@@ -19,9 +16,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
-Plug 'shoumodip/vim-snippet'
-Plug 'shoumodip/vim-man'
 Plug 'shoumodip/fm.vim'
+Plug 'shoumodip/vim-man'
+Plug 'shoumodip/vim-snippet'
+Plug 'shoumodip/compile.nvim'
 call plug#end()
 
 silent! colorscheme gruvbox
@@ -58,8 +56,6 @@ noremap <leader>u :G remote add origin git@github.com:shoumodip/
 noremap <leader>p :term git push origin main
 noremap <silent> <leader>g :G<cr>
 
-noremap <leader>a :Tabularize /
-
 noremap <silent> <leader>w :w<cr>
 noremap <silent> <leader>d :bd!<cr>
 
@@ -78,7 +74,6 @@ command! -bang -nargs=* GGrep
 noremap <silent> <leader>f :GGrep<cr>
 
 noremap <silent> <leader>T :Snippet<cr><cr>
-noremap K :SigmaMan<cr><c-left>
 
 function! FixCode()
     let save = winsaveview()
@@ -90,53 +85,17 @@ endfunction
 
 noremap <silent> <leader>e :call FixCode()<cr>:w<cr>
 
-function! ProjectRun(build, overwrite)
-    silent! wa
-    let command = ""
+noremap <leader>l :wa<cr>:terminal <up>
 
-    if a:build
-        if !exists("g:project_build_cmd") || g:project_build_cmd == "" || a:overwrite
-            let input = input("Build: ")
-
-            if input == ""
-                return
-            endif
-
-            let g:project_build_cmd = input
-        endif
-
-        let command = g:project_build_cmd
-    else
-        if !exists("g:project_test_cmd") || g:project_test_cmd == "" || a:overwrite
-            let input = input("Test: ")
-
-            if input == ""
-                return
-            endif
-
-            let g:project_test_cmd = input
-        endif
-
-        let command = g:project_test_cmd
-    endif
-
-    execute "AsyncRun " . command
-endfunction
-
-noremap <silent> <leader>h :call ProjectRun(1, 0)<cr>
-noremap <silent> <leader>l :call ProjectRun(0, 0)<cr>
-noremap <silent> <leader>H :call ProjectRun(1, 1)<cr>
-noremap <silent> <leader>L :call ProjectRun(0, 1)<cr>
-
-noremap <silent> <leader>j :cn<bar>copen<cr>zt<c-w><c-p>
-noremap <silent> <leader>k :cp<bar>copen<cr>zt<c-w><c-p>
-
-noremap <leader>; :wa<cr>:AsyncRun <up>
-noremap <leader>: :wa<cr>:terminal <up>
+noremap <silent> <leader>h :Recompile<cr>
+noremap <silent> <leader>j :CompileNext<cr>
+noremap <silent> <leader>k :CompilePrev<cr>
 
 augroup shoumodip
     autocmd!
     autocmd FileType c,cpp setlocal commentstring=//%s
+    autocmd FileType c,cpp noremap <buffer> K :SigmaMan<cr><c-left>
+
     autocmd FileType go setlocal noexpandtab
     autocmd FileType fasm setlocal commentstring=;%s
     autocmd BufEnter *.fasm setlocal filetype=fasm
