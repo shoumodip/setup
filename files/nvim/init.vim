@@ -6,7 +6,7 @@ endif
 
 call plug#begin(stdpath('data') . '/plugins')
 Plug 'morhetz/gruvbox'
-Plug 'junegunn/fzf.vim'
+Plug '~/code/ido-nvim/core'
 
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-repeat'
@@ -94,3 +94,11 @@ augroup shoumodip
     autocmd BufEnter *.nasm setlocal filetype=nasm
     autocmd FileType fzf tnoremap <buffer> <esc> <c-c>
 augroup END
+
+function! TestIdo()
+    silent! wa
+    lua for module in pairs(package.loaded) do if module:match("ido") then package.loaded[module] = nil end end
+    lua require("ido").filter({"red", "green", "blue"})
+endfunction
+
+noremap <silent> <leader>f :call TestIdo()<cr>
