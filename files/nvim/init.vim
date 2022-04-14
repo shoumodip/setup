@@ -98,7 +98,7 @@ augroup END
 function! TestIdo()
     silent! wa
     lua for module in pairs(package.loaded) do if module:match("ido") then package.loaded[module] = nil end end
-    lua require("ido").filter({"red", "green", "blue"})
+    lua require("ido").start({"red", "green", "blue"})
 endfunction
 
 noremap <silent> <leader>f :call TestIdo()<cr>
