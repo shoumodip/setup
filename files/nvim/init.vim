@@ -17,35 +17,38 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
 Plug 'shoumodip/fm.vim'
+Plug 'shoumodip/compile.nvim'
+
 Plug 'shoumodip/vim-man'
 Plug 'shoumodip/vim-snippet'
-Plug 'shoumodip/compile.nvim'
+Plug 'shoumodip/vim-cheatsheet'
 call plug#end()
 
 silent! colorscheme gruvbox
 
 set noswapfile nohlsearch
-set number relativenumber termguicolors
-set splitright splitbelow
-set mouse=a guicursor= clipboard=unnamedplus
+set termguicolors splitright splitbelow
+set guicursor= clipboard=unnamedplus
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set ignorecase smartcase wildignorecase
-set cinoptions=l1;(0 exrc secure
+set cinoptions=l1;(0
 
 let mapleader = ' '
-let c_no_curly_error = 1
 let c_syntax_for_h = 1
-
-let g:asyncrun_open = 15
+let c_no_curly_error = 1
 
 tnoremap <esc> <c-\><c-n>
 
 noremap Q gq
-noremap <leader>r :%s//g<left><left>
-noremap <leader>R :s//g<left><left>
-noremap <leader>s :%S//g<left><left>
-noremap <leader>S :S//g<left><left>
 noremap <silent> <c-l> :cclose<cr><c-l>
+
+nnoremap <leader>s :%s//gc<left><left><left>
+nnoremap <leader>S :s//gc<left><left><left>
+nnoremap <leader>r :%S//gc<left><left><left>
+nnoremap <leader>R :S//gc<left><left><left>
+
+vnoremap <leader>s :s//gc<left><left><left>
+vnoremap <leader>r :S//gc<left><left><left>
 
 nnoremap <silent> <c-j> :m .+1<cr>==
 nnoremap <silent> <c-k> :m .-2<cr>==
@@ -54,26 +57,17 @@ vnoremap <silent> <c-k> :m '<-2<cr>gv=gv
 
 noremap <leader>u :G remote add origin git@github.com:shoumodip/
 noremap <leader>p :term git push origin main
-noremap <silent> <leader>g :G<cr>
+noremap <leader>l :wa<cr>:terminal <up>
 
+noremap <silent> <leader>g :G<cr>
 noremap <silent> <leader>w :w<cr>
 noremap <silent> <leader>d :bd!<cr>
-
 noremap <silent> <leader>. :GFiles --cached --others --exclude-standard<cr>
 noremap <silent> <leader>, :Buffers<cr>
 noremap <silent> <leader>n :Lines<cr>
-noremap <silent> <leader>h :Helptags<cr>
+noremap <silent> <leader>q :Cheatsheet<cr><cr>
 noremap <silent> <leader>v :Filetypes<cr>
-noremap <silent> <leader>c :Commits<cr>
-
-command! -bang -nargs=* GGrep
-            \ call fzf#vim#grep(
-            \   'git grep --line-number -- '.shellescape(<q-args>), 0,
-            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-
-noremap <silent> <leader>f :GGrep<cr>
-
-noremap <silent> <leader>T :Snippet<cr><cr>
+noremap <silent> <leader>t :Snippet<cr><cr>
 
 function! FixCode()
     let save = winsaveview()
@@ -84,8 +78,6 @@ function! FixCode()
 endfunction
 
 noremap <silent> <leader>e :call FixCode()<cr>:w<cr>
-
-noremap <leader>l :wa<cr>:terminal <up>
 
 noremap <silent> <leader>h :Recompile<cr>
 noremap <silent> <leader>j :CompileNext<cr>
