@@ -6,7 +6,7 @@ endif
 
 call plug#begin(stdpath('data') . '/plugins')
 Plug 'morhetz/gruvbox'
-Plug '~/code/ido-nvim/core'
+Plug 'ido-nvim/ido.nvim'
 
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-repeat'
@@ -24,14 +24,14 @@ Plug 'shoumodip/vim-snippet'
 Plug 'shoumodip/vim-cheatsheet'
 call plug#end()
 
-silent! colorscheme gruvbox
-
 set noswapfile nohlsearch
 set termguicolors splitright splitbelow
 set guicursor= clipboard=unnamedplus
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set ignorecase smartcase wildignorecase
 set cinoptions=l1;(0
+
+silent! colorscheme gruvbox
 
 let mapleader = ' '
 let c_syntax_for_h = 1
@@ -63,9 +63,7 @@ noremap <leader>l :wa<cr>:terminal <up>
 noremap <silent> <leader>g :G<cr>
 noremap <silent> <leader>w :w<cr>
 noremap <silent> <leader>d :bd!<cr>
-noremap <silent> <leader>n :Lines<cr>
 noremap <silent> <leader>q :Cheatsheet<cr><cr>
-noremap <silent> <leader>v :Filetypes<cr>
 noremap <silent> <leader>t :Snippet<cr><cr>
 
 function! FixCode()
@@ -93,9 +91,9 @@ augroup shoumodip
     autocmd FileType fzf tnoremap <buffer> <esc> <c-c>
 augroup END
 
-noremap <silent> <leader>. :lua require("ido.std").browse()<cr>
-noremap <silent> <leader>, :lua require("ido.std").buffer()<cr>
+noremap <silent> <leader>. :Ido std.browse<cr>
+noremap <silent> <leader>, :Ido std.buffer<cr>
 
-noremap <silent> <leader>f :lua require("ido.std").find_files()<cr>
-noremap <silent> <leader>F :lua require("ido.std").git_files()<cr>
-noremap <silent> <leader>g :lua require("ido.std").git_diff()<cr>
+noremap <silent> <leader>f :Ido std.find_files<cr>
+noremap <silent> <leader>F :Ido std.git_files<cr>
+noremap <silent> <leader>v :Ido std.filetypes<cr>
