@@ -55,6 +55,7 @@ nnoremap <silent> <c-k> :m .-2<cr>==
 vnoremap <silent> <c-j> :m '>+1<cr>gv=gv
 vnoremap <silent> <c-k> :m '<-2<cr>gv=gv
 
+noremap K :SigmaMan<cr><c-left>
 noremap <leader>u :G remote add origin git@github.com:shoumodip/
 noremap <leader>p :term git push origin main
 noremap <leader>l :wa<cr>:terminal <up>
@@ -62,8 +63,6 @@ noremap <leader>l :wa<cr>:terminal <up>
 noremap <silent> <leader>g :G<cr>
 noremap <silent> <leader>w :w<cr>
 noremap <silent> <leader>d :bd!<cr>
-noremap <silent> <leader>. :GFiles --cached --others --exclude-standard<cr>
-noremap <silent> <leader>, :Buffers<cr>
 noremap <silent> <leader>n :Lines<cr>
 noremap <silent> <leader>q :Cheatsheet<cr><cr>
 noremap <silent> <leader>v :Filetypes<cr>
@@ -86,7 +85,6 @@ noremap <silent> <leader>k :CompilePrev<cr>
 augroup shoumodip
     autocmd!
     autocmd FileType c,cpp setlocal commentstring=//%s
-    autocmd FileType c,cpp noremap <buffer> K :SigmaMan<cr><c-left>
 
     autocmd FileType go setlocal noexpandtab
     autocmd FileType fasm setlocal commentstring=;%s
@@ -95,10 +93,9 @@ augroup shoumodip
     autocmd FileType fzf tnoremap <buffer> <esc> <c-c>
 augroup END
 
-function! TestIdo()
-    silent! wa
-    lua for module in pairs(package.loaded) do if module:match("ido") then package.loaded[module] = nil end end
-    lua require("ido").start(vim.fn.systemlist("ls ~/movies"))
-endfunction
+noremap <silent> <leader>. :lua require("ido.std").browse()<cr>
+noremap <silent> <leader>, :lua require("ido.std").buffer()<cr>
 
-noremap <silent> <leader>f :call TestIdo()<cr>
+noremap <silent> <leader>f :lua require("ido.std").find_files()<cr>
+noremap <silent> <leader>F :lua require("ido.std").git_files()<cr>
+noremap <silent> <leader>g :lua require("ido.std").git_diff()<cr>
