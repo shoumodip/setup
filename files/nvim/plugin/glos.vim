@@ -7,7 +7,7 @@ function! GlosSyntax()
 
     syntax clear
     syntax keyword Keyword if else while for as let import const return struct match break continue
-    syntax keyword Special syscall assert sizeof
+    syntax keyword Special syscall assert sizeof printf eprintf fprintf
     syntax keyword Constant true false argc argv
     syntax keyword Type char uint bool
 

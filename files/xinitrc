@@ -9,6 +9,6 @@ xcape -e "Control_L=Escape"
 pgrep tranmission-da || transmission-daemon -w ~/downloads
 
 # Autocommit
-~/code/setup/setup.sh push
+~/code/setup/setup.sh push &
 
 i3

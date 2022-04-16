@@ -19,7 +19,6 @@ setopt autocd
 # Keybindings
 bindkey -e
 autoload -U select-word-style && select-word-style bash
-source /usr/share/fzf/key-bindings.zsh
 
 # Aliases
 alias ls="ls --color=auto --group-directories-first -h"

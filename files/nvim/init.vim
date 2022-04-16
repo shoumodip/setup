@@ -77,6 +77,7 @@ endfunction
 noremap <silent> <leader>e :call FixCode()<cr>:w<cr>
 
 noremap <silent> <leader>h :Recompile<cr>
+noremap <silent> <leader>H :Compile<cr>
 noremap <silent> <leader>j :CompileNext<cr>
 noremap <silent> <leader>k :CompilePrev<cr>
 

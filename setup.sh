@@ -11,8 +11,9 @@ link() {
         dest="$dest$(basename "$1")"
     fi
 
-    echo mkdir -p "$(dirname "$dest")"
-    echo ln -sf "$PWD/files/$1" "$dest"
+    mkdir -p "$(dirname "$dest")"
+    unlink "$dest"
+    ln -s "$PWD/files/$1" "$dest"
 }
 
 link_dotfiles() {
@@ -29,7 +30,7 @@ link_dotfiles() {
     link "zsh"         ".config/"
     link "gitconfig"   ".gitconfig"
     link "zprofile"    ".zprofile"
-    link "xinitrc"     ".config"
+    link "xinitrc"     ".config/"
 }
 
 install_packages() {
@@ -57,14 +58,14 @@ if [ "$1" = "push" ]; then
         git push origin main
     fi
 else
-    # sudo sed -i 's/^# \(%wheel ALL=(ALL) NOPASSWD: ALL\)/\1/g' /etc/sudoers
-    # sudo sed -i 's/^\(GETTY_ARGS\)=.*/\1="--autologin shoumodip"/g' /etc/sv/agetty-tty1/conf
-    # sudo sed -i 's/^\(GRUB_TIMEOUT\)=.*/\1=0/g' /etc/default/grub
+    sudo sed -i 's/^# \(%wheel ALL=(ALL) NOPASSWD: ALL\)/\1/g' /etc/sudoers
+    sudo sed -i 's/^\(GETTY_ARGS\)=.*/\1="--autologin shoumodip"/g' /etc/sv/agetty-tty1/conf
+    sudo sed -i 's/^\(GRUB_TIMEOUT\)=.*/\1=0/g' /etc/default/grub
 
-    # rm -rf ~/*bash*
-
+    install_packages
     link_dotfiles
-    # install_packages
 
-    # sudo chsh -s /bin/zsh $USER
+    sudo chsh -s /bin/zsh $USER
+    rm -rf ~/*bash*
+    sudo reboot
 fi
