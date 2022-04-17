@@ -6,7 +6,7 @@ function! GlosSyntax()
     setlocal suffixesadd=.glos
 
     syntax clear
-    syntax keyword Keyword if else while for as let import const return struct match break continue
+    syntax keyword Keyword if else while for as let import const return struct match break continue namespace
     syntax keyword Special syscall assert sizeof printf eprintf fprintf bprintf
     syntax keyword Constant true false argc argv
     syntax keyword Type char uint bool
