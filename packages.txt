@@ -44,7 +44,6 @@ valgrind
 void-docs-browse
 xcape
 xclip
-xdg-utils
 xinit
 xorg-minimal
 xorg-server
