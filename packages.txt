@@ -22,6 +22,7 @@ libX11-devel
 libXrender-devel
 libjpeg-turbo-devel
 lvm2
+maim
 man-pages-devel
 mdadm
 mesa-dri
