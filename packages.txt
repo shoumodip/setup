@@ -35,6 +35,7 @@ pulseaudio
 python3-adblock
 qutebrowser
 setxkbmap
+strace
 sxiv
 tmux
 transmission

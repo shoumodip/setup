@@ -7,7 +7,7 @@ function! GlosSyntax()
 
     syntax clear
     syntax keyword Keyword if else while for as let import const return struct match break continue
-    syntax keyword Special syscall assert sizeof printf eprintf fprintf
+    syntax keyword Special syscall assert sizeof printf eprintf fprintf bprintf
     syntax keyword Constant true false argc argv
     syntax keyword Type char uint bool
 
@@ -16,7 +16,7 @@ function! GlosSyntax()
     syntax match   Number "\<[0-9][0-9_]*\>"
 
     " The syscalls
-    syntax keyword Function read write open close fstat mmap dup2 fork execve exit wait4 creat unlink
+    syntax keyword Function read write open close fstat mmap munmap dup2 fork execve exit wait4 creat unlink
     syntax keyword Macro WIFEXITED WEXITSTATUS
 
     syntax match Comment '#.*'
