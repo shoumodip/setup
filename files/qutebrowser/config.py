@@ -22,9 +22,9 @@ c.content.blocking.adblock.lists = [
     "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt",
 ]
 
-c.content.blocking.hosts.lists = [
-    "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"
-]
+# c.content.blocking.hosts.lists = [
+#     "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"
+# ]
 
 c.content.blocking.method = "both"
 c.content.cookies.accept = "no-3rdparty"

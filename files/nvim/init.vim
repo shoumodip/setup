@@ -6,7 +6,8 @@ endif
 
 call plug#begin(stdpath('data') . '/plugins')
 Plug 'morhetz/gruvbox'
-Plug 'ido-nvim/ido.nvim'
+" Plug 'ido-nvim/ido.nvim'
+Plug '~/code/ido-nvim/ido.nvim'
 
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-repeat'
@@ -84,7 +85,6 @@ noremap <silent> <leader>k :CompilePrev<cr>
 augroup shoumodip
     autocmd!
     autocmd FileType c,cpp setlocal commentstring=//%s
-
     autocmd FileType go setlocal noexpandtab
     autocmd FileType fasm setlocal commentstring=;%s
     autocmd BufEnter *.fasm setlocal filetype=fasm
