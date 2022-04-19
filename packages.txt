@@ -30,6 +30,7 @@ mkvtoolnix
 mpv
 ncurses-devel
 neovim
+nnn
 pamixer
 pdf.js
 pulseaudio

@@ -6,8 +6,7 @@ endif
 
 call plug#begin(stdpath('data') . '/plugins')
 Plug 'morhetz/gruvbox'
-" Plug 'ido-nvim/ido.nvim'
-Plug '~/code/ido-nvim/ido.nvim'
+Plug 'ido-nvim/ido.nvim'
 
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-repeat'
