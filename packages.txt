@@ -1,9 +1,11 @@
 SDL2-devel
+SDL2_ttf-devel
 alacritty
 base-devel
 base-system
 cargo
 cryptsetup
+ctags
 curl
 dbus
 dmenu
@@ -13,6 +15,8 @@ fonts-roboto-ttf
 gdb
 gimp
 git
+glew-devel
+glfw-devel
 go
 grub-i386-efi
 grub-x86_64-efi
