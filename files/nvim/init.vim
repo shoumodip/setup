@@ -18,7 +18,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
 Plug 'shoumodip/fm.vim'
-Plug 'shoumodip/compile.nvim'
+" Plug 'shoumodip/compile.nvim'
+Plug '~/code/compile.nvim'
 
 Plug 'shoumodip/vim-man'
 Plug 'shoumodip/vim-snippet'
