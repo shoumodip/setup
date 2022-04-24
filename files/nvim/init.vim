@@ -32,6 +32,7 @@ set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set ignorecase smartcase wildignorecase
 set cinoptions=l1;(0
 
+set background=light
 silent! colorscheme gruvbox
 
 let mapleader = ' '
