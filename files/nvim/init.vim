@@ -5,10 +5,6 @@ if !filereadable(plug_path)
 endif
 
 call plug#begin(stdpath('data') . '/plugins')
-Plug 'morhetz/gruvbox'
-Plug 'ido-nvim/ido.nvim'
-Plug 'tikhomirov/vim-glsl'
-
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
@@ -20,20 +16,20 @@ Plug 'tpope/vim-commentary'
 Plug 'shoumodip/fm.vim'
 Plug 'shoumodip/compile.nvim'
 
+Plug 'ido-nvim/ido.nvim'
 Plug 'shoumodip/vim-man'
 Plug 'shoumodip/vim-snippet'
 Plug 'shoumodip/vim-cheatsheet'
 call plug#end()
 
-set noswapfile nohlsearch
+set noswapfile nohlsearch noshowmode
 set termguicolors splitright splitbelow
 set guicursor= clipboard=unnamedplus
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set ignorecase smartcase wildignorecase
-set cinoptions=l1;(0
+set cinoptions=l1;(0 statusline=%f:%l:%c\ %m
 
-set background=light
-silent! colorscheme gruvbox
+silent! colorscheme minimal
 
 let mapleader = ' '
 let c_syntax_for_h = 1

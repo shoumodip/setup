@@ -10,6 +10,7 @@ function! GlosSyntax()
     syntax keyword Special syscall assert sizeof printf eprintf fprintf bprintf
     syntax keyword Constant true false argc argv
     syntax keyword Type char uint bool
+    syntax keyword Todo TODO FIXME NOTE BUG
 
     syntax region  String start='"' skip='\\\\\|\\"' end='"'
     syntax match   Character "'\(\\[nrt0'\\]\|[^'\\]\)'"
@@ -19,7 +20,7 @@ function! GlosSyntax()
     syntax keyword Function read write open close fstat mmap munmap dup2 fork execve exit wait4 creat unlink
     syntax keyword Macro WIFEXITED WEXITSTATUS
 
-    syntax match Comment '#.*'
+    syntax match Comment '#.*' contains=Todo
 endfunction
 
 augroup glos
