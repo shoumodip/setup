@@ -36,7 +36,7 @@ link_dotfiles() {
 install_packages() {
     info "Installing packages"
     sudo xbps-install -y $(cat packages.txt)
-    
+
     if [ ! -d ~/code/thono ]; then
         info "Setting up thono"
         git clone https://github.com/shoumodip/thono ~/code/thono
@@ -65,7 +65,9 @@ else
     install_packages
     link_dotfiles
 
+    sudo ln -sf /etc/sv/dbus /var/service/
     sudo chsh -s /bin/zsh $USER
+
     rm -rf ~/*bash*
     sudo reboot
 fi
