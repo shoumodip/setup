@@ -64,15 +64,12 @@ noremap <silent> <leader>d :bd!<cr>
 noremap <silent> <leader>q :Cheatsheet<cr><cr>
 noremap <silent> <leader>t :Snippet<cr><cr>
 
-function! FixCode()
+function! ClearWhitespace()
     let save = winsaveview()
     keeppatterns %s/\s\+$//e
     keeppatterns %s/\n\+\%$//e
-    normal! gg=G
     call winrestview(save)
 endfunction
-
-noremap <silent> <leader>e :call FixCode()<cr>:w<cr>
 
 noremap <silent> <leader>h :Recompile<cr>
 noremap <silent> <leader>H :Compile<cr>
@@ -87,6 +84,7 @@ augroup shoumodip
     autocmd BufEnter *.fasm setlocal filetype=fasm
     autocmd BufEnter *.nasm setlocal filetype=nasm
     autocmd FileType fzf tnoremap <buffer> <esc> <c-c>
+    autocmd BufWritePre * call ClearWhitespace()
 augroup END
 
 noremap <silent> <leader>. :Ido std.browse<cr>
