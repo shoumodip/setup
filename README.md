@@ -3,10 +3,9 @@ Dotfiles for Void Linux.
 
 ## Quick Start
 ```console
-$ mkdir code
-$ cd code
-$ git clone https://github.com/shoumodip/setup
-$ ./setup/setup.sh
+$ mkdir -p ~/code/shoumodip
+$ git clone https://github.com/shoumodip/setup ~/code/shoumodip/
+$ ./code/shoumodip/setup/setup.sh
 ```
 
 ## Disclaimer
