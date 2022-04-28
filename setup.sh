@@ -18,19 +18,20 @@ link() {
 
 link_dotfiles() {
     info "Linking dotfiles"
-    link "alacritty"   ".config/"
-    link "bin/dmenu"   ".local/bin/"
-    link "bin/notflix" ".local/bin/"
-    link "fontconfig"  ".config/"
-    link "i3"          ".config/"
-    link "i3status"    ".config/"
-    link "nvim"        ".config/"
-    link "qutebrowser" ".config/"
-    link "tmux"        ".config/"
-    link "zsh"         ".config/"
-    link "gitconfig"   ".gitconfig"
-    link "zprofile"    ".zprofile"
-    link "xinitrc"     ".config/"
+    link "alacritty"         ".config/"
+    link "bin/dmenu"         ".local/bin/"
+    link "bin/notflix"       ".local/bin/"
+    link "bin/dmenu_project" ".local/bin/"
+    link "fontconfig"        ".config/"
+    link "i3"                ".config/"
+    link "i3status"          ".config/"
+    link "nvim"              ".config/"
+    link "qutebrowser"       ".config/"
+    link "tmux"              ".config/"
+    link "zsh"               ".config/"
+    link "gitconfig"         ".gitconfig"
+    link "zprofile"          ".zprofile"
+    link "xinitrc"           ".config/"
 }
 
 install_packages() {
@@ -40,16 +41,15 @@ install_packages() {
     if [ ! -d ~/code/thono ]; then
         info "Setting up thono"
         git clone https://github.com/shoumodip/thono ~/code/thono
-        cd ~/code/thono
+        cd ~/code/shoumodip/thono
         cc -o make make.c
         ./make
-        ln -sf $PWD/thono ~/.local/bin/
+        ln -sf $PWD/shoumodip/thono ~/.local/bin/
     fi
 }
 
-cd "$(dirname $(realpath $0))"
-
 if [ "$1" = "push" ]; then
+    cd "$(dirname $(realpath $0))"
     xbps-query -m | sed 's/^\([^ ]*\)-.*/\1/' > packages.txt
 
     if [ $(git status -s | wc -l) -gt 0 ]; then
@@ -62,6 +62,7 @@ else
     sudo sed -i 's/^\(GETTY_ARGS\)=.*/\1="--autologin shoumodip"/g' /etc/sv/agetty-tty1/conf
     sudo sed -i 's/^\(GRUB_TIMEOUT\)=.*/\1=0/g' /etc/default/grub
 
+    sudo update-grub
     install_packages
     link_dotfiles
 

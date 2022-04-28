@@ -5,6 +5,11 @@ if !filereadable(plug_path)
 endif
 
 call plug#begin(stdpath('data') . '/plugins')
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'airblade/vim-rooter'
+
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
@@ -28,6 +33,7 @@ set guicursor= clipboard=unnamedplus
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set ignorecase smartcase wildignorecase
 set cinoptions=l1;(0 statusline=%f:%l:%c\ %m
+set completeopt=menu,menuone,noselect
 
 silent! colorscheme minimal
 
@@ -90,6 +96,53 @@ augroup END
 noremap <silent> <leader>. :Ido std.browse<cr>
 noremap <silent> <leader>, :Ido std.buffer<cr>
 
-noremap <silent> <leader>f :Ido std.find_files<cr>
-noremap <silent> <leader>F :Ido std.git_files<cr>
+noremap <silent> <leader>f :Ido std.git_files<cr>
+noremap <silent> <leader>F :Ido std.find_files<cr>
 noremap <silent> <leader>v :Ido std.filetypes<cr>
+
+lua << EOF
+local lspconfig = require("lspconfig")
+local servers = {"clangd", "gopls"}
+
+local cmp = require("cmp")
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+cmp.setup{
+    mapping = cmp.mapping.preset.insert{
+        ["<c-j>"] = cmp.mapping.scroll_docs(4),
+        ["<c-k>"] = cmp.mapping.scroll_docs(-4),
+    },
+
+    sources = cmp.config.sources{{name = "nvim_lsp"}},
+}
+
+for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup {
+        capabilities = capabilities,
+        on_attach = function (client, bufnr)
+            vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+            local function map(key, action)
+                vim.api.nvim_buf_set_keymap(bufnr, "n", key, ":lua "..action.."()<cr>", {noremap=true, silent=true})
+            end
+
+            map("K", "vim.lsp.buf.hover")
+            map("gd", "vim.lsp.buf.definition")
+            map("gi", "vim.lsp.buf.implementation")
+
+            map("<leader>K", "vim.diagnostic.open_float")
+            map("<leader>j", "vim.diagnostic.goto_next")
+            map("<leader>k", "vim.diagnostic.goto_prev")
+
+            map("<leader>r", "vim.lsp.buf.rename")
+            map("<leader>a", "vim.lsp.buf.code_action")
+            map("<leader>f", "vim.lsp.buf.references")
+        end
+    }
+end
+
+vim.diagnostic.config{
+    signs = false,
+    virtual_text = false
+}
+EOF

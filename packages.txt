@@ -3,6 +3,7 @@ alacritty
 base-devel
 base-system
 cargo
+clang
 cryptsetup
 curl
 dbus
@@ -13,6 +14,7 @@ fonts-roboto-ttf
 gdb
 git
 go
+gopls
 grub-i386-efi
 grub-x86_64-efi
 i3

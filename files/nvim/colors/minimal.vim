@@ -53,3 +53,7 @@ highlight! link Directory    Special
 
 highlight! link diffAdded    DiffAdd
 highlight! link diffRemoved  DiffDelete
+highlight! link SignColumn   Normal
+
+highlight! link DiagnosticError ErrorMsg
+highlight! link DiagnosticWarn  WarningMsg

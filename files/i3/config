@@ -18,6 +18,7 @@ bindsym $mod+shift+r exec --no-startup-id sudo reboot
 bindsym $mod+m       exec --no-startup-id notflix download
 bindsym $mod+p       exec --no-startup-id notflix play
 bindsym $mod+s       exec --no-startup-id notflix stop
+bindsym $mod+o       exec --no-startup-id dmenu_project
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
