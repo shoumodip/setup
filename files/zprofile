@@ -21,5 +21,6 @@ export HISTFILE="$XDG_CACHE_HOME/history"
 
 export GOPATH="$XDG_DATA_HOME/go"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GLOSPATH="$HOME/code/shoumodip/glos/"
 
 [ "$(tty)" = "/dev/tty1" ] && exec startx "$XINITRC" 2>/dev/null

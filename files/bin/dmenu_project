@@ -10,7 +10,7 @@ list_dir() {
 
 open_dir() {
     cd "$1/$(list_dir "$1" | dmenu -l 10)"
-    $TERMINAL -e tmux new-session $EDITOR .
+    $TERMINAL -e tmux new-session $EDITOR
 }
 
 open_dir ~/code
