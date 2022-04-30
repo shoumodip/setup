@@ -7,7 +7,6 @@ function! GlosSyntax()
 
     syntax clear
     syntax keyword Keyword if else while for as let import const return struct match break continue sizeof
-    syntax keyword Special syscall assert printf eprintf fprintf bprintf
     syntax keyword Constant true false argc argv
     syntax keyword Type char uint bool
     syntax keyword Todo TODO FIXME NOTE BUG
@@ -15,10 +14,7 @@ function! GlosSyntax()
     syntax region  String start='"' skip='\\\\\|\\"' end='"'
     syntax match   Character "'\(\\[nrt0'\\]\|[^'\\]\)'"
     syntax match   Number "\<[0-9][0-9_]*\>"
-
-    " The syscalls
-    syntax keyword Function read write open close fstat mmap munmap dup2 fork execve exit wait4 creat unlink
-    syntax keyword Macro WIFEXITED WEXITSTATUS
+    syntax match   Special "\<\(print\|eprint\|fprint\|syscall\|assert\)\>\!"
 
     syntax match Comment '#.*' contains=Todo
 endfunction
