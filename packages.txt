@@ -1,4 +1,5 @@
 SDL2-devel
+SDL2_ttf-devel
 alacritty
 base-devel
 base-system
@@ -27,6 +28,7 @@ mdadm
 mesa-dri
 mkvtoolnix
 mpv
+ncurses-devel
 neovim
 pamixer
 pdf.js

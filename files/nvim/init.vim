@@ -30,7 +30,6 @@ set guicursor= clipboard=unnamedplus
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set ignorecase smartcase wildignorecase
 set cinoptions=l1;(0 statusline=%f:%l:%c\ %m
-set completeopt=menu,menuone,noselect
 
 silent! colorscheme minimal
 
