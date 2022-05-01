@@ -5,7 +5,7 @@ if !filereadable(plug_path)
 endif
 
 call plug#begin(stdpath('data') . '/plugins')
-Plug 'airblade/vim-rooter'
+" Plug 'airblade/vim-rooter'
 
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-repeat'
@@ -18,7 +18,9 @@ Plug 'tpope/vim-commentary'
 Plug 'shoumodip/fm.vim'
 Plug 'shoumodip/compile.nvim'
 
-Plug 'ido-nvim/ido.nvim'
+Plug '~/code/ido-nvim/ido.nvim'
+Plug '~/code/ido-nvim/project.nvim'
+
 Plug 'shoumodip/vim-man'
 Plug 'shoumodip/vim-snippet'
 Plug 'shoumodip/vim-cheatsheet'
@@ -95,3 +97,8 @@ noremap <silent> <leader>, :Ido std.buffer<cr>
 noremap <silent> <leader>f :Ido std.git_files<cr>
 noremap <silent> <leader>F :Ido std.find_files<cr>
 noremap <silent> <leader>v :Ido std.filetypes<cr>
+
+noremap <silent> <leader>aa :Ido project.open<cr>
+noremap <silent> <leader>a, :Ido project.buffer<cr>
+noremap <silent> <leader>a. :Ido project.find_files<cr>
+noremap <silent> <leader>ah :Ido project.compile<cr>
