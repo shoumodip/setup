@@ -10,6 +10,7 @@ dbus
 dmenu
 fasm
 font-iosevka
+fontconfig-devel
 fonts-roboto-ttf
 gdb
 git
