@@ -5,8 +5,6 @@ if !filereadable(plug_path)
 endif
 
 call plug#begin(stdpath('data') . '/plugins')
-" Plug 'airblade/vim-rooter'
-
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
@@ -18,8 +16,8 @@ Plug 'tpope/vim-commentary'
 Plug 'shoumodip/fm.vim'
 Plug 'shoumodip/compile.nvim'
 
-Plug '~/code/ido-nvim/ido.nvim'
-Plug '~/code/ido-nvim/project.nvim'
+Plug 'ido-nvim/ido.nvim'
+Plug 'ido-nvim/project.nvim'
 
 Plug 'shoumodip/vim-man'
 Plug 'shoumodip/vim-snippet'
