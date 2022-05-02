@@ -7,8 +7,6 @@ endif
 call plug#begin(stdpath('data') . '/plugins')
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -16,9 +14,9 @@ Plug 'tpope/vim-commentary'
 Plug 'shoumodip/fm.vim'
 Plug 'shoumodip/compile.nvim'
 
-Plug '~/code/ido-nvim/ido.nvim'
-Plug '~/code/ido-nvim/tag.nvim'
-Plug '~/code/ido-nvim/project.nvim'
+Plug 'ido-nvim/ido.nvim'
+Plug 'ido-nvim/tag.nvim'
+Plug 'ido-nvim/project.nvim'
 
 Plug 'shoumodip/vim-man'
 Plug 'shoumodip/vim-snippet'
