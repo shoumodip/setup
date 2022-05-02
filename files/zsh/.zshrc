@@ -42,7 +42,7 @@ alias gc="git commit"
 
 function gh() {
     for i in $@; do
-        git clone "git@github.com:shoumodip/$i"
+        git clone "git@github.com:$i"
     done
 }
 
