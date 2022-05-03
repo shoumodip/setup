@@ -14,7 +14,7 @@ Plug 'tpope/vim-commentary'
 Plug 'shoumodip/fm.vim'
 Plug 'shoumodip/compile.nvim'
 
-Plug '~/code/ido-nvim/ido.nvim'
+Plug 'ido-nvim/ido.nvim'
 Plug 'ido-nvim/tag.nvim'
 Plug 'ido-nvim/project.nvim'
 
@@ -76,9 +76,6 @@ augroup shoumodip
     autocmd!
     autocmd FileType c,cpp setlocal commentstring=//%s
     autocmd FileType go setlocal noexpandtab
-    autocmd FileType fasm setlocal commentstring=;%s
-    autocmd BufEnter *.fasm setlocal filetype=fasm
-    autocmd FileType fzf tnoremap <buffer> <esc> <c-c>
     autocmd BufWritePre * call ClearWhitespace()
 augroup END
 
@@ -101,3 +98,19 @@ noremap <silent> <leader>se :Ido tag.enums<cr>
 noremap <silent> <leader>sd :Ido tag.defines<cr>
 
 lua require("ido").setup{render = require("ido.render").vertical}
+
+let s:terminals = [0, 0, 0, 0]
+
+function! GotoTerm(number)
+    if s:terminals[a:number] && buflisted(s:terminals[a:number])
+        execute "buffer " . s:terminals[a:number]
+    else
+        terminal
+        let s:terminals[a:number] = bufnr()
+    endif
+endfunction
+
+noremap <silent> <leader>1 :call GotoTerm(0)<cr>
+noremap <silent> <leader>2 :call GotoTerm(1)<cr>
+noremap <silent> <leader>3 :call GotoTerm(2)<cr>
+noremap <silent> <leader>4 :call GotoTerm(3)<cr>
