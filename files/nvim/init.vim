@@ -14,7 +14,7 @@ Plug 'tpope/vim-commentary'
 Plug 'shoumodip/fm.vim'
 Plug 'shoumodip/compile.nvim'
 
-Plug 'ido-nvim/ido.nvim'
+Plug '~/code/ido-nvim/ido.nvim'
 Plug 'ido-nvim/tag.nvim'
 Plug 'ido-nvim/project.nvim'
 
@@ -99,3 +99,5 @@ noremap <silent> <leader>sv :Ido tag.variables<cr>
 noremap <silent> <leader>st :Ido tag.types<cr>
 noremap <silent> <leader>se :Ido tag.enums<cr>
 noremap <silent> <leader>sd :Ido tag.defines<cr>
+
+lua require("ido").setup{render = require("ido.render").vertical}
