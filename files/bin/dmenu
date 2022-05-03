@@ -1,4 +1,0 @@
-#!/bin/sh
-# Dmenu with bigger font
-
-/usr/bin/dmenu -fn "Monospace:size=12" -i $@

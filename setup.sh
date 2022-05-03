@@ -19,15 +19,11 @@ link() {
 link_dotfiles() {
     info "Linking dotfiles"
     link "alacritty"         ".config/"
-    link "bin/dmenu"         ".local/bin/"
-    link "bin/notflix"       ".local/bin/"
-    link "bin/dmenu_project" ".local/bin/"
     link "fontconfig"        ".config/"
     link "i3"                ".config/"
     link "i3status"          ".config/"
     link "nvim"              ".config/"
     link "qutebrowser"       ".config/"
-    link "tmux"              ".config/"
     link "zsh"               ".config/"
     link "gitconfig"         ".gitconfig"
     link "zprofile"          ".zprofile"
@@ -48,7 +44,12 @@ install_packages() {
     fi
 }
 
-cd "$(dirname $(realpath $0))"
+if [ "$USER" != "shoumodip" ]; then
+    info "\$USER is not 'shoumodip'"
+    exit 1
+fi
+
+cd ~/code/shoumodip/setup
 
 if [ "$1" = "push" ]; then
     xbps-query -m | sed 's/^\([^ ]*\)-.*/\1/' > packages.txt
