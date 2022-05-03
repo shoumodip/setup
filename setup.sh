@@ -38,13 +38,13 @@ install_packages() {
     info "Installing packages"
     sudo xbps-install -y $(cat packages.txt)
 
-    if [ ! -d ~/code/thono ]; then
+    if [ ! -d ~/code/shoumodip/thono ]; then
         info "Setting up thono"
-        git clone https://github.com/shoumodip/thono ~/code/thono
+        git clone https://github.com/shoumodip/thono ~/code/shoumodip/thono
         cd ~/code/shoumodip/thono
         cc -o make make.c
         ./make
-        ln -sf $PWD/shoumodip/thono ~/.local/bin/
+        ln -sf $PWD/thono ~/.local/bin/
     fi
 }
 
