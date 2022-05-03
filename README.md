@@ -5,7 +5,7 @@ Dotfiles for Void Linux.
 ```console
 $ mkdir -p ~/code/shoumodip
 $ git clone https://github.com/shoumodip/setup ~/code/shoumodip/
-$ ./code/shoumodip/setup/setup.sh
+$ ./code/shoumodip/setup/setup
 ```
 
 ## Disclaimer
