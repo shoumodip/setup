@@ -6,7 +6,6 @@ cryptsetup
 ctags
 curl
 dbus
-dmenu
 fasm
 font-iosevka
 fonts-roboto-ttf
