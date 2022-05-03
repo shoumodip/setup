@@ -1,5 +1,3 @@
-SDL2-devel
-SDL2_ttf-devel
 alacritty
 base-devel
 base-system
@@ -11,7 +9,6 @@ dbus
 dmenu
 fasm
 font-iosevka
-fontconfig-devel
 fonts-roboto-ttf
 gdb
 git
@@ -28,9 +25,7 @@ maim
 man-pages-devel
 mdadm
 mesa-dri
-mkvtoolnix
 mpv
-ncurses-devel
 neovim
 pamixer
 pdf.js
@@ -38,9 +33,7 @@ pulseaudio
 python3-adblock
 qutebrowser
 setxkbmap
-strace
 sxiv
-tmux
 valgrind
 void-docs-browse
 xcape
@@ -49,4 +42,3 @@ xinit
 xorg-minimal
 xorg-server
 xset
-zsh
