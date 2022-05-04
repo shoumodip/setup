@@ -39,6 +39,7 @@ highlight! link Pmenu        StatusLineNC
 highlight! link PmenuSbar    Pmenu
 highlight! link PmenuThumb   Pmenu
 highlight! link CursorLine   StatusLineNC
+highlight! link ColorColumn  Visual
 
 highlight! link Character    String
 highlight! link SpecialChar  String

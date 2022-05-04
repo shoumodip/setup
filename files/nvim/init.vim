@@ -20,10 +20,9 @@ Plug 'ido-nvim/project.nvim'
 
 Plug 'shoumodip/vim-man'
 Plug 'shoumodip/vim-snippet'
-Plug 'shoumodip/vim-cheatsheet'
 call plug#end()
 
-set noswapfile nohlsearch noshowmode
+set noswapfile nohlsearch noshowmode colorcolumn=100
 set termguicolors splitright splitbelow
 set guicursor= clipboard=unnamedplus
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
@@ -35,8 +34,6 @@ silent! colorscheme minimal
 let mapleader = ' '
 let c_syntax_for_h = 1
 let c_no_curly_error = 1
-
-tnoremap <esc> <c-\><c-n>
 
 noremap Q gq
 noremap <silent> <c-l> :cclose<cr><c-l>
@@ -54,10 +51,9 @@ noremap <leader>u :G remote add origin git@github.com:
 noremap <leader>p :term git push origin main
 noremap <leader>l :wa<cr>:terminal <up>
 
-noremap <silent> <leader>v :G<cr>
+noremap <silent> <leader>g :G<cr>
 noremap <silent> <leader>w :w<cr>
 noremap <silent> <leader>d :bd!<cr>
-noremap <silent> <leader>q :Cheatsheet<cr><cr>
 noremap <silent> <leader>t :Snippet<cr><cr>
 
 function! ClearWhitespace()
@@ -79,13 +75,35 @@ augroup shoumodip
     autocmd BufWritePre * call ClearWhitespace()
 augroup END
 
+let s:terminals = [0, 0, 0, 0]
+
+function! GotoTerm(number)
+    if s:terminals[a:number] && buflisted(s:terminals[a:number])
+        execute "buffer " . s:terminals[a:number]
+    else
+        terminal
+        execute 'tnoremap <buffer> <a-' . (a:number + 1) . '> <c-\><c-n><c-o>'
+        let s:terminals[a:number] = bufnr()
+    endif
+
+    startinsert
+endfunction
+
+function! GotoTermSetup(count)
+    for i in range(a:count)
+        execute 'noremap <silent> <a-' . (i + 1) . '> :call GotoTerm(' . i . ')<cr>'
+    endfor
+endfunction
+
+call GotoTermSetup(4)
+
+lua require("ido").setup{render = require("ido.render").vertical}
+
 noremap <silent> <leader>b :Ido std.browse<cr>
 
-noremap <silent> <leader>g. :Ido std.git_files<cr>
-noremap <silent> <leader>g, :Ido std.buffer<cr>
-
-noremap <silent> <leader>gf :Ido std.find_files<cr>
-noremap <silent> <leader>gc :Ido std.filetypes<cr>
+noremap <silent> <leader>f :Ido std.find_files<cr>
+noremap <silent> <leader>F :Ido std.buffer<cr>
+noremap <silent> <leader>q :Ido std.filetypes<cr>
 
 noremap <silent> <leader>o :Ido project.open<cr>
 noremap <silent> <leader>. :Ido project.find_files<cr>
@@ -96,21 +114,3 @@ noremap <silent> <leader>sv :Ido tag.variables<cr>
 noremap <silent> <leader>st :Ido tag.types<cr>
 noremap <silent> <leader>se :Ido tag.enums<cr>
 noremap <silent> <leader>sd :Ido tag.defines<cr>
-
-lua require("ido").setup{render = require("ido.render").vertical}
-
-let s:terminals = [0, 0, 0, 0]
-
-function! GotoTerm(number)
-    if s:terminals[a:number] && buflisted(s:terminals[a:number])
-        execute "buffer " . s:terminals[a:number]
-    else
-        terminal
-        let s:terminals[a:number] = bufnr()
-    endif
-endfunction
-
-noremap <silent> <leader>1 :call GotoTerm(0)<cr>
-noremap <silent> <leader>2 :call GotoTerm(1)<cr>
-noremap <silent> <leader>3 :call GotoTerm(2)<cr>
-noremap <silent> <leader>4 :call GotoTerm(3)<cr>
