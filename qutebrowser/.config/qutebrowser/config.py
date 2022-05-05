@@ -15,16 +15,16 @@ c.completion.timestamp_format = "%I:%M%p %d/%m/%y"
 
 # Block garbage
 c.content.blocking.adblock.lists = [
-    "https://easylist.to/easylist/easylist.txt", 
+    "https://easylist.to/easylist/easylist.txt",
     "https://easylist.to/easylist/easyprivacy.txt",
     "https://easylist.to/easylist/fanboy-social.txt",
     "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
     "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt",
 ]
 
-# c.content.blocking.hosts.lists = [
-#     "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"
-# ]
+c.content.blocking.hosts.lists = [
+    "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts"
+]
 
 c.content.blocking.method = "both"
 c.content.cookies.accept = "no-3rdparty"
