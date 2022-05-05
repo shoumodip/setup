@@ -1,6 +1,6 @@
 set $mod Mod4
 floating_modifier $mod
-# workspace_layout tabbed
+workspace_layout tabbed
 
 font pango:monospace 12
 

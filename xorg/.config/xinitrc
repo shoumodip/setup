@@ -9,7 +9,7 @@ xcape -e "Control_L=Escape"
 pgrep tranmission-da || transmission-daemon -w ~/downloads
 
 # Autocommit
-~/code/shoumodip/setup/setup.sh push &
+~/code/shoumodip/setup/setup push &
 
 # Pulseaudio
 start-pulseaudio-x11 &

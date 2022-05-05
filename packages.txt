@@ -1,3 +1,4 @@
+SDL2-devel
 alacritty
 base-devel
 base-system
