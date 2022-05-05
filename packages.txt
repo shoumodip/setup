@@ -42,4 +42,3 @@ xinit
 xorg-minimal
 xorg-server
 xset
-zsh
