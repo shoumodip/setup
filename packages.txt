@@ -32,6 +32,7 @@ pulseaudio
 python3-adblock
 qutebrowser
 setxkbmap
+stow
 sxiv
 valgrind
 void-docs-browse

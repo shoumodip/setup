@@ -14,13 +14,11 @@ export XINITRC="$XDG_CONFIG_HOME/xinitrc"
 export XAUTHORITY="$XDG_CACHE_HOME/Xauthority"
 export QTWEBENGINE_DISABLE_GPU_THREAD=1
 
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export HISTSIZE=10000
-export SAVEHIST=10000
+export PS1="\[\e[1;36m\]\w\[\e[0m\] "
 export HISTFILE="$XDG_CACHE_HOME/history"
 
 export GOPATH="$XDG_DATA_HOME/go"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GLOSPATH="$HOME/code/shoumodip/glos/"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
 [ "$(tty)" = "/dev/tty1" ] && exec startx "$XINITRC" 2>/dev/null
