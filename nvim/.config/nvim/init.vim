@@ -11,18 +11,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
-Plug 'shoumodip/fm.vim'
-Plug 'shoumodip/compile.nvim'
-
 Plug 'ido-nvim/ido.nvim'
 Plug 'ido-nvim/tag.nvim'
 Plug 'ido-nvim/project.nvim'
+
+Plug 'shoumodip/fm.vim'
+Plug 'shoumodip/calc.vim'
+Plug 'shoumodip/compile.nvim'
 
 Plug 'shoumodip/vim-man'
 Plug 'shoumodip/vim-snippet'
 call plug#end()
 
-set noswapfile nohlsearch noshowmode colorcolumn=100
+set noswapfile nohlsearch noshowmode
 set termguicolors splitright splitbelow
 set guicursor= clipboard=unnamedplus
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
@@ -35,8 +36,8 @@ let mapleader = ' '
 let c_syntax_for_h = 1
 let c_no_curly_error = 1
 
-noremap Q gq
-noremap <silent> <c-l> :cclose<cr><c-l>
+noremap Q <nop>
+noremap K :SigmaMan<cr><c-left>
 
 nnoremap <leader>r :%s//gc<left><left><left>
 vnoremap <leader>r :s//gc<left><left><left>
@@ -46,7 +47,6 @@ nnoremap <silent> <c-k> :m .-2<cr>==
 vnoremap <silent> <c-j> :m '>+1<cr>gv=gv
 vnoremap <silent> <c-k> :m '<-2<cr>gv=gv
 
-noremap K :SigmaMan<cr><c-left>
 noremap <leader>u :G remote add origin git@github.com:
 noremap <leader>p :term git push origin main
 noremap <leader>l :wa<cr>:terminal <up>
@@ -55,6 +55,7 @@ noremap <silent> <leader>g :G<cr>
 noremap <silent> <leader>w :w<cr>
 noremap <silent> <leader>d :bd!<cr>
 noremap <silent> <leader>t :Snippet<cr><cr>
+noremap <silent> <leader>c :Calculator<cr>
 
 function! ClearWhitespace()
     let save = winsaveview()
