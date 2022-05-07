@@ -1,7 +1,13 @@
 #!/bin/sh -e
 
+# Because I'm too lazy to make this script generic
 if [ "$USER" != "shoumodip" ]; then
-    echo 'ERROR: $USER must be `shoumodip`'
+    echo $(tput setaf 1 && tput bold)'ERROR: $USER must be `shoumodip`'$(tput sgr0)
+    exit 1
+fi
+
+if [ ! -d "$HOME/code/shoumodip/setup" ]; then
+    echo $(tput setaf 1 && tput bold)'ERROR: ~/code/shoumodip/setup does not exist'$(tput sgr0)
     exit 1
 fi
 
@@ -16,7 +22,9 @@ if [ "$1" = "push" ]; then
         git push origin main
     fi
 else
-    mkdir -p ~/.local/bin
+    # Adhere to the XDG directory standards
+    mkdir -p ~/.local/bin ~/.config ~/.cache
+    rm ~/.*bash*
 
     sudo sed -i 's/^# \(%wheel ALL=(ALL) NOPASSWD: ALL\)/\1/g' /etc/sudoers
     sudo sed -i 's/^\(GETTY_ARGS\)=.*/\1="--autologin shoumodip"/g' /etc/sv/agetty-tty1/conf
@@ -25,6 +33,7 @@ else
     sudo update-grub
     sudo xbps-install -y $(cat packages.txt)
 
+    # Magnifier and Screenshot tool: https://github.com/shoumodip/thono
     if [ ! -d ~/code/shoumodip/thono ]; then
         git clone https://github.com/shoumodip/thono ~/code/shoumodip/thono
         cd ~/code/shoumodip/thono
@@ -36,5 +45,9 @@ else
     sudo ln -sf /etc/sv/dbus /var/service/
     stow -vt ~ */
 
-    echo $(tput setaf 2 && tput bold)'Press ^D to finish. On next login run `rm -rf ~/.*bash*`'
+    # Prevent ~/.bash_history
+    export XDG_CACHE_HOME="$HOME/.cache"
+    export HISTFILE="~/.cache/history"
+
+    echo $(tput setaf 2 && tput bold)'SUCCESS: Press ^D to finish'$(tput sgr0)
 fi
