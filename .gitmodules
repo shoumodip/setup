@@ -1,0 +1,52 @@
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-rsi"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-rsi
+	url = https://github.com/tpope/vim-rsi
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-repeat"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-fugitive"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-surround"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-commentary"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/ido.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/ido.nvim
+	url = https://github.com/ido-nvim/ido.nvim
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/tag.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/tag.nvim
+	url = https://github.com/ido-nvim/tag.nvim
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/project.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/project.nvim
+	url = https://github.com/ido-nvim/project.nvim
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/fm.vim"]
+	path = nvim/.config/nvim/pack/plugins/start/fm.vim
+	url = https://github.com/shoumodip/fm.vim
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/calc.vim"]
+	path = nvim/.config/nvim/pack/plugins/start/calc.vim
+	url = https://github.com/shoumodip/calc.vim
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/compile.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/compile.nvim
+	url = https://github.com/shoumodip/compile.nvim
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-man"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-man
+	url = https://github.com/shoumodip/vim-man
+    shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/vim-snippet"]
+	path = nvim/.config/nvim/pack/plugins/start/vim-snippet
+	url = https://github.com/shoumodip/vim-snippet
+    shallow = true

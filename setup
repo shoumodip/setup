@@ -30,6 +30,7 @@ else
     sudo sed -i 's/^\(GETTY_ARGS\)=.*/\1="--autologin shoumodip"/g' /etc/sv/agetty-tty1/conf
     sudo sed -i 's/^\(GRUB_TIMEOUT\)=.*/\1=0/g' /etc/default/grub
 
+    git submodule update --init --recursive
     sudo update-grub
     sudo xbps-install -y $(cat packages.txt)
 
