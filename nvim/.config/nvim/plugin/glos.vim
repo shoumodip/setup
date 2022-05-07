@@ -1,9 +1,8 @@
 function! GlosSyntax()
-    setlocal filetype=go " For the indentation
-    setlocal expandtab
+    setlocal smartindent
     setlocal filetype=glos
     setlocal commentstring=#%s
-    setlocal suffixesadd=.glos
+    inoremap <buffer> # <c-v>#
 
     syntax clear
     syntax keyword Keyword if else while for as let import const return struct match break continue sizeof
