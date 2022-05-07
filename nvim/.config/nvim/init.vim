@@ -9,8 +9,6 @@ let mapleader = ' '
 let c_syntax_for_h = 1
 let c_no_curly_error = 1
 
-let s:terminals = []
-
 function! GotoTerm(number)
     if s:terminals[a:number] && buflisted(s:terminals[a:number])
         execute "buffer " . s:terminals[a:number]
@@ -24,6 +22,7 @@ function! GotoTerm(number)
 endfunction
 
 function! GotoTermSetup(count)
+    let s:terminals = repeat([0], a:count)
     for i in range(a:count)
         execute 'noremap <silent> <a-' . (i + 1) . '> :call GotoTerm(' . i . ')<cr>'
     endfor
