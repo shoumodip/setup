@@ -41,6 +41,9 @@ lua require("ido").setup{render = require("ido.render").vertical}
 noremap Q <nop>
 noremap K :SigmaMan<cr><c-left>
 
+inoremap <c-k> <c-o>"_D
+cnoremap <c-k> <c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+
 nnoremap <leader>r :%s//gc<left><left><left>
 vnoremap <leader>r :s//gc<left><left><left>
 

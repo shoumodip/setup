@@ -24,7 +24,7 @@ if [ "$1" = "push" ]; then
 else
     # Adhere to the XDG directory standards
     mkdir -p ~/.local/bin ~/.config ~/.cache
-    rm ~/.*bash*
+    rm -f ~/.*bash*
 
     sudo sed -i 's/^# \(%wheel ALL=(ALL) NOPASSWD: ALL\)/\1/g' /etc/sudoers
     sudo sed -i 's/^\(GETTY_ARGS\)=.*/\1="--autologin shoumodip"/g' /etc/sv/agetty-tty1/conf
