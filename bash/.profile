@@ -14,7 +14,7 @@ export XINITRC="$XDG_CONFIG_HOME/xinitrc"
 export XAUTHORITY="$XDG_CACHE_HOME/Xauthority"
 export QTWEBENGINE_DISABLE_GPU_THREAD=1
 
-export PS1="$ "
+export PS1="\[\e[1;36m\]\w\[\e[0m\] "
 export HISTFILE="$XDG_CACHE_HOME/history"
 
 export GOPATH="$XDG_DATA_HOME/go"
