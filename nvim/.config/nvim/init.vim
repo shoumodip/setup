@@ -28,11 +28,6 @@ function! GotoTermSetup(count)
     endfor
 endfunction
 
-function! FugitiveMappings()
-    noremap <buffer> u :G remote add origin git@github.com:
-    noremap <buffer> p :term git push origin main<space>
-endfunction
-
 function! ClearWhitespace()
     let save = winsaveview()
     keeppatterns %s/\s\+$//e
@@ -61,6 +56,8 @@ vnoremap <silent> <c-k> :m '<-2<cr>gv=gv
 noremap <leader>l :wa<cr>:terminal <up>
 
 noremap <silent> <leader>g :G<cr>
+noremap <leader>u :G remote add origin git@github.com:
+noremap <leader>p :term git push origin main<space>
 
 noremap <silent> <leader>w :w<cr>
 noremap <silent> <leader>d :bd!<cr>
@@ -94,7 +91,6 @@ augroup shoumodip
     autocmd FileType c,cpp setlocal commentstring=//%s
     autocmd FileType go setlocal noexpandtab
     autocmd BufWritePre * call ClearWhitespace()
-    autocmd FileType fugitive call FugitiveMappings()
 augroup END
 
 silent! colorscheme minimal
