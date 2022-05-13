@@ -4,7 +4,7 @@ function! GlosSyntax()
     setlocal commentstring=;%s
 
     syntax clear
-    syntax keyword Keyword if else while for as let import const return struct match break continue sizeof
+    syntax keyword Keyword if else while for as fn let import const return struct match break continue sizeof
     syntax keyword Special print eprint fprint syscall assert
     syntax keyword Constant true false argc argv
     syntax keyword Type char uint bool
