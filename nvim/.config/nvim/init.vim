@@ -28,6 +28,11 @@ function! GotoTermSetup(count)
     endfor
 endfunction
 
+function! FugitiveMappings()
+    noremap <buffer> u :G remote add origin git@github.com:
+    noremap <buffer> p :term git push origin main<space>
+endfunction
+
 function! ClearWhitespace()
     let save = winsaveview()
     keeppatterns %s/\s\+$//e
@@ -45,6 +50,7 @@ inoremap <c-k> <c-o>"_D
 cnoremap <c-k> <c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 
 nnoremap <leader>r :%s//gc<left><left><left>
+nnoremap <leader>R :s//gc<left><left><left>
 vnoremap <leader>r :s//gc<left><left><left>
 
 nnoremap <silent> <c-j> :m .+1<cr>==
@@ -52,11 +58,10 @@ nnoremap <silent> <c-k> :m .-2<cr>==
 vnoremap <silent> <c-j> :m '>+1<cr>gv=gv
 vnoremap <silent> <c-k> :m '<-2<cr>gv=gv
 
-noremap <leader>u :G remote add origin git@github.com:
-noremap <leader>p :term git push origin main
 noremap <leader>l :wa<cr>:terminal <up>
 
 noremap <silent> <leader>g :G<cr>
+
 noremap <silent> <leader>w :w<cr>
 noremap <silent> <leader>d :bd!<cr>
 noremap <silent> <leader>t :Snippet<cr><cr>
@@ -72,6 +77,7 @@ noremap <silent> <leader>b :Ido std.browse<cr>
 noremap <silent> <leader>f :Ido std.find_files<cr>
 noremap <silent> <leader>F :Ido std.buffer<cr>
 noremap <silent> <leader>q :Ido std.filetypes<cr>
+noremap <silent> <leader>B :Ido std.git_branch<cr>
 
 noremap <silent> <leader>o :Ido project.open<cr>
 noremap <silent> <leader>. :Ido project.find_files<cr>
@@ -88,6 +94,7 @@ augroup shoumodip
     autocmd FileType c,cpp setlocal commentstring=//%s
     autocmd FileType go setlocal noexpandtab
     autocmd BufWritePre * call ClearWhitespace()
+    autocmd FileType fugitive call FugitiveMappings()
 augroup END
 
 silent! colorscheme minimal
