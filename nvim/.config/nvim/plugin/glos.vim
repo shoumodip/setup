@@ -6,8 +6,8 @@ function! GlosSyntax()
 
     syntax clear
     syntax keyword Keyword if else while for as fn let import const return struct match break continue sizeof
-    syntax keyword Special print eprint fprint syscall assert
-    syntax keyword Constant true false argc argv
+    syntax keyword Special syscall assert argc argv
+    syntax keyword Constant true false
     syntax keyword Type char uint bool
     syntax keyword Todo TODO FIXME NOTE BUG
 
