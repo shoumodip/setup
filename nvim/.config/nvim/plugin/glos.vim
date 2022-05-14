@@ -2,6 +2,7 @@ function! GlosSyntax()
     setlocal smartindent
     setlocal filetype=glos
     setlocal commentstring=;%s
+    setlocal suffixesadd=.glos
 
     syntax clear
     syntax keyword Keyword if else while for as fn let import const return struct match break continue sizeof
