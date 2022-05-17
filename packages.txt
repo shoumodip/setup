@@ -34,6 +34,7 @@ python3-adblock
 qutebrowser
 setxkbmap
 stow
+strace
 sxiv
 valgrind
 void-docs-browse
