@@ -19,6 +19,12 @@ super + {_,shift + }{h,j,k,l}
 super + {_,shift + }{1-9}
 	bspc {desktop -f,node -d} {1-9}
 
+super + shift + q
+	sudo poweroff
+
+super + shift + r
+	sudo reboot
+
 XF86AudioRaiseVolume
 	pamixer --allow-boost -i 10
 
