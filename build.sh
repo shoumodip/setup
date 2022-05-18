@@ -13,5 +13,3 @@ sudo xbps-install -y $(cat packages.txt)
 
 sudo ln -sf /etc/sv/dbus /var/service/
 stow -vt ~ */
-
-export HISTFILE=~/.cache/history

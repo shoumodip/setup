@@ -36,8 +36,9 @@ vnoremap <silent> <c-k> :m '<-2<cr>gv=gv
 noremap <leader>l :wa<cr>:terminal <up>
 
 noremap <silent> <leader>g :G<cr>
-noremap <leader>u :G remote add origin git@github.com:
 noremap <leader>p :term git push origin main<space>
+noremap <leader>u :G remote add origin git@github.com:
+noremap <leader>U :G remote set-url origin git@github.com:
 
 noremap <silent> <leader>w :w<cr>
 noremap <silent> <leader>d :bd!<cr>
