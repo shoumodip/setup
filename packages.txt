@@ -6,6 +6,7 @@ xcape
 xclip
 xinit
 setxkbmap
+unclutter
 xorg-server
 xorg-minimal
 rxvt-unicode
