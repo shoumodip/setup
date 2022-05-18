@@ -13,3 +13,7 @@ sudo xbps-install -y $(cat packages.txt)
 
 sudo ln -sf /etc/sv/dbus /var/service/
 stow -vt ~ */
+
+ssh-keygen -t ed25519 -C "shoumodipkar@gmail.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
