@@ -4,6 +4,7 @@ alias ls="ls --color=auto --group-directories-first -h"
 alias ll="ls -l"
 alias grep="grep --color=auto -inH"
 
+alias g="git"
 alias v="nvim"
 alias mv="mv -vf"
 alias cp="cp -vrf"
