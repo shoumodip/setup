@@ -14,3 +14,5 @@ alias xi="sudo xbps-install"
 alias xr="sudo xbps-remove -R"
 alias xs="xbps-query -Rs"
 alias mkd="mkdir -p"
+
+bind '"\eo":"cd ~/code/ && tmux\eb\eb\ef\C-f"'

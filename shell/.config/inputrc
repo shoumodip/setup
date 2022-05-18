@@ -1,0 +1,7 @@
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
+set colored-completion-prefix on
+set colored-stats on
+
+Tab:menu-complete
+"\e[Z":menu-complete-backward
