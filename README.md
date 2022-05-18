@@ -5,9 +5,11 @@ Configuration
 [Install Void Linux](https://docs.voidlinux.org/installation/live-images/guide.html)
 
 ```console
-$ mkdir -p ~/code/shoumodip
-$ git clone https://github.com/shoumodip/setup ~/code/shoumodip/
-$ ./code/shoumodip/setup/setup
+$ mkdir -p ~/code
+$ cd ~/code
+$ git clone https://github.com/shoumodip/setup
+$ cd setup
+$ ./build.sh
 ```
 
 ## Disclaimer

@@ -9,25 +9,6 @@ let mapleader = ' '
 let c_syntax_for_h = 1
 let c_no_curly_error = 1
 
-function! GotoTerm(number)
-    if s:terminals[a:number] && buflisted(s:terminals[a:number])
-        execute "buffer " . s:terminals[a:number]
-    else
-        terminal
-        execute 'tnoremap <buffer> <a-' . (a:number + 1) . '> <c-\><c-n><c-o>'
-        let s:terminals[a:number] = bufnr()
-    endif
-
-    startinsert
-endfunction
-
-function! GotoTermSetup(count)
-    let s:terminals = repeat([0], a:count)
-    for i in range(a:count)
-        execute 'noremap <silent> <a-' . (i + 1) . '> :call GotoTerm(' . i . ')<cr>'
-    endfor
-endfunction
-
 function! ClearWhitespace()
     let save = winsaveview()
     keeppatterns %s/\s\+$//e
@@ -35,7 +16,6 @@ function! ClearWhitespace()
     call winrestview(save)
 endfunction
 
-call GotoTermSetup(4)
 lua require("ido").setup{render = require("ido.render").vertical}
 
 noremap Q <nop>
@@ -62,29 +42,16 @@ noremap <leader>p :term git push origin main<space>
 noremap <silent> <leader>w :w<cr>
 noremap <silent> <leader>d :bd!<cr>
 noremap <silent> <leader>t :Snippet<cr><cr>
-noremap <silent> <leader>c :Calculator<cr>
 
 noremap <silent> <leader>h :Recompile<cr>
 noremap <silent> <leader>H :Compile<cr>
 noremap <silent> <leader>j :CompileNext<cr>
 noremap <silent> <leader>k :CompilePrev<cr>
 
-noremap <silent> <leader>b :Ido std.browse<cr>
-
-noremap <silent> <leader>f :Ido std.find_files<cr>
-noremap <silent> <leader>F :Ido std.buffer<cr>
-noremap <silent> <leader>q :Ido std.filetypes<cr>
-noremap <silent> <leader>B :Ido std.git_branch<cr>
-
-noremap <silent> <leader>o :Ido project.open<cr>
-noremap <silent> <leader>. :Ido project.find_files<cr>
-noremap <silent> <leader>, :Ido project.buffer<cr>
-
-noremap <silent> <leader>sf :Ido tag.functions<cr>
-noremap <silent> <leader>sv :Ido tag.variables<cr>
-noremap <silent> <leader>st :Ido tag.types<cr>
-noremap <silent> <leader>se :Ido tag.enums<cr>
-noremap <silent> <leader>sd :Ido tag.defines<cr>
+noremap <silent> <leader>f :Ido std.browse<cr>
+noremap <silent> <leader>. :Ido std.git_files<cr>
+noremap <silent> <leader>, :Ido std.buffer<cr>
+noremap <silent> <leader>v :Ido std.filetypes<cr>
 
 augroup shoumodip
     autocmd!

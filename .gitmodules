@@ -22,21 +22,9 @@
 	path = nvim/.config/nvim/pack/plugins/start/ido.nvim
 	url = https://github.com/ido-nvim/ido.nvim
     shallow = true
-[submodule "nvim/.config/nvim/pack/plugins/start/tag.nvim"]
-	path = nvim/.config/nvim/pack/plugins/start/tag.nvim
-	url = https://github.com/ido-nvim/tag.nvim
-    shallow = true
-[submodule "nvim/.config/nvim/pack/plugins/start/project.nvim"]
-	path = nvim/.config/nvim/pack/plugins/start/project.nvim
-	url = https://github.com/ido-nvim/project.nvim
-    shallow = true
 [submodule "nvim/.config/nvim/pack/plugins/start/fm.vim"]
 	path = nvim/.config/nvim/pack/plugins/start/fm.vim
 	url = https://github.com/shoumodip/fm.vim
-    shallow = true
-[submodule "nvim/.config/nvim/pack/plugins/start/calc.vim"]
-	path = nvim/.config/nvim/pack/plugins/start/calc.vim
-	url = https://github.com/shoumodip/calc.vim
     shallow = true
 [submodule "nvim/.config/nvim/pack/plugins/start/compile.nvim"]
 	path = nvim/.config/nvim/pack/plugins/start/compile.nvim

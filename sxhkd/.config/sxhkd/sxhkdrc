@@ -1,0 +1,29 @@
+super + Return
+	$TERMINAL
+
+super + w
+	$BROWSER
+
+super + r
+	bspc quit
+
+super + q
+	bspc node -k
+
+super + f
+	bspc node -t ~fullscreen
+
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }{1-9}
+	bspc {desktop -f,node -d} {1-9}
+
+XF86AudioRaiseVolume
+	pamixer --allow-boost -i 10
+
+XF86AudioLowerVolume
+	pamixer --allow-boost -d 10
+
+XF86AudioMute
+	pamixer -t
