@@ -1,4 +1,6 @@
 dbus
+maim
+sxiv
 stow
 xset
 xrdb
