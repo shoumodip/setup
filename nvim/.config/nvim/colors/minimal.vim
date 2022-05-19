@@ -28,10 +28,10 @@ highlight! NonText      guifg=#282828 guibg=none    gui=none
 highlight! Question     guifg=#fe8019 guibg=none    gui=bold
 highlight! DiffAdd      guifg=#b8bb26 guibg=none    gui=none
 highlight! DiffDelete   guifg=#fb4934 guibg=none    gui=none
+highlight! Search       guifg=#d79921 guibg=none    gui=bold
 
 highlight! link ErrorMsg     Error
 highlight! link IncSearch    StatusLine
-highlight! link Search       IncSearch
 highlight! link MoreMsg      Question
 highlight! link SpecialKey   NonText
 highlight! link MatchParen   Visual
