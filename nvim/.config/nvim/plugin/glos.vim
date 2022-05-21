@@ -1,5 +1,6 @@
 function! GlosSyntax()
     setlocal smartindent
+    setlocal noexpandtab
     setlocal filetype=glos
     setlocal commentstring=;%s
     setlocal suffixesadd=.glos
