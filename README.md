@@ -1,5 +1,5 @@
 # Setup
-Configuration
+![Screenshot](screenshot.png)
 
 ## Quick Start
 [Install Void Linux](https://docs.voidlinux.org/installation/live-images/guide.html)
