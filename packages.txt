@@ -17,6 +17,7 @@ git
 bspwm
 sxhkd
 neovim
+polybar
 pamixer
 pulseaudio
 qutebrowser

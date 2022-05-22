@@ -7,6 +7,5 @@ xcape -e "Control_L=Escape"
 xrdb -merge ~/.config/Xresources
 
 unclutter &
-start-pulseaudio-x11 &
 
 bspwm
