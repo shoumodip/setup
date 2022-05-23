@@ -70,6 +70,7 @@ c.url.searchengines = {
     "aw": "https://wiki.archlinux.org/title/{}",
     "wk": "https://en.wikipedia.org/wiki/{}",
     "gh": "https://github.com/shoumodip/{}",
+    "ghi": "https://github.com/ido-nvim/{}",
 }
 
 c.window.title_format = "{current_title} - Qutebrowser"
