@@ -17,7 +17,7 @@ function! GlosSyntax()
     syntax match   Number "\<[0-9][0-9_]*\>"
 
     syntax match Comment ';.*' contains=Todo
-    noremap gd ?\(let\\|fn\) <c-r><c-w><cr>
+    noremap gd ?let <c-r><c-w><cr>
 endfunction
 
 augroup glos
