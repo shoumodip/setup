@@ -4,7 +4,7 @@ export PATH="$HOME/.local/bin:$HOME/.local/share/go/bin:$PATH"
 
 export EDITOR="nvim"
 export BROWSER="qutebrowser"
-export TERMINAL="urxvt"
+export TERMINAL="alacritty"
 
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"

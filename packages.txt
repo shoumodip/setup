@@ -3,7 +3,6 @@ maim
 sxiv
 stow
 xset
-xrdb
 xcape
 xclip
 xinit
@@ -11,7 +10,6 @@ setxkbmap
 unclutter
 xorg-server
 xorg-minimal
-rxvt-unicode
 
 git
 bspwm
@@ -19,6 +17,8 @@ sxhkd
 neovim
 polybar
 pamixer
+mesa-dri
+alacritty
 pulseaudio
 qutebrowser
 python3-adblock
