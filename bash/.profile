@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-export PATH="$HOME/.local/bin:$HOME/.local/share/go/bin:$PATH"
-
 export EDITOR="nvim"
 export BROWSER="qutebrowser"
 export TERMINAL="alacritty"

@@ -3,7 +3,7 @@ set termguicolors splitright splitbelow
 set guicursor= clipboard=unnamedplus
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set ignorecase smartcase wildignorecase
-set cinoptions=l1;(0;:0 statusline=%f:%l:%c\ %m
+set cinoptions=l1;(4;:0;m1 statusline=%f:%l:%c\ %m
 
 let mapleader = ' '
 let c_syntax_for_h = 1
