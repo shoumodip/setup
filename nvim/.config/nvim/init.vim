@@ -56,8 +56,7 @@ noremap K :SigmaMan<cr><c-left>
 inoremap <c-k> <c-o>"_D
 cnoremap <c-k> <c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 
-noremap <silent> <leader>s :call Format()<cr>
-noremap <silent> <leader>q ZQ
+noremap <silent> <a-q> :call Format()<cr>
 
 nnoremap <leader>r :%s//gc<left><left><left>
 nnoremap <leader>R :s//gc<left><left><left>
