@@ -5,7 +5,6 @@ config.load_autoconfig(False)
 c.auto_save.session = True
 c.changelog_after_upgrade = "never"
 
-c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.preferred_color_scheme = "dark"
 
 c.completion.height = "30%"

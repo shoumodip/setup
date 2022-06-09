@@ -1,23 +1,20 @@
 function! GlosSyntax()
-    setlocal smartindent
-    setlocal noexpandtab
+    setlocal cindent
     setlocal filetype=glos
-    setlocal commentstring=;%s
+    setlocal commentstring=//%s
     setlocal suffixesadd=.glos
 
     syntax clear
-    syntax keyword Keyword if else while for as fn let import const return struct match break continue sizeof
-    syntax keyword Special syscall assert argc argv envp
+    syntax keyword Keyword as in var proc enum const struct if else case default while for break return import assert syscall
     syntax keyword Constant true false
-    syntax keyword Type char uint bool
+    syntax keyword Type int bool char str
     syntax keyword Todo TODO FIXME NOTE BUG
 
     syntax region  String start='"' skip='\\\\\|\\"' end='"'
     syntax match   Character "'\(\\[nrt0'\\]\|[^'\\]\)'"
     syntax match   Number "\<[0-9][0-9_]*\>"
 
-    syntax match Comment ';.*' contains=Todo
-    noremap gd ?let <c-r><c-w><cr>
+    syntax match Comment '//.*' contains=Todo
 endfunction
 
 augroup glos

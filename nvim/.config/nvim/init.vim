@@ -1,6 +1,6 @@
 set noswapfile nohlsearch noshowmode
 set termguicolors splitright splitbelow
-set guicursor= clipboard=unnamedplus
+set guicursor= clipboard=unnamedplus signcolumn=no
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set ignorecase smartcase wildignorecase
 set cinoptions=l1;(4;:0;m1 statusline=%f:%l:%c\ %m
@@ -90,6 +90,7 @@ noremap <silent> <leader>v :Ido std.filetypes<cr>
 
 augroup shoumodip
     autocmd!
+    autocmd BufRead,BufNewFile *.fasm setlocal filetype=fasm
     autocmd FileType c,cpp setlocal commentstring=//%s
     autocmd FileType go setlocal noexpandtab
     autocmd BufWritePre * call ClearWhitespace()
