@@ -26,14 +26,6 @@
 	path = nvim/.config/nvim/pack/plugins/start/fm.vim
 	url = https://github.com/shoumodip/fm.vim
     shallow = true
-[submodule "nvim/.config/nvim/pack/plugins/start/compile.nvim"]
-	path = nvim/.config/nvim/pack/plugins/start/compile.nvim
-	url = https://github.com/shoumodip/compile.nvim
-    shallow = true
-[submodule "nvim/.config/nvim/pack/plugins/start/vim-man"]
-	path = nvim/.config/nvim/pack/plugins/start/vim-man
-	url = https://github.com/shoumodip/vim-man
-    shallow = true
 [submodule "nvim/.config/nvim/pack/plugins/start/vim-snippet"]
 	path = nvim/.config/nvim/pack/plugins/start/vim-snippet
 	url = https://github.com/shoumodip/vim-snippet

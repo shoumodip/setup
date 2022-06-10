@@ -12,17 +12,16 @@ highlight! StatusLine   guifg=none    guibg=#504945 gui=none
 highlight! StatusLineNC guifg=none    guibg=#3c3836 gui=none
 highlight! VertSplit    guifg=#504945 guibg=none    gui=none
 highlight! Visual       guifg=none    guibg=#504945 gui=none
-highlight! Folded       guifg=#cc8c3c guibg=#3c3836 gui=none
-highlight! Underlined   guifg=#95a99f guibg=none    gui=underline
+highlight! Folded       guifg=#83a598 guibg=#3c3836 gui=none
+highlight! Underlined   guifg=none    guibg=none    gui=underline
 highlight! WarningMsg   guifg=#cc8c3c guibg=none    gui=bold
-highlight! PmenuSel     guifg=#93b936 guibg=#282828 gui=none
+highlight! PmenuSel     guifg=none    guibg=#282828 gui=none
 highlight! LineNr       guifg=#928374 guibg=none    gui=none
 
-highlight! Statement    guifg=#d79921 guibg=none    gui=bold
-highlight! String       guifg=#93b936 guibg=none    gui=none
-highlight! Comment      guifg=#cc8c3c guibg=none    gui=none
+highlight! Statement    guifg=#fb4934 guibg=none    gui=none
+highlight! String       guifg=#b8bb26 guibg=none    gui=none
+highlight! Comment      guifg=#83a598 guibg=none    gui=none
 highlight! Special      guifg=#95a99f guibg=none    gui=none
-highlight! PreProc      guifg=#95a99f guibg=none    gui=none
 
 highlight! NonText      guifg=#282828 guibg=none    gui=none
 highlight! Question     guifg=#fe8019 guibg=none    gui=bold
@@ -48,13 +47,12 @@ highlight! link Type         Normal
 highlight! link Identifier   Special
 highlight! link Structure    Statement
 highlight! link StorageClass Statement
+highlight! link PreProc      Statement
 
 highlight! link Title        Special
 highlight! link Directory    Special
 
 highlight! link diffAdded    DiffAdd
 highlight! link diffRemoved  DiffDelete
-highlight! link SignColumn   Normal
-
-highlight! link DiagnosticError ErrorMsg
-highlight! link DiagnosticWarn  WarningMsg
+highlight! link QuickFixLine CursorLine
+highlight! link CursorLineNr LineNr

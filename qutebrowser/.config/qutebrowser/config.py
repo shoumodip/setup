@@ -6,6 +6,7 @@ c.auto_save.session = True
 c.changelog_after_upgrade = "never"
 
 c.colors.webpage.preferred_color_scheme = "dark"
+c.colors.webpage.darkmode.enabled = True
 
 c.completion.height = "30%"
 c.completion.scrollbar.padding = 0
