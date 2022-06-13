@@ -34,3 +34,7 @@
 	path = nvim/.config/nvim/pack/plugins/start/vim-abolish
 	url = https://github.com/tpope/vim-abolish
     shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/compile.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/compile.nvim
+	url = https://github.com/shoumodip/compile.nvim
+    shallow = true

@@ -1,15 +1,13 @@
 set noswapfile nohlsearch noshowmode
-set splitright splitbelow number relativenumber
-set guicursor= clipboard=unnamedplus termguicolors
+set termguicolors splitright splitbelow
+set guicursor= clipboard=unnamedplus signcolumn=no
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4
 set ignorecase smartcase wildignorecase
-set cinoptions=l1;(4;:0;m1
+set cinoptions=l1;(0,W4;:0;m1
 
 let mapleader = ' '
 let c_syntax_for_h = 1
 let c_no_curly_error = 1
-
-command! -nargs=+ -complete=file Make let &makeprg='<args>'
 
 noremap Q <nop>
 
@@ -17,10 +15,19 @@ nnoremap <leader>r :%s//gc<left><left><left>
 nnoremap <leader>R :s//gc<left><left><left>
 vnoremap <leader>r :s//gc<left><left><left>
 
-noremap <leader>H :Make<space>
-noremap <silent> <leader>h :copen<bar>silent! make<cr>
-noremap <silent> <leader>j :cn<cr>:copen<cr>zt<c-w><c-p>
-noremap <silent> <leader>k :cp<cr>:copen<cr>zt<c-w><c-p>
+nnoremap <leader>s :%S//gc<left><left><left>
+nnoremap <leader>S :S//gc<left><left><left>
+vnoremap <leader>s :S//gc<left><left><left>
+
+nnoremap <silent> <c-j> :m .+1<cr>==
+nnoremap <silent> <c-k> :m .-2<cr>==
+vnoremap <silent> <c-j> :m '>+1<cr>gv=gv
+vnoremap <silent> <c-k> :m '<-2<cr>gv=gv
+
+noremap <silent> <leader>H :Compile<cr>
+noremap <silent> <leader>h :Recompile<cr>
+noremap <silent> <leader>j :CompileNext<cr>
+noremap <silent> <leader>k :CompilePrev<cr>
 
 noremap <silent> <leader>g :G<cr>
 noremap <leader>p :term git push origin main<space>
@@ -50,4 +57,5 @@ augroup shoumodip
     autocmd BufWritePre * call ClearWhitespace()
 augroup END
 
-silent! colorscheme minimal
+colorscheme minimal
+lua require("ido").setup{render = require("ido.render").vertical}
