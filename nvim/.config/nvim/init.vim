@@ -52,10 +52,9 @@ endfunction
 
 augroup shoumodip
     autocmd!
-    autocmd FileType c,cpp setlocal commentstring=//%s
     autocmd FileType go setlocal noexpandtab
+    autocmd FileType c,cpp setlocal commentstring=//%s
     autocmd BufWritePre * call ClearWhitespace()
 augroup END
 
-colorscheme minimal
-lua require("ido").setup{render = require("ido.render").vertical}
+colorscheme zenburn

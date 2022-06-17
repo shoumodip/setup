@@ -5,7 +5,7 @@ function! GlosSyntax()
     setlocal suffixesadd=.glos
 
     syntax clear
-    syntax keyword Keyword as in var proc const struct if else match while for break return assert sizeof syscall argc argv
+    syntax keyword Keyword as var proc const struct if else match while for break return assert sizeof syscall argc argv
     syntax keyword Include import
     syntax keyword Constant true false
     syntax keyword Type int bool char Str

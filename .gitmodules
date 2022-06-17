@@ -38,3 +38,7 @@
 	path = nvim/.config/nvim/pack/plugins/start/compile.nvim
 	url = https://github.com/shoumodip/compile.nvim
     shallow = true
+[submodule "nvim/.config/nvim/pack/plugins/start/Zenburn"]
+	path = nvim/.config/nvim/pack/plugins/start/Zenburn
+	url = https://github.com/jnurmine/Zenburn
+    shallow = true
