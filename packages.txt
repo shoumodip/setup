@@ -22,7 +22,9 @@ alacritty
 pulseaudio
 qutebrowser
 python3-adblock
-ttf-ubuntu-font-family
+
+font-iosevka
+fonts-roboto-ttf
 
 go
 fasm

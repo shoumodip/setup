@@ -47,7 +47,7 @@ c.hints.radius = 0
 c.keyhint.radius = 0
 c.prompt.radius = 0
 
-c.fonts.default_size = "15pt"
+c.fonts.default_size = "18px"
 c.statusbar.padding = {"top": 0, "bottom": 0, "left": 0, "right": 0}
 
 c.scrolling.bar = "always"

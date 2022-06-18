@@ -9,6 +9,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export HISTFILE="$XDG_CACHE_HOME/history"
+export HISTSIZE=10000
 export XAUTHORITY="$XDG_CACHE_HOME/Xauthority"
 
 export GOPATH="$XDG_DATA_HOME/go"

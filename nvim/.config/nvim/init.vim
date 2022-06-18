@@ -57,4 +57,4 @@ augroup shoumodip
     autocmd BufWritePre * call ClearWhitespace()
 augroup END
 
-colorscheme zenburn
+colorscheme gruber
