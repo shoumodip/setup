@@ -91,6 +91,13 @@ vim.keymap.set("n", "<leader>j", ":CompileNext<cr>")
 vim.keymap.set("n", "<leader>k", ":CompilePrev<cr>")
 vim.keymap.set("n", "<leader>l", ":Mason<cr>")
 
+vim.keymap.set("n", "<leader>n", function ()
+  local number = tonumber(vim.fn.expand("<cword>"))
+  if number then
+    print(string.format("Dec: %d, Hex: 0x%X", number, number))
+  end
+end)
+
 vim.api.nvim_create_autocmd({"FileType"}, {
   pattern = {"c", "cpp", "glsl"},
   command = "setlocal commentstring=//%s",
