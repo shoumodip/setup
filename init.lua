@@ -62,7 +62,6 @@ if not paq_installed then
   return
 end
 
-vim.g.gruvbox_material_transparent_background = true
 vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 vim.cmd("colorscheme gruvbox-material")
 
