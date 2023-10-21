@@ -182,3 +182,5 @@ require("mason-lspconfig").setup_handlers {
 }
 
 vim.diagnostic.config {update_in_insert = true}
+
+require("compile").bind {q = vim.cmd.close}
