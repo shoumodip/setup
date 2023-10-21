@@ -3,6 +3,7 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 
+vim.opt.mouse = ""
 vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 3
 vim.opt.signcolumn = "no"
@@ -39,7 +40,7 @@ end
 
 require("paq") {
   "savq/paq-nvim",
-  "ido-nvim/ido.nvim",
+  "shoumodip/ido.nvim",
   "shoumodip/compile.nvim",
   "sainnhe/gruvbox-material",
   "nvim-treesitter/nvim-treesitter",
@@ -62,7 +63,6 @@ if not paq_installed then
   return
 end
 
-vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 vim.cmd("colorscheme gruvbox-material")
 
 vim.keymap.set("", "H", "<c-u>")
@@ -89,13 +89,6 @@ vim.keymap.set("n", "<leader>h", ":Compile<up>")
 vim.keymap.set("n", "<leader>j", ":CompileNext<cr>")
 vim.keymap.set("n", "<leader>k", ":CompilePrev<cr>")
 vim.keymap.set("n", "<leader>l", ":Mason<cr>")
-
-vim.keymap.set("n", "<leader>n", function ()
-  local number = tonumber(vim.fn.expand("<cword>"))
-  if number then
-    print(string.format("Dec: %d, Hex: 0x%X", number, number))
-  end
-end)
 
 vim.api.nvim_create_autocmd({"FileType"}, {
   pattern = {"c", "cpp", "glsl"},
