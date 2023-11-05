@@ -1,2 +1,2 @@
 # Setup
-Configuration files for Debian Xfce
+Configuration files for Debian
