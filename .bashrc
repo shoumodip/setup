@@ -39,3 +39,5 @@ fmcd() {
       rm "$path"
     fi
 }
+
+bind '"\C-o":"\C-k \C-ufmcd\n"'
