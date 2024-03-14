@@ -22,10 +22,20 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
-BASE_PATH="$PATH"
-BASE_HOME="$HOME/Software"
+PS1="\[\033[01;34m\]\w\[\033[00m\]: "
+BASE="$HOME/Software"
 
-export PATH="$(ls "$BASE_HOME" | sed "s|.*|$BASE_HOME/&/bin|" | tr '\n' ':')$BASE_PATH"
+export PATH="$(ls "$BASE" | sed "s|.*|$BASE/&/bin|" | tr '\n' ':')$BASE:$PATH"
 export EDITOR="$(which nvim)"
 export GOPATH="$HOME/.local/share/go"
+
+fmcd() {
+    path="$(mktemp -uq)"
+    fm -last-path "$path" "$@"
+
+    if [ -f "$path" ]; then
+      last="$(cat "$path")"
+      [ -d "$last" ] && cd "$last"
+      rm "$path"
+    fi
+}
