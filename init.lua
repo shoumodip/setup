@@ -88,7 +88,7 @@ vim.keymap.set("n", "<leader>d", ":bdelete!<cr>")
 vim.keymap.set("n", "<leader>h", ":Compile<up>")
 vim.keymap.set("n", "<leader>j", ":CompileNext<cr>")
 vim.keymap.set("n", "<leader>k", ":CompilePrev<cr>")
-vim.keymap.set("n", "<leader>l", ":Mason<cr>")
+vim.keymap.set("n", "<leader>m", ":Mason<cr>")
 
 vim.api.nvim_create_autocmd({"FileType"}, {
   pattern = {"c", "cpp", "glsl"},
@@ -169,6 +169,7 @@ require("mason-lspconfig").setup_handlers {
         vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer = buffer})
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer = buffer})
         vim.keymap.set("n", "gr", vim.lsp.buf.rename, {buffer = buffer})
+        vim.keymap.set("n", "<leader>l", vim.lsp.buf.references, {buffer = buffer})
         vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, {buffer = buffer})
         vim.keymap.set("n", "<leader>j", vim.diagnostic.goto_next, {buffer = buffer})
         vim.keymap.set("n", "<leader>k", vim.diagnostic.goto_prev, {buffer = buffer})
