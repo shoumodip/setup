@@ -6,6 +6,7 @@ esac
 shopt -s histappend
 shopt -s checkwinsize
 
+alias v="nvim"
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
