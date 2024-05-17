@@ -64,6 +64,7 @@ if not paq_installed then
   return
 end
 
+vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 vim.cmd("colorscheme gruvbox-material")
 
 vim.keymap.set("", "H", "<c-u>")
