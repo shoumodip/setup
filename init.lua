@@ -134,6 +134,7 @@ ido.bind {jk = ido.exit}
 
 vim.keymap.set("n", "<leader>F", ido.browse)
 vim.keymap.set("n", "<leader>b", ido.buffers)
+vim.keymap.set("n", "<leader>i", ido.execute)
 vim.keymap.set("n", "<leader>f", ido.git_files)
 vim.keymap.set("n", "<leader>K", ido.man_pages)
 
