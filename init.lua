@@ -7,6 +7,7 @@ vim.opt.mouse = ""
 vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 3
 vim.opt.signcolumn = "no"
+vim.opt.cinoptions = ":0"
 
 vim.opt.number = true
 vim.opt.splitright = true
@@ -86,6 +87,7 @@ vim.keymap.set("n", "<leader>s", ":write<cr>")
 vim.keymap.set("n", "<leader>d", ":bdelete!<cr>")
 
 vim.keymap.set("n", "<leader>h", ":Compile<up>")
+vim.keymap.set("n", "<leader>H", ":Compile ")
 vim.keymap.set("n", "<leader>j", ":CompileNext<cr>")
 vim.keymap.set("n", "<leader>k", ":CompilePrev<cr>")
 vim.keymap.set("n", "<leader>m", ":Mason<cr>")
@@ -115,7 +117,6 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 })
 
 require("nvim-treesitter.configs").setup {
-  indent = {enable = true},
   highlight = {enable = true},
   auto_install = true,
   incremental_selection = {
