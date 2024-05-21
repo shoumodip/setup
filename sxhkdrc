@@ -7,6 +7,9 @@ super + w
 super + e
 	thunar
 
+super + t
+	~/Software/thono
+
 super + q
 	bspc node -c
 
