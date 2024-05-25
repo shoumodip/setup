@@ -11,7 +11,7 @@ super + t
 	~/Software/thono
 
 super + m
-	xfce4-terminal -e "$HOME/Software/music $HOME/Music"
+	~/Software/music ~/Music
 
 super + q
 	bspc node -c
