@@ -1,24 +1,16 @@
 #!/bin/sh
 
-set -xe
+link() {
+  mkdir -p $2
+  ln -sf $PWD/src/$1 $2
+}
 
-ln -sf $PWD/.bashrc ~/
-ln -sf $PWD/.gitconfig ~/
-ln -sf $PWD/.clang-format ~/
-
-ln -sf $PWD/.config ~/Music/
-
-mkdir -p ~/.config/mpd
-ln -sf $PWD/mpd.conf ~/.config/mpd/
-
-mkdir -p ~/.config/nvim
-ln -sf $PWD/init.lua ~/.config/nvim/
-
-mkdir -p ~/.config/bspwm
-ln -sf $PWD/bspwmrc ~/.config/bspwm/
-
-mkdir -p ~/.config/sxhkd
-ln -sf $PWD/sxhkdrc ~/.config/sxhkd/
-
-mkdir -p ~/.local/share/xfce4/terminal/colorschemes
-ln -sf $PWD/gruvbox-material.theme ~/.local/share/xfce4/terminal/colorschemes/
+link .bashrc ~/
+link .gitconfig ~/
+link .clang-format ~/
+link .config ~/Music/
+link mpd.conf ~/.config/mpd/
+link init.lua ~/.config/nvim/
+link bspwmrc ~/.config/bspwm/
+link sxhkdrc ~/.config/sxhkd/
+link gruvbox-material.theme ~/.local/share/xfce4/terminal/colorschemes/
