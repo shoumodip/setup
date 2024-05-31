@@ -138,6 +138,9 @@ vim.keymap.set("n", "<leader>b", ido.buffers)
 vim.keymap.set("n", "<leader>i", ido.execute)
 vim.keymap.set("n", "<leader>f", ido.git_files)
 vim.keymap.set("n", "<leader>K", ido.man_pages)
+vim.keymap.set("n", "<leader>o", function () ido.projects("~/Git") end)
+
+require("compile").bind {q = vim.cmd.close}
 
 local cmp = require("cmp")
 cmp.setup {
@@ -187,5 +190,3 @@ require("mason-lspconfig").setup_handlers {
 }
 
 vim.diagnostic.config {update_in_insert = true}
-
-require("compile").bind {q = vim.cmd.close}
