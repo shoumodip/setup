@@ -1,17 +1,17 @@
 super + Return
-	xfce4-terminal
+	~/Software/launch "Terminal" xfce4-terminal
 
 super + w
-	brave-browser
+	~/Software/launch "Browser" brave-browser
 
 super + e
-	thunar
+	~/Software/launch "File Manager" thunar
 
 super + t
 	~/Software/thono
 
 super + m
-	~/Software/music ~/Music
+	~/Software/launch "Music Player" ~/Software/music ~/Music
 
 super + q
 	bspc node -c

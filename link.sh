@@ -9,6 +9,7 @@ link .bashrc ~/
 link .gitconfig ~/
 link .clang-format ~/
 link .config ~/Music/
+link launch ~/Software/
 link mpd.conf ~/.config/mpd/
 link init.lua ~/.config/nvim/
 link bspwmrc ~/.config/bspwm/
