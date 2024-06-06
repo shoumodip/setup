@@ -1,6 +1,9 @@
 super + Return
 	~/Software/launch "Terminal" xfce4-terminal
 
+super + d
+	~/Software/menurun ~/Software/menu
+
 super + w
 	~/Software/launch "Browser" brave-browser
 
