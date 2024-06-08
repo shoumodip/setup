@@ -118,6 +118,11 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 })
 
 require("nvim-treesitter.configs").setup {
+  indent = {
+    enable = true,
+    disable = {"c", "cpp"}
+  },
+
   highlight = {enable = true},
   auto_install = true,
   incremental_selection = {
