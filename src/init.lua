@@ -5,7 +5,7 @@ vim.opt.expandtab = true
 
 vim.opt.mouse = ""
 vim.opt.clipboard = "unnamedplus"
-vim.opt.laststatus = 3
+vim.opt.laststatus = 2
 vim.opt.signcolumn = "no"
 vim.opt.cinoptions = ":0"
 
