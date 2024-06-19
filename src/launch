@@ -1,7 +1,0 @@
-#!/bin/sh
-
-name="$1"
-shift
-
-notify-send "Launching $name" "$*"
-$@
