@@ -7,7 +7,11 @@ shopt -s histappend
 shopt -s checkwinsize
 
 alias v="nvim"
-alias ls="ls --color=auto"
+alias mv="mv -fv"
+alias cp="cp -fvr"
+alias rm="rm -fvr"
+alias ls="ls -v --color=auto --group-directories-first"
+alias ll="ls -Al"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 
