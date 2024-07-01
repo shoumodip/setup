@@ -1,13 +1,13 @@
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
 vim.opt.mouse = ""
 vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 2
 vim.opt.signcolumn = "no"
-vim.opt.cinoptions = ":0"
+vim.opt.cinoptions = ":0,l1"
 
 vim.opt.number = true
 vim.opt.splitright = true
