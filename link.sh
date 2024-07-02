@@ -11,4 +11,3 @@ link .clang-format ~/
 link init.lua ~/.config/nvim/
 link tmux.conf ~/.config/tmux/
 link alacritty.yml ~/.config/alacritty/
-link gruvbox-material.theme ~/.local/share/xfce4/terminal/colorschemes/
