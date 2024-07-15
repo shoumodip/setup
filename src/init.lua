@@ -48,6 +48,7 @@ require("paq") {
 
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
+    "windwp/nvim-autopairs",
     "neovim/nvim-lspconfig",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -168,6 +169,9 @@ cmp.setup {
     },
     sources = cmp.config.sources {{name = "nvim_lsp"}},
 }
+
+require("nvim-autopairs").setup {}
+cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = false
