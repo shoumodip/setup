@@ -7,7 +7,6 @@ shopt -s histappend
 shopt -s checkwinsize
 
 alias v="nvim"
-alias t="tmux -u"
 alias mv="mv -fv"
 alias cp="cp -fvr"
 alias rm="rm -fvr"
