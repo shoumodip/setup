@@ -33,6 +33,7 @@ BASE="$HOME/Software"
 export PATH="$(ls "$BASE" | sed "s|.*|$BASE/&/bin|" | tr '\n' ':')$BASE:$PATH"
 export EDITOR="$(which nvim)"
 export GOPATH="$HOME/.local/share/go"
+export CPRPATH="$HOME/Software"
 
 fmcd() {
     path="$(mktemp -uq)"
