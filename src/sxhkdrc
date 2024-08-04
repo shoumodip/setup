@@ -1,0 +1,26 @@
+super + Return
+	xfce4-terminal
+
+super + w
+	brave-browser
+
+super + e
+	thunar
+
+super + t
+	~/Software/thono
+
+super + d
+	~/Software/menurun
+
+super + q
+	bspc node -c
+
+super + {_,shift + }f
+	bspc node -t \~{fullscreen,floating}
+
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }{1-9}
+	bspc {desktop -f,node -d} {1-9}
