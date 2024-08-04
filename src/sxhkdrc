@@ -10,6 +10,9 @@ super + e
 super + t
 	~/Software/thono
 
+super + s
+	~/Software/thono -s
+
 super + d
 	~/Software/menurun
 
