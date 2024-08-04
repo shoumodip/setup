@@ -2,8 +2,9 @@
 
 picom &
 sxhkd &
-xsetroot -cursor_name left_ptr &
-xwallpaper --zoom ~/Pictures/wallpaper.png &
+
+xsetroot -cursor_name left_ptr
+find ~/Pictures/ | shuf -n 1 | xargs xwallpaper --zoom
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9
 
