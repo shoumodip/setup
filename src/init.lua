@@ -55,7 +55,6 @@ require("paq") {
 
     "tpope/vim-rsi",
     "tpope/vim-repeat",
-    "tpope/vim-sleuth",
     "tpope/vim-fugitive",
     "tpope/vim-surround",
     "tpope/vim-commentary"
