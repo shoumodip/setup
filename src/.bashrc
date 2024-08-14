@@ -12,8 +12,9 @@ alias cp="cp -fvr"
 alias rm="rm -fvr"
 alias ls="ls -v --color=auto --group-directories-first"
 alias ll="ls -Al"
-alias grep="grep --color=auto"
 alias diff="diff --color=auto"
+alias grep="grep --color=auto"
+alias sxiv="sxiv -b"
 
 HISTSIZE=1000
 HISTCONTROL=ignoreboth
