@@ -48,3 +48,7 @@ fmcd() {
 }
 
 bind '"\C-o":"\C-k \C-ufmcd\n"'
+
+export ANDROID_HOME="$HOME/.Android"
+export GRADLE_HOME="$BASE/gradle"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
