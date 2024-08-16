@@ -1,10 +1,10 @@
-#! /bin/sh
+#!/bin/sh
 
 picom &
 sxhkd &
 
-xsetroot -cursor_name left_ptr
-find ~/Pictures/ | shuf -n 1 | xargs xwallpaper --zoom
+~/.fehbg &
+xsetroot -cursor_name left_ptr &
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9
 

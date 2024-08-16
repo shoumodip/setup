@@ -8,6 +8,7 @@ link() {
 link .bashrc ~/
 link .gitconfig ~/
 link .clang-format ~/
+link buttons ~/.config/feh/
 link bspwmrc ~/.config/bspwm/
 link sxhkdrc ~/.config/sxhkd/
 link init.lua ~/.config/nvim/
