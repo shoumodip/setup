@@ -90,9 +90,26 @@ vim.keymap.set("n", "<leader>d", ":bdelete!<cr>")
 
 vim.keymap.set("n", "<leader>h", ":Compile<up>")
 vim.keymap.set("n", "<leader>H", ":Compile ")
-vim.keymap.set("n", "<leader>j", ":CompileNext<cr>")
-vim.keymap.set("n", "<leader>k", ":CompilePrev<cr>")
+vim.keymap.set("n", "<leader>n", ":CompileNextWithCol<cr>")
+vim.keymap.set("n", "<leader>j", ":CompileNextWithCol<cr>")
+vim.keymap.set("n", "<leader>k", ":CompilePrevWithCol<cr>")
 vim.keymap.set("n", "<leader>m", ":Mason<cr>")
+
+vim.keymap.set("n", "<leader>/", function ()
+    vim.cmd("echohl Question")
+    local ok, query = pcall(vim.fn.input, "Search> ")
+    vim.cmd("echohl Normal")
+
+    if ok and query ~= "" then
+        if vim.fn.executable("rg") == 1 then
+            vim.cmd("Compile rg -i --vimgrep "..vim.fn.shellescape(query).." ./")
+        else
+            vim.cmd("Compile grep -irn "..vim.fn.shellescape(query))
+        end
+    else
+        vim.cmd("mode")
+    end
+end)
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"c", "cpp", "glsl"},
