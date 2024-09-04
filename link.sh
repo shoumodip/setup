@@ -12,4 +12,5 @@ link buttons ~/.config/feh/
 link bspwmrc ~/.config/bspwm/
 link sxhkdrc ~/.config/sxhkd/
 link init.lua ~/.config/nvim/
+link snippets.lua ~/.config/nvim/lua/
 link gruvbox-material.theme ~/.local/share/xfce4/terminal/colorschemes/

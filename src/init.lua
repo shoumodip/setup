@@ -94,6 +94,7 @@ vim.keymap.set("n", "<leader>n", ":CompileNextWithCol<cr>")
 vim.keymap.set("n", "<leader>j", ":CompileNextWithCol<cr>")
 vim.keymap.set("n", "<leader>k", ":CompilePrevWithCol<cr>")
 vim.keymap.set("n", "<leader>m", ":Mason<cr>")
+vim.keymap.set("n", "<leader>e", require("snippets"))
 
 vim.keymap.set("n", "<leader>/", function ()
     vim.cmd("echohl Question")
