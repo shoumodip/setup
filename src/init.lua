@@ -41,8 +41,10 @@ end
 
 require("paq") {
     "savq/paq-nvim",
+    "shoumodip/fm.vim",
     "shoumodip/ido.nvim",
     "shoumodip/compile.nvim",
+    "shoumodip/vim-literate",
     "sainnhe/gruvbox-material",
     "nvim-treesitter/nvim-treesitter",
 
@@ -122,6 +124,13 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     command = "setlocal noexpandtab",
 })
 
+vim.api.nvim_create_autocmd({"FileType"}, {
+    pattern = {"markdown"},
+    callback = function ()
+        vim.keymap.set("n", "<leader><leader>", vim.fn["literate#source"], {buffer = true})
+    end
+})
+
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
     pattern = {"*"},
     callback = function()
@@ -139,7 +148,7 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 require("nvim-treesitter.configs").setup {
     indent = {
         enable = true,
-        disable = {"c", "cpp"}
+        disable = {"c", "cpp", "markdown"}
     },
 
     highlight = {enable = true},
@@ -163,6 +172,34 @@ vim.keymap.set("n", "<leader>i", ido.execute)
 vim.keymap.set("n", "<leader>f", ido.git_files)
 vim.keymap.set("n", "<leader>K", ido.man_pages)
 vim.keymap.set("n", "<leader>o", function () ido.projects("~/Git") end)
+
+vim.keymap.set("n", "<leader>l", ido.register("lines", function ()
+    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    local path = vim.api.nvim_buf_get_name(0)
+    local max = #tostring(#lines)
+
+    for i in ipairs(lines) do
+        lines[i] = string.rep(" ", max - #tostring(i))..i..": "..lines[i]
+    end
+
+    ido.start(lines, function (line)
+        local index = line:find(":")
+        if index then
+            vim.api.nvim_win_set_cursor(0, {tonumber(line:sub(1, index - 1)), 0})
+        end
+    end, "Lines")
+
+    ido.bind {
+        ["<a-o>"] = function ()
+            local items = vim.tbl_map(function (line)
+                return path..":"..line:sub(2)
+            end, vim.api.nvim_buf_get_lines(ido.buffer.items, 0, -1, false))
+            vim.fn.setqflist({}, "r", {lines = items})
+
+            print("ido: saved matches to quickfix list")
+        end
+    }
+end))
 
 require("compile").bind {q = vim.cmd.close}
 
@@ -217,3 +254,21 @@ require("mason-lspconfig").setup_handlers {
 }
 
 vim.diagnostic.config {update_in_insert = true}
+
+vim.api.nvim_create_autocmd({"BufWritePost"}, {
+    pattern = vim.env.HOME.."/Git/bs/docs/*.md",
+    callback = function(ev)
+        local output = vim.fn.system("bsdoc "..vim.fn.shellescape(ev.file))
+        if vim.v.shell_error ~= 0 then
+            vim.schedule(function ()
+                vim.api.nvim_err_write(output)
+
+                local match = vim.fn.matchstr(output, "\\f\\+:\\d\\+:\\d\\+:")
+                if match ~= "" then
+                    local pos = vim.split(match, ":")
+                    pcall(vim.api.nvim_win_set_cursor, 0, {tonumber(pos[2]), tonumber(pos[3]) - 1})
+                end
+            end)
+        end
+    end
+})
