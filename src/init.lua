@@ -173,7 +173,7 @@ vim.keymap.set("n", "<leader>f", ido.git_files)
 vim.keymap.set("n", "<leader>K", ido.man_pages)
 vim.keymap.set("n", "<leader>o", function () ido.projects("~/Git") end)
 
-vim.keymap.set("n", "<leader>l", ido.register("lines", function ()
+ido.register("lines", function ()
     local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
     local path = vim.api.nvim_buf_get_name(0)
     local max = #tostring(#lines)
@@ -199,7 +199,9 @@ vim.keymap.set("n", "<leader>l", ido.register("lines", function ()
             print("ido: saved matches to quickfix list")
         end
     }
-end))
+end)
+
+vim.keymap.set("n", "<leader>l", ido.lines)
 
 require("compile").bind {q = vim.cmd.close}
 

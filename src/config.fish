@@ -10,7 +10,9 @@ if status is-interactive
     set -x GRADLE_HOME "$BASE/gradle"
     set -x PATH "$ANDROID_HOME/cmdline-tools/latest/bin" $PATH
 
-    set -x LD_LIBRARY_PATH (cpr libs bs raylib | sed 's/^-L//;s/ -L/\n/g') $LD_LIBRARY_PATH
+    if type -q cpr
+        set -x LD_LIBRARY_PATH (cpr libs bs raylib | sed 's/^-L//;s/ -L/\n/g') $LD_LIBRARY_PATH
+    end
 
     alias v "nvim"
     alias mv "mv -fv"
