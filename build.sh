@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo xbps-install neovim xclip bspwm sxhkd fish-shell base-devel fonts-roboto-ttf font-iosevka papirus-icon-theme xsetroot feh
+sudo xbps-install neovim xclip bspwm sxhkd fish-shell base-devel fonts-roboto-ttf font-iosevka papirus-icon-theme xsetroot feh slock
 
 link() {
     mkdir -p $2
