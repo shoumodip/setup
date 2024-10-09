@@ -1,7 +1,7 @@
 # Setup
-Configuration files for Debian
+Configuration files for Void Linux
 
 ## Quick Start
 ```console
-$ ./link.sh
+$ ./build.sh
 ```

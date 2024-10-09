@@ -1,7 +1,7 @@
 #!/bin/sh
 
-sudo chsh -s $(which fish) $USER
 sudo xbps-install neovim xclip bspwm sxhkd fish-shell base-devel fonts-roboto-ttf font-iosevka papirus-icon-theme xsetroot
+sudo chsh -s $(which fish) $USER
 
 link() {
     mkdir -p $2
