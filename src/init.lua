@@ -247,6 +247,10 @@ require("mason-lspconfig").setup_handlers {
                 vim.keymap.set("n", "<leader>j", vim.diagnostic.goto_next, {buffer = buffer})
                 vim.keymap.set("n", "<leader>k", vim.diagnostic.goto_prev, {buffer = buffer})
 
+                if client.server_capabilities.inlayHintProvider then
+                    vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+                end
+
                 if client.server_capabilities.documentFormattingProvider then
                     vim.api.nvim_buf_set_var(buffer, "lspformat", true)
                 end
