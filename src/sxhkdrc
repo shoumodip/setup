@@ -2,7 +2,7 @@ super + Return
 	xfce4-terminal
 
 super + w
-	firefox
+	~/Software/brave/brave-browser
 
 super + e
 	thunar

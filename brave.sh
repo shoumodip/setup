@@ -1,0 +1,39 @@
+#!/bin/sh
+
+URL=$(curl -s https://api.github.com/repos/brave/brave-browser/releases/latest \
+    | grep "browser_download_url.*linux-amd64.*zip" \
+    | head -n 1 \
+    | cut -d ":" -f 2,3 \
+    | tr -d '"')
+
+NEW_VERSION=$(echo $URL | sed "s|.*/v||;s|/.*||")
+
+BASE=$HOME/Software
+
+if [ -d $BASE/brave ]; then
+    OLD_VERSION=$(realpath $BASE/brave | sed "s|$BASE/brave-||")
+    if [ "$OLD_VERSION" = "$NEW_VERSION" ]; then
+        echo "Brave is already up to date!"
+        exit
+    fi
+
+    printf "Brave will be updated ($OLD_VERSION -> $NEW_VERSION)"
+else
+    printf "Brave will be installed"
+fi
+
+read -p ". Proceed? (y/n) " choice
+
+if [ "$choice" = "" ] || [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
+    DIR=brave-$NEW_VERSION
+    ZIP=brave-browser-$NEW_VERSION-linux-amd64.zip
+
+    cd $BASE
+    mkdir $DIR && cd $DIR
+    curl -LO $URL
+    unzip $ZIP && rm $ZIP
+    cd ..
+    ln -sf $BASE/$DIR brave
+fi
+
+echo "Brave $NEW_VERSION installed successfully!"

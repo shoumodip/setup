@@ -36,3 +36,7 @@ FONT=~/.local/share/fonts/JetBrainsMono
 mkdir -p $FONT && cd $FONT
 curl -LO https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
 unzip *.zip && rm *.zip
+
+# Switch from Firefox to Brave
+./brave.sh
+sudo xbps-remove -R firefox
