@@ -1,5 +1,6 @@
 #!/bin/sh
 
+OS=linux
 BASE=$HOME/Software
 
 confirm() {
@@ -24,7 +25,7 @@ if [ "$1" = "clean" ]; then
 fi
 
 URL=$(curl -s https://api.github.com/repos/brave/brave-browser/releases/latest \
-    | grep "browser_download_url.*linux-amd64.*zip" \
+    | grep "browser_download_url.*$OS-amd64.*zip" \
     | head -n 1 \
     | cut -d ":" -f 2,3 \
     | tr -d '"')
@@ -45,7 +46,7 @@ fi
 
 if confirm; then
     DIR=brave-$NEW_VERSION
-    ZIP=brave-browser-$NEW_VERSION-linux-amd64.zip
+    ZIP="brave-browser-$NEW_VERSION-$OS-amd64.zip"
 
     cd $BASE
     mkdir $DIR && cd $DIR
