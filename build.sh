@@ -1,7 +1,11 @@
 #!/bin/sh
 
 # Packages
-sudo xbps-install neovim xclip bspwm sxhkd fish-shell base-devel fonts-roboto-ttf papirus-icon-theme xsetroot feh slock curl picom
+sudo xbps-install \
+    neovim fish-shell curl \
+    bspwm sxhkd xsetroot picom slock xclip \
+    base-devel fonts-roboto-ttf \
+    feh mpv mupdf
 
 # Dotfiles
 link() {
