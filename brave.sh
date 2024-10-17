@@ -1,5 +1,28 @@
 #!/bin/sh
 
+BASE=$HOME/Software
+
+confirm() {
+    read -p ". Proceed? (y/n) " choice
+    [ "$choice" = "" ] || [ "$choice" = "y" ] || [ "$choice" = "Y" ]
+}
+
+if [ "$1" = "clean" ]; then
+    ACTUAL="brave-$(realpath $BASE/brave | sed "s|$BASE/brave-||")"
+    OTHERS=$(ls $BASE | grep "brave-")
+
+    for other in $OTHERS; do
+        if [ ! "$other" = "$ACTUAL" ]; then
+            printf "Outdated installation '$other' will be removed"
+            if confirm; then
+                rm -rf $BASE/$other
+            fi
+        fi
+    done
+
+    exit
+fi
+
 URL=$(curl -s https://api.github.com/repos/brave/brave-browser/releases/latest \
     | grep "browser_download_url.*linux-amd64.*zip" \
     | head -n 1 \
@@ -7,8 +30,6 @@ URL=$(curl -s https://api.github.com/repos/brave/brave-browser/releases/latest \
     | tr -d '"')
 
 NEW_VERSION=$(echo $URL | sed "s|.*/v||;s|/.*||")
-
-BASE=$HOME/Software
 
 if [ -d $BASE/brave ]; then
     OLD_VERSION=$(realpath $BASE/brave | sed "s|$BASE/brave-||")
@@ -22,9 +43,7 @@ else
     printf "Brave will be installed"
 fi
 
-read -p ". Proceed? (y/n) " choice
-
-if [ "$choice" = "" ] || [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
+if confirm; then
     DIR=brave-$NEW_VERSION
     ZIP=brave-browser-$NEW_VERSION-linux-amd64.zip
 
