@@ -5,6 +5,7 @@ if status is-interactive
     set -x EDITOR (which nvim)
     set -x GOPATH "$HOME/.local/share/go"
     set -x CPRPATH "$HOME/Software"
+    set -x CARGO_HOME "$HOME/.local/share/cargo"
 
     set -x ANDROID_HOME "$HOME/.Android"
     set -x GRADLE_HOME "$BASE/gradle"
