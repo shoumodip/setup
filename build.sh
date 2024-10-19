@@ -4,7 +4,7 @@
 sudo xbps-install \
     neovim fish-shell curl \
     bspwm sxhkd xsetroot picom slock xclip \
-    base-devel fonts-roboto-ttf \
+    base-devel fonts-roboto-ttf noto-fonts-emoji \
     feh mpv mupdf
 
 # Dotfiles
