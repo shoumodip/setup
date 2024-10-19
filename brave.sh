@@ -53,6 +53,7 @@ if confirm; then
     curl -LO $URL
     unzip $ZIP && rm $ZIP
     cd ..
+    unlink brave
     ln -sf $BASE/$DIR brave
 fi
 
