@@ -25,6 +25,8 @@ vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.wildignorecase = true
 
+vim.opt.timeoutlen = 200
+
 vim.g.mapleader = " "
 vim.g.c_syntax_for_h = 1
 vim.g.c_no_curly_error = 1
@@ -77,6 +79,7 @@ vim.keymap.set("n", "U", "<c-r>")
 vim.keymap.set("v", "v", "<esc>")
 vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("c", "jk", "<c-c>")
+vim.keymap.set("t", "jk", "<c-\\><c-n>")
 
 vim.keymap.set("v", "<leader>r", ":s//gc<left><left><left>")
 vim.keymap.set("n", "<leader>r", ":%s//gc<left><left><left>")
