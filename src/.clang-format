@@ -6,4 +6,5 @@ BinPackParameters: false
 IndentPPDirectives: AfterHash
 AlignAfterOpenBracket: AlwaysBreak
 AllowShortEnumsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: Empty
