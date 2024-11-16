@@ -249,3 +249,25 @@ vim.api.nvim_create_autocmd({"BufWritePost"}, {
         end
     end
 })
+
+vim.api.nvim_create_autocmd({"BufWritePost"}, {
+    pattern = vim.env.HOME.."/Git/bs/examples/*/README.md",
+    callback = function(ev)
+        local output = vim.fn.system(vim.env.HOME.."/Git/bs/build/examples.sh")
+        if vim.v.shell_error ~= 0 then
+            vim.schedule(function ()
+                vim.api.nvim_err_write(output)
+
+                local match = vim.fn.matchstr(output, "\\f\\+:\\d\\+:\\d\\+:")
+                if match ~= "" then
+                    local pos = vim.split(match, ":")
+                    pcall(vim.api.nvim_win_set_cursor, 0, {tonumber(pos[2]), tonumber(pos[3]) - 1})
+                end
+            end)
+        else
+            vim.schedule(function ()
+                print(vim.trim(output))
+            end)
+        end
+    end
+})
