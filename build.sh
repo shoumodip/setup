@@ -3,7 +3,7 @@
 # Packages
 sudo xbps-install \
     neovim fish-shell curl \
-    bspwm sxhkd xsetroot picom slock xclip \
+    bspwm sxhkd xsetroot picom slock xclip maim \
     base-devel fonts-roboto-ttf noto-fonts-emoji \
     feh mpv mupdf
 

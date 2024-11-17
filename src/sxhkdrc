@@ -16,6 +16,9 @@ super + t
 super + s
 	~/Software/thono -s
 
+super + shift + s
+	maim -s $(date '+%s').png
+
 super + d
 	~/Software/menurun
 
