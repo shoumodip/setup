@@ -27,7 +27,7 @@ if status is-interactive
 
     alias xi "sudo xbps-install"
     alias xr "sudo xbps-remove -R"
-    alias xs "sudo xbps-query -Rs"
+    alias xq "xbps-query -Rs"
 
     alias feh "feh -B black"
     alias wallpaper "feh --bg-scale"
