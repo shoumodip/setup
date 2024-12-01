@@ -30,7 +30,7 @@ URL=$(curl -s "https://api.github.com/repos/brave/brave-browser/releases/latest"
     | grep "browser_download_url.*$OS-amd64.*zip" \
     | head -n 1 \
     | cut -d ":" -f 2,3 \
-    | tr -d '"')
+    | tr -d ' "')
 
 NEW_VERSION=$(echo $URL | sed "s|.*/v||;s|/.*||")
 
@@ -55,7 +55,7 @@ if confirm; then
     curl -LO "$URL"
     unzip "$ZIP" && rm "$ZIP"
     cd ..
-    unlink brave
+    [ -f brave ] && unlink brave
     ln -sf "$BASE/$DIR" brave
 fi
 

@@ -108,7 +108,7 @@ vim.keymap.set("n", "<leader>/", function ()
 
     if ok and query ~= "" then
         if vim.fn.executable("rg") == 1 then
-            vim.cmd("Compile rg -i --vimgrep "..vim.fn.shellescape(query).." ./")
+            vim.cmd("Compile rg -i --vimgrep "..vim.fn.shellescape(query))
         else
             vim.cmd("Compile grep -irn "..vim.fn.shellescape(query))
         end
