@@ -1,6 +1,6 @@
 #!/bin/sh
 
-picom &
+picom --backend glx &
 sxhkd &
 ~/.fehbg &
 xsetroot -cursor_name left_ptr &

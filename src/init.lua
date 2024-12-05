@@ -81,6 +81,8 @@ vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("c", "jk", "<c-c>")
 vim.keymap.set("t", "jk", "<c-\\><c-n>")
 
+vim.keymap.set("n", ";", ":")
+
 vim.keymap.set("v", "<leader>r", ":s//gc<left><left><left>")
 vim.keymap.set("n", "<leader>r", ":%s//gc<left><left><left>")
 
@@ -261,6 +263,7 @@ vim.api.nvim_create_autocmd({"BufWritePost"}, {
                 local match = vim.fn.matchstr(output, "\\f\\+:\\d\\+:\\d\\+:")
                 if match ~= "" then
                     local pos = vim.split(match, ":")
+                    vim.cmd("edit "..pos[1])
                     pcall(vim.api.nvim_win_set_cursor, 0, {tonumber(pos[2]), tonumber(pos[3]) - 1})
                 end
             end)
