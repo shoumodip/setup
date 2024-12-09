@@ -1,5 +1,5 @@
-# Interface
-PS1="%B%F{blue}%~%f%b \$ "
+# Prompt
+PS1='%B%F{blue}%~%f%b %(?..%F{red}[%B%?%b]%f )$ '
 
 # General
 setopt autocd

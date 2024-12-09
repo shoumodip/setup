@@ -55,7 +55,7 @@ if confirm; then
     curl -LO "$URL"
     unzip "$ZIP" && rm "$ZIP"
     cd ..
-    [ -f brave ] && unlink brave
+    unlink brave
     ln -sf "$BASE/$DIR" brave
 fi
 
