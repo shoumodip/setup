@@ -2,10 +2,13 @@
 
 # Packages
 sudo xbps-install \
-    neovim fish-shell curl \
+    neovim zsh zsh-syntax-highlighting curl \
     bspwm sxhkd xsetroot picom slock xclip maim \
     base-devel fonts-roboto-ttf noto-fonts-emoji \
     feh mpv mupdf
+
+# Shell
+sudo chsh -s $(which zsh) $USER
 
 # Dotfiles
 link() {
@@ -13,6 +16,7 @@ link() {
     ln -sf $PWD/src/$1 $2
 }
 
+link .zshrc ~/
 link .gitconfig ~/
 link .clang-format ~/
 link buttons ~/.config/feh/
@@ -20,10 +24,6 @@ link bspwmrc ~/.config/bspwm/
 link sxhkdrc ~/.config/sxhkd/
 link init.lua ~/.config/nvim/
 link snippets.lua ~/.config/nvim/lua/
-
-link config.fish ~/.config/fish/
-link fish_variables ~/.config/fish/
-link fish_prompt.fish ~/.config/fish/functions/
 
 link settings.ini ~/.config/gtk-2.0/
 link settings.ini ~/.config/gtk-3.0/
