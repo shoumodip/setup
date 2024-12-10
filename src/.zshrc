@@ -26,6 +26,7 @@ autoload -U select-word-style && select-word-style bash
 
 # Aliases
 alias v="nvim"
+alias t="tmux"
 alias mv="mv -fv"
 alias cp="cp -fvr"
 alias rm="rm -fvr"
