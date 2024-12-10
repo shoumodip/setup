@@ -46,3 +46,21 @@ unzip *.zip && rm *.zip
 # Switch from Firefox to Brave
 ./brave.sh
 sudo xbps-remove -R firefox
+
+# Thono and Menu
+cd ~/Software
+
+get-sk-util() {
+    curl -s https://api.github.com/repos/shoumodip/$1/releases/latest \
+        | grep "browser_download_url" \
+        | cut -d : -f 2,3 \
+        | tr -d ' "' \
+        | xargs curl -LO
+    chmod +x $1
+}
+
+get-sk-util thono
+get-sk-util menu
+link menurun ~/Software/
+
+cd -

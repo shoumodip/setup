@@ -1,0 +1,5 @@
+#!/bin/sh
+
+PATH="$(find -L "$HOME/Software" -maxdepth 1 -type d | sed '2,$s|$|/bin|' | tr '\n' ':')$PATH"
+
+echo $PATH | xargs -d ":" -n 1 ls 2>/dev/null | sort -u | ${1:-$(dirname $0)/menu} | sh &
