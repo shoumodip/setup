@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Brave
+Terminal=false
+Icon=brave
+Categories=Network;WebBrowser;
+StartupNotify=false
+MimeType=application/xhtml+xml;application/xhtml_xml;text/html;x-scheme-handler/http;x-scheme-handler/https;

@@ -47,6 +47,9 @@ unzip *.zip && rm *.zip
 ./brave.sh
 sudo xbps-remove -R firefox
 
+mkdir -p ~/.local/share/applications/ && cp src/brave.desktop ~/.local/share/applications/
+echo "Exec=$HOME/Software/brave" >> ~/.local/share/applications/brave.desktop
+
 # Thono and Menu
 cd ~/Software
 
