@@ -42,6 +42,7 @@ end
 
 require("paq") {
     "savq/paq-nvim",
+    "shoumodip/bs.vim",
     "shoumodip/fm.vim",
     "shoumodip/ido.nvim",
     "shoumodip/compile.nvim",
