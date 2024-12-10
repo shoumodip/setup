@@ -2,7 +2,7 @@ super + Return
 	alacritty
 
 super + w
-	~/Software/brave/brave-browser
+	~/Software/brave
 
 super + e
 	thunar

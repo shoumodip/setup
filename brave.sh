@@ -1,7 +1,8 @@
 #!/bin/sh
 
 OS=${OS:-linux}
-BASE=${BASE:-$HOME/Software}
+LINK=${LINK:-$HOME/Software/brave}
+BASE=${BASE:-$HOME/.local/share/brave}
 
 mkdir -p "$BASE"
 
@@ -11,7 +12,7 @@ confirm() {
 }
 
 if [ "$1" = "clean" ]; then
-    ACTUAL="brave-$(realpath "$BASE/brave" | sed "s|$BASE/brave-||")"
+    ACTUAL="brave-$(realpath "$LINK" | sed "s|$BASE/brave-||")"
     OTHERS=$(ls "$BASE" | grep "brave-")
 
     for other in $OTHERS; do
@@ -34,8 +35,8 @@ URL=$(curl -s "https://api.github.com/repos/brave/brave-browser/releases/latest"
 
 NEW_VERSION=$(echo $URL | sed "s|.*/v||;s|/.*||")
 
-if [ -d "$BASE/brave" ]; then
-    OLD_VERSION=$(realpath "$BASE/brave" | sed "s|$BASE/brave-||")
+if [ -f "$LINK" ]; then
+    OLD_VERSION=$(realpath "$LINK" | sed "s|$BASE/brave-||;s|/.*||")
     if [ "$OLD_VERSION" = "$NEW_VERSION" ]; then
         echo "Brave is already up to date!"
         exit
@@ -55,8 +56,8 @@ if confirm; then
     curl -LO "$URL"
     unzip "$ZIP" && rm "$ZIP"
     cd ..
-    unlink brave
-    ln -sf "$BASE/$DIR" brave
+    [ -f "$LINK" ] && unlink "$LINK"
+    ln -sf "$BASE/$DIR/brave-browser" "$LINK"
 fi
 
 echo "Brave $NEW_VERSION installed successfully!"
