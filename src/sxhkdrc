@@ -1,5 +1,5 @@
 super + Return
-	xfce4-terminal
+	alacritty
 
 super + w
 	~/Software/brave/brave-browser

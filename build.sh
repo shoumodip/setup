@@ -2,7 +2,7 @@
 
 # Packages
 sudo xbps-install \
-    neovim zsh zsh-autosuggestions zsh-syntax-highlighting curl \
+    tmux alacritty neovim zsh zsh-autosuggestions zsh-syntax-highlighting curl \
     bspwm sxhkd xsetroot picom slock xclip maim \
     base-devel fonts-roboto-ttf noto-fonts-emoji \
     feh mpv mupdf
@@ -25,9 +25,11 @@ link sxhkdrc ~/.config/sxhkd/
 link init.lua ~/.config/nvim/
 link snippets.lua ~/.config/nvim/lua/
 
+link tmux.conf ~/.config/tmux/
+link alacritty.toml ~/.config/alacritty/
+
 link settings.ini ~/.config/gtk-2.0/
 link settings.ini ~/.config/gtk-3.0/
-link gruvbox-material.theme ~/.local/share/xfce4/terminal/colorschemes/
 
 # Icons and Themes
 git clone https://github.com/TheGreatMcPain/gruvbox-material-gtk --depth 1
