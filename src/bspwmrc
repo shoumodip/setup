@@ -1,10 +1,5 @@
 #!/bin/sh
 
-picom --backend glx &
-sxhkd &
-~/.fehbg &
-xsetroot -cursor_name left_ptr &
-
 bspc monitor -d 1 2 3 4 5 6 7 8 9
 
 bspc config window_gap 5
@@ -14,3 +9,9 @@ bspc config borderless_monocle true
 bspc config focus_follows_pointer true
 
 bspc rule -a feh state=floating
+
+picom --backend glx &
+sxhkd &
+~/.fehbg &
+~/Software/activate-linux &
+xsetroot -cursor_name left_ptr &

@@ -54,4 +54,8 @@ if type cpr >/dev/null; then
 fi
 
 # Highlighting
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#928374'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#928374'

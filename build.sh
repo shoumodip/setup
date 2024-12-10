@@ -2,7 +2,7 @@
 
 # Packages
 sudo xbps-install \
-    neovim zsh zsh-syntax-highlighting curl \
+    neovim zsh zsh-autosuggestions zsh-syntax-highlighting curl \
     bspwm sxhkd xsetroot picom slock xclip maim \
     base-devel fonts-roboto-ttf noto-fonts-emoji \
     feh mpv mupdf
