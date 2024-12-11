@@ -1,6 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=Brave
+GenericName=Web Browser
+Comment=Access the Internet
 Terminal=false
 Icon=brave
 Categories=Network;WebBrowser;
