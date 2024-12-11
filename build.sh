@@ -3,7 +3,7 @@
 # Packages
 sudo xbps-install \
     tmux alacritty neovim zsh zsh-autosuggestions zsh-syntax-highlighting curl ripgrep \
-    bspwm sxhkd xsetroot picom slock xclip maim \
+    bspwm sxhkd xsetroot picom slock xclip maim xfce4-whiskermenu-plugin \
     base-devel fonts-roboto-ttf noto-fonts-emoji \
     feh mpv mupdf
 

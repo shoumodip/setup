@@ -24,6 +24,10 @@ zmodload zsh/complist
 bindkey -e
 autoload -U select-word-style && select-word-style bash
 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 # Aliases
 alias v="nvim"
 alias t="tmux"

@@ -9,9 +9,11 @@ bspc config borderless_monocle true
 bspc config focus_follows_pointer true
 
 bspc rule -a feh state=floating
+bspc rule -a Wrapper-2.0 state=floating border=off focus=on
 
-picom --backend glx &
 sxhkd &
+picom --backend glx &
+xsetroot -cursor_name left_ptr &
+
 ~/.fehbg &
 ~/Software/activate-linux &
-xsetroot -cursor_name left_ptr &
