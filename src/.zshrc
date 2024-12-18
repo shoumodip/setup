@@ -47,6 +47,16 @@ alias xq="xbps-query -Rs"
 alias feh="feh -B black"
 alias wallpaper="feh --bg-scale"
 
+function allwebp2png() {
+    for f in *.webp; do
+        echo "Converting $f..."
+        magick $f $(basename $f .webp).png
+    done
+
+    rm *.webp
+    echo "DONE!"
+}
+
 # Environment
 export PATH="$(find -L "$HOME/Software" -maxdepth 1 -type d | sed '2,$s|$|/bin|' | tr '\n' ':')$PATH"
 export EDITOR="$(which nvim)"

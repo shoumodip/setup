@@ -42,6 +42,7 @@ FONT=~/.local/share/fonts/JetBrainsMono
 mkdir -p $FONT && cd $FONT
 curl -LO https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
 unzip *.zip && rm *.zip
+cd -
 
 # Switch from Firefox to Brave
 ./brave.sh
@@ -51,9 +52,7 @@ mkdir -p ~/.local/share/applications/ && cp src/brave.desktop ~/.local/share/app
 echo "Exec=$HOME/Software/brave" >> ~/.local/share/applications/brave.desktop
 
 # Thono and Menu
-cd ~/Software
-
-get-sk-util() {
+get_sk_util() {
     curl -s https://api.github.com/repos/shoumodip/$1/releases/latest \
         | grep "browser_download_url" \
         | cut -d : -f 2,3 \
@@ -62,8 +61,12 @@ get-sk-util() {
     chmod +x $1
 }
 
-get-sk-util thono
-get-sk-util menu
+cd ~/Software
+get_sk_util thono
+get_sk_util menu
+cd -
+
 link menurun ~/Software/
 
-cd -
+# Background
+feh --bg-scale src/wallpaper.png
