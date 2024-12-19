@@ -51,6 +51,7 @@ require("paq") {
     "nvim-treesitter/nvim-treesitter",
 
     "hrsh7th/nvim-cmp",
+    "github/copilot.vim",
     "hrsh7th/cmp-nvim-lsp",
     "windwp/nvim-autopairs",
     "neovim/nvim-lspconfig",
