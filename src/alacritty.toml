@@ -4,6 +4,13 @@ size = 13
 [font.normal]
 family = "JetBrains Mono"
 
+[mouse]
+hide_when_typing = true
+
+[terminal.shell]
+program = "tmux"
+args = ["new-session", "-A"]
+
 [colors.primary]
 background = "#282828"
 foreground = "#d4be98"
