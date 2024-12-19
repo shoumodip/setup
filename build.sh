@@ -48,8 +48,8 @@ cd -
 ./brave.sh
 sudo xbps-remove -R firefox
 
-mkdir -p ~/.local/share/applications/ && cp src/brave.desktop ~/.local/share/applications/
-echo "Exec=$HOME/Software/brave" >> ~/.local/share/applications/brave.desktop
+mkdir -p ~/.local/share/applications/
+sed "s|^Exec=brave|Exec=$HOME/Software/brave|" src/brave.desktop > ~/.local/share/applications/brave.desktop
 
 # Thono and Menu
 get_sk_util() {

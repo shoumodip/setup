@@ -8,3 +8,13 @@ Icon=brave
 Categories=Network;WebBrowser;
 StartupNotify=false
 MimeType=application/xhtml+xml;application/xhtml_xml;text/html;x-scheme-handler/http;x-scheme-handler/https;
+Exec=brave
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=brave
+
+[Desktop Action new-private-window]
+Name=New Private Window
+Exec=brave --incognito
