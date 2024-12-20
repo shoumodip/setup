@@ -187,6 +187,7 @@ local cmp = require("cmp")
 cmp.setup {
     mapping = cmp.mapping.preset.insert {
         ["<cr>"] = cmp.mapping.confirm {select = true},
+        ["<c-c>"] = cmp.mapping.close(),
         ["<tab>"] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
