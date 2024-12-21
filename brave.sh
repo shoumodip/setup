@@ -12,7 +12,7 @@ confirm() {
 }
 
 if [ "$1" = "clean" ]; then
-    ACTUAL="brave-$(realpath "$LINK" | sed "s|$BASE/brave-||")"
+    ACTUAL="brave-$(realpath "$LINK" | sed "s|$BASE/brave-||;s|/.*||")"
     OTHERS=$(ls "$BASE" | grep "brave-")
 
     for other in $OTHERS; do
