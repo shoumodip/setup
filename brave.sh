@@ -5,6 +5,7 @@ LINK=${LINK:-$HOME/Software/brave}
 BASE=${BASE:-$HOME/.local/share/brave}
 
 mkdir -p "$BASE"
+mkdir -p "$(dirname "$LINK")"
 
 confirm() {
     read -p ". Proceed? (y/n) " choice
