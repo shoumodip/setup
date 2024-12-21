@@ -82,8 +82,6 @@ vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("c", "jk", "<c-c>")
 vim.keymap.set("t", "jk", "<c-\\><c-n>")
 
-vim.keymap.set("n", ";", ":")
-
 vim.keymap.set("v", "<leader>r", ":s//gc<left><left><left>")
 vim.keymap.set("n", "<leader>r", ":%s//gc<left><left><left>")
 
@@ -235,6 +233,9 @@ require("mason-lspconfig").setup_handlers {
 }
 
 vim.diagnostic.config {update_in_insert = true}
+
+vim.keymap.set('i', '<c-j>', 'copilot#Accept("\\<cr>")', {expr = true, replace_keycodes = false})
+vim.g.copilot_no_tab_map = true
 
 vim.api.nvim_create_autocmd({"BufWritePost"}, {
     pattern = vim.env.HOME.."/Git/bs/docs/*.md",
