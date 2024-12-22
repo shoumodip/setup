@@ -69,4 +69,4 @@ cd -
 link menurun ~/Software/
 
 # Background
-feh --bg-scale src/wallpaper.png
+feh --bg-scale src/wallpaper.jpg
