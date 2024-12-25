@@ -234,46 +234,40 @@ require("mason-lspconfig").setup_handlers {
 
 vim.diagnostic.config {update_in_insert = true}
 
-vim.keymap.set('i', '<c-j>', 'copilot#Accept("\\<cr>")', {expr = true, replace_keycodes = false})
+vim.keymap.set('i', '<c-j>', 'copilot#Accept("\\<cr>")', {expr = true, replace_keycodes = false, silent = true})
 vim.g.copilot_no_tab_map = true
 
 vim.api.nvim_create_autocmd({"BufWritePost"}, {
     pattern = vim.env.HOME.."/Git/bs/docs/*.md",
     callback = function(ev)
-        local output = vim.fn.system("bsdoc "..vim.fn.shellescape(ev.file))
-        if vim.v.shell_error ~= 0 then
-            vim.schedule(function ()
-                vim.api.nvim_err_write(output)
-
-                local match = vim.fn.matchstr(output, "\\f\\+:\\d\\+:\\d\\+:")
-                if match ~= "" then
-                    local pos = vim.split(match, ":")
-                    pcall(vim.api.nvim_win_set_cursor, 0, {tonumber(pos[2]), tonumber(pos[3]) - 1})
-                end
-            end)
-        end
+        vim.schedule(function ()
+            local output = vim.fn.system(vim.env.HOME.."/Git/bs/docs/generate.bs "..vim.fn.shellescape(ev.file))
+            print(vim.trim(output))
+        end)
     end
 })
 
 vim.api.nvim_create_autocmd({"BufWritePost"}, {
     pattern = vim.env.HOME.."/Git/bs/examples/*/README.md",
     callback = function(ev)
-        local output = vim.fn.system(vim.env.HOME.."/Git/bs/build/examples.sh")
-        if vim.v.shell_error ~= 0 then
-            vim.schedule(function ()
-                vim.api.nvim_err_write(output)
+        vim.schedule(function ()
+            local output = vim.fn.system(vim.env.HOME.."/Git/bs/docs/generate.bs examples")
+            print(vim.trim(output))
+        end)
+    end
+})
 
-                local match = vim.fn.matchstr(output, "\\f\\+:\\d\\+:\\d\\+:")
-                if match ~= "" then
-                    local pos = vim.split(match, ":")
-                    vim.cmd("edit "..pos[1])
-                    pcall(vim.api.nvim_win_set_cursor, 0, {tonumber(pos[2]), tonumber(pos[3]) - 1})
+vim.api.nvim_create_autocmd({"VimEnter"}, {
+    callback = function ()
+        if vim.ui then
+            local ido_select = vim.ui.select
+            vim.ui.select = function (items, opts, accept)
+                local prompt = (opts or {}).prompt
+                if prompt and vim.startswith(prompt, "You've reached your monthly code completion limit.") then
+                    return -- Fuck you
                 end
-            end)
-        else
-            vim.schedule(function ()
-                print(vim.trim(output))
-            end)
+                ido_select(items, opts, accept)
+            end
         end
     end
 })
