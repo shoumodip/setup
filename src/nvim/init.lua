@@ -188,19 +188,19 @@ cmp.setup {
         ["<cr>"] = cmp.mapping.confirm {select = true},
         ["<c-c>"] = cmp.mapping.close(),
         ["<tab>"] = function(fallback)
-            if vim.snippet.active {direction = 1} then
-                vim.schedule(function() vim.snippet.jump(1) end)
-            elseif cmp.visible() then
+            if cmp.visible() then
                 cmp.select_next_item()
+            elseif vim.snippet.active {direction = 1} then
+                vim.schedule(function() vim.snippet.jump(1) end)
             else
                 fallback()
             end
         end,
         ["<s-tab>"] = function(fallback)
-            if vim.snippet.active {direction = -1} then
-                vim.schedule(function() vim.snippet.jump(-1) end)
-            elseif cmp.visible() then
+            if cmp.visible() then
                 cmp.select_prev_item()
+            elseif vim.snippet.active {direction = -1} then
+                vim.schedule(function() vim.snippet.jump(-1) end)
             else
                 fallback()
             end
