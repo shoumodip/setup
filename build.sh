@@ -19,11 +19,10 @@ link() {
 link .zshrc ~/
 link .gitconfig ~/
 link .clang-format ~/
+link nvim ~/.config/
 link buttons ~/.config/feh/
 link bspwmrc ~/.config/bspwm/
 link sxhkdrc ~/.config/sxhkd/
-link init.lua ~/.config/nvim/
-link snippets.lua ~/.config/nvim/lua/
 
 link tmux.conf ~/.config/tmux/
 link alacritty.toml ~/.config/alacritty/

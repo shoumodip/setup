@@ -47,6 +47,7 @@ require("paq") {
     "shoumodip/ido.nvim",
     "shoumodip/compile.nvim",
     "shoumodip/vim-literate",
+    "shoumodip/nvim-snippets",
     "sainnhe/gruvbox-material",
     "nvim-treesitter/nvim-treesitter",
 
@@ -75,6 +76,7 @@ vim.cmd("colorscheme gruvbox-material")
 
 vim.keymap.set("", "H", "<c-u>")
 vim.keymap.set("", "L", "<c-d>")
+vim.keymap.set("", "Q", ":Ex<cr>")
 vim.keymap.set("n", "U", "<c-r>")
 
 vim.keymap.set("v", "v", "<esc>")
@@ -100,7 +102,6 @@ vim.keymap.set("n", "<leader>n", ":CompileNextWithCol<cr>")
 vim.keymap.set("n", "<leader>j", ":CompileNextWithCol<cr>")
 vim.keymap.set("n", "<leader>k", ":CompilePrevWithCol<cr>")
 vim.keymap.set("n", "<leader>m", ":Mason<cr>")
-vim.keymap.set("n", "<leader>e", require("snippets"))
 
 vim.keymap.set("n", "<leader>/", function ()
     vim.cmd("echohl Question")
@@ -187,28 +188,32 @@ cmp.setup {
         ["<cr>"] = cmp.mapping.confirm {select = true},
         ["<c-c>"] = cmp.mapping.close(),
         ["<tab>"] = function(fallback)
-            if cmp.visible() then
+            if vim.snippet.active {direction = 1} then
+                vim.schedule(function() vim.snippet.jump(1) end)
+            elseif cmp.visible() then
                 cmp.select_next_item()
             else
                 fallback()
             end
         end,
         ["<s-tab>"] = function(fallback)
-            if cmp.visible() then
+            if vim.snippet.active {direction = -1} then
+                vim.schedule(function() vim.snippet.jump(-1) end)
+            elseif cmp.visible() then
                 cmp.select_prev_item()
             else
                 fallback()
             end
         end
     },
-    sources = cmp.config.sources {{name = "nvim_lsp"}},
+    sources = cmp.config.sources {{name = "nvim_lsp"}, {name = "snippets"}},
 }
 
+require("snippets").setup {}
 require("nvim-autopairs").setup {}
 cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 require("mason").setup()
 require("mason-lspconfig").setup_handlers {
