@@ -9,5 +9,13 @@
             "#endif // $1_H"
         ],
         "description": "Header include guard"
+    },
+    "todo": {
+        "body": "assert(0 && \"TODO: not implemented\");",
+        "description": "Todo"
+    },
+    "unreachable": {
+        "body": "assert(0 && \"unreachable\");",
+        "description": "Unreachable"
     }
 }

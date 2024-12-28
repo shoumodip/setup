@@ -11,8 +11,11 @@ bspc rule -a feh state=floating
 bspc rule -a Wrapper-2.0 state=floating border=off focus=on
 
 sxhkd &
-picom --backend glx --corner-radius 10 &
 xsetroot -cursor_name left_ptr &
 
+picom \
+    --backend glx \
+    --corner-radius 10 \
+    --rounded-corners-exclude "class_g = 'Xfce4-panel'" &
+
 ~/.fehbg &
-~/Software/activate-linux &
