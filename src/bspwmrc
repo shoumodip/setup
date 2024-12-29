@@ -18,4 +18,4 @@ picom \
     --corner-radius 10 \
     --rounded-corners-exclude "class_g = 'Xfce4-panel'" &
 
-~/.fehbg &
+~/.local/share/wallpaper &

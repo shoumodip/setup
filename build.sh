@@ -3,9 +3,9 @@
 # Packages
 sudo xbps-install \
     tmux alacritty neovim zsh zsh-autosuggestions zsh-syntax-highlighting curl ripgrep \
-    bspwm sxhkd xsetroot picom slock xclip maim xfce4-whiskermenu-plugin libXft \
+    bspwm sxhkd xsetroot picom xclip xfce4-whiskermenu-plugin libXft \
     base-devel fonts-roboto-ttf noto-fonts-emoji \
-    feh mpv mupdf
+    mpv mupdf
 
 # Shell
 sudo chsh -s $(which zsh) $USER
@@ -68,4 +68,4 @@ cd -
 link menurun ~/Software/
 
 # Background
-feh --bg-scale src/wallpaper.jpg
+~/Software/thono -W src/wallpaper.jpg

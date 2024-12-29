@@ -8,7 +8,7 @@ super + e
 	thunar
 
 super + u
-	slock
+	xflock4
 
 super + t
 	~/Software/thono
@@ -17,7 +17,7 @@ super + s
 	~/Software/thono -s
 
 super + shift + s
-	maim -s $(date '+%s').png
+	~/Software/thono -r
 
 super + d
 	~/Software/menurun
