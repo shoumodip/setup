@@ -17,6 +17,7 @@ link() {
 }
 
 link .zshrc ~/
+link .profile ~/
 link .gitconfig ~/
 link .clang-format ~/
 link nvim ~/.config/
@@ -29,6 +30,9 @@ link alacritty.toml ~/.config/alacritty/
 
 link settings.ini ~/.config/gtk-2.0/
 link settings.ini ~/.config/gtk-3.0/
+
+link menurun ~/.local/bin/
+link brave.desktop ~/.local/share/applications/
 
 # Icons and Themes
 git clone https://github.com/TheGreatMcPain/gruvbox-material-gtk --depth 1
@@ -47,9 +51,6 @@ cd -
 ./brave.sh
 sudo xbps-remove -R firefox
 
-mkdir -p ~/.local/share/applications/
-sed "s|^Exec=brave|Exec=$HOME/Software/brave|" src/brave.desktop > ~/.local/share/applications/brave.desktop
-
 # Thono and Menu
 get_sk_util() {
     curl -s https://api.github.com/repos/shoumodip/$1/releases/latest \
@@ -60,12 +61,10 @@ get_sk_util() {
     chmod +x $1
 }
 
-cd ~/Software
+cd ~/.local/bin
 get_sk_util thono
 get_sk_util menu
 cd -
 
-link menurun ~/Software/
-
 # Background
-~/Software/thono -W src/wallpaper.jpg
+~/.local/bin/thono -W src/wallpaper.jpg

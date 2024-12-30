@@ -2,7 +2,7 @@ super + Return
 	alacritty
 
 super + w
-	~/Software/brave
+	brave
 
 super + e
 	thunar
@@ -11,16 +11,16 @@ super + u
 	xflock4
 
 super + t
-	~/Software/thono
+	thono
 
 super + s
-	~/Software/thono -s
+	thono -s
 
 super + shift + s
-	~/Software/thono -r
+	thono -r
 
 super + d
-	~/Software/menurun
+	menurun
 
 super + q
 	bspc node -c

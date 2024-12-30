@@ -1,7 +1,7 @@
 #!/bin/sh
 
 OS=${OS:-linux}
-LINK=${LINK:-$HOME/Software/brave}
+LINK=${LINK:-$HOME/.local/bin/brave}
 BASE=${BASE:-$HOME/.local/share/brave}
 
 mkdir -p "$BASE"

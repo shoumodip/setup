@@ -58,15 +58,9 @@ function allwebp2png() {
 }
 
 # Environment
-export PATH="$(find -L "$HOME/Software" -maxdepth 1 -type d | sed '2,$s|$|/bin|' | tr '\n' ':')$PATH"
 export EDITOR="$(which nvim)"
 export GOPATH="$HOME/.local/share/go"
-export CPRPATH="$HOME/Software"
 export CARGO_HOME="$HOME/.local/share/cargo"
-
-if type cpr >/dev/null; then
-    export LD_LIBRARY_PATH="$(cpr libs bs raylib | sed 's/^-L//;s/ -L/\n/g' | tr '\n' ':')$LD_LIBRARY_PATH"
-fi
 
 # Highlighting
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
