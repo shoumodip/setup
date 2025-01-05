@@ -3,7 +3,7 @@
 # Packages
 sudo xbps-install \
     tmux alacritty neovim zsh zsh-autosuggestions zsh-syntax-highlighting curl ripgrep \
-    bspwm sxhkd xsetroot picom xclip xfce4-whiskermenu-plugin libXft \
+    xclip xfce4-whiskermenu-plugin libXft \
     base-devel fonts-roboto-ttf noto-fonts-emoji \
     mpv mupdf
 
@@ -21,9 +21,6 @@ link .profile ~/
 link .gitconfig ~/
 link .clang-format ~/
 link nvim ~/.config/
-link buttons ~/.config/feh/
-link bspwmrc ~/.config/bspwm/
-link sxhkdrc ~/.config/sxhkd/
 
 link tmux.conf ~/.config/tmux/
 link alacritty.toml ~/.config/alacritty/

@@ -44,10 +44,12 @@ alias xi="sudo xbps-install"
 alias xr="sudo xbps-remove -R"
 alias xq="xbps-query -Rs"
 
-alias feh="feh -B black"
-alias wallpaper="feh --bg-scale"
-
 function allwebp2png() {
+    if ! type magick >/dev/null; then
+        echo "Error: ImageMagick is not installed"
+        return 1
+    fi
+
     for f in *.webp; do
         echo "Converting $f..."
         magick $f $(basename $f .webp).png

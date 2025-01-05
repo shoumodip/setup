@@ -4,6 +4,9 @@ size = 13
 [font.normal]
 family = "JetBrains Mono"
 
+[window]
+startup_mode = "maximized"
+
 [colors.primary]
 background = "#282828"
 foreground = "#d4be98"

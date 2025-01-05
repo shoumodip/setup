@@ -119,6 +119,13 @@ vim.keymap.set("n", "<leader>/", function ()
     end
 end)
 
+vim.filetype.add {
+    extension = {
+        fs = "glsl",
+        vs = "glsl"
+    }
+}
+
 vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"c", "cpp", "glsl"},
     command = "setlocal commentstring=//%s",
