@@ -47,12 +47,10 @@ require("paq") {
     "shoumodip/ido.nvim",
     "shoumodip/compile.nvim",
     "shoumodip/vim-literate",
-    "shoumodip/nvim-snippets",
     "sainnhe/gruvbox-material",
     "nvim-treesitter/nvim-treesitter",
 
     "hrsh7th/nvim-cmp",
-    "github/copilot.vim",
     "hrsh7th/cmp-nvim-lsp",
     "windwp/nvim-autopairs",
     "neovim/nvim-lspconfig",
@@ -98,10 +96,14 @@ vim.keymap.set("n", "<leader>d", ":bdelete!<cr>")
 
 vim.keymap.set("n", "<leader>h", ":Compile<up>")
 vim.keymap.set("n", "<leader>H", ":Compile ")
-vim.keymap.set("n", "<leader>n", ":CompileNextWithCol<cr>")
+vim.keymap.set("n", "<leader>n", ":CompileNext<cr>")
 vim.keymap.set("n", "<leader>j", ":CompileNextWithCol<cr>")
 vim.keymap.set("n", "<leader>k", ":CompilePrevWithCol<cr>")
 vim.keymap.set("n", "<leader>m", ":Mason<cr>")
+
+local snippets = require("snippets")
+vim.keymap.set("i", "<c-k>", snippets)
+vim.keymap.set("n", "<leader>e", snippets)
 
 vim.keymap.set("n", "<leader>/", function ()
     vim.cmd("echohl Question")
@@ -119,13 +121,6 @@ vim.keymap.set("n", "<leader>/", function ()
     end
 end)
 
-vim.filetype.add {
-    extension = {
-        fs = "glsl",
-        vs = "glsl"
-    }
-}
-
 vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"c", "cpp", "glsl"},
     command = "setlocal commentstring=//%s",
@@ -134,13 +129,6 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"go"},
     command = "setlocal noexpandtab",
-})
-
-vim.api.nvim_create_autocmd({"FileType"}, {
-    pattern = {"markdown"},
-    callback = function ()
-        vim.keymap.set("n", "<leader><leader>", vim.fn["literate#source"], {buffer = true})
-    end
 })
 
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
@@ -183,11 +171,6 @@ vim.keymap.set("n", "<leader>b", ido.buffers)
 vim.keymap.set("n", "<leader>i", ido.execute)
 vim.keymap.set("n", "<leader>f", ido.git_files)
 vim.keymap.set("n", "<leader>K", ido.man_pages)
-vim.keymap.set("n", "<leader>o", function () ido.projects("~/Git") end)
-
-vim.keymap.set("n", "<leader>l", ido.lines)
-
-require("compile").bind {q = vim.cmd.close}
 
 local cmp = require("cmp")
 cmp.setup {
@@ -197,8 +180,6 @@ cmp.setup {
         ["<tab>"] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif vim.snippet.active {direction = 1} then
-                vim.schedule(function() vim.snippet.jump(1) end)
             else
                 fallback()
             end
@@ -206,21 +187,19 @@ cmp.setup {
         ["<s-tab>"] = function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif vim.snippet.active {direction = -1} then
-                vim.schedule(function() vim.snippet.jump(-1) end)
             else
                 fallback()
             end
         end
     },
-    sources = cmp.config.sources {{name = "nvim_lsp"}, {name = "snippets"}},
+    sources = cmp.config.sources {{name = "nvim_lsp"}},
 }
 
-require("snippets").setup {}
 require("nvim-autopairs").setup {}
 cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 require("mason").setup()
 require("mason-lspconfig").setup_handlers {
@@ -243,43 +222,3 @@ require("mason-lspconfig").setup_handlers {
         }
     end
 }
-
-vim.diagnostic.config {update_in_insert = true}
-
-vim.keymap.set('i', '<c-j>', 'copilot#Accept("\\<cr>")', {expr = true, replace_keycodes = false, silent = true})
-vim.g.copilot_no_tab_map = true
-
-vim.api.nvim_create_autocmd({"BufWritePost"}, {
-    pattern = vim.env.HOME.."/Git/bs/docs/*.md",
-    callback = function(ev)
-        vim.schedule(function ()
-            local output = vim.fn.system(vim.env.HOME.."/Git/bs/docs/generate.bs "..vim.fn.shellescape(ev.file))
-            print(vim.trim(output))
-        end)
-    end
-})
-
-vim.api.nvim_create_autocmd({"BufWritePost"}, {
-    pattern = vim.env.HOME.."/Git/bs/examples/*/README.md",
-    callback = function(ev)
-        vim.schedule(function ()
-            local output = vim.fn.system(vim.env.HOME.."/Git/bs/docs/generate.bs examples")
-            print(vim.trim(output))
-        end)
-    end
-})
-
-vim.api.nvim_create_autocmd({"VimEnter"}, {
-    callback = function ()
-        if vim.ui then
-            local ido_select = vim.ui.select
-            vim.ui.select = function (items, opts, accept)
-                local prompt = (opts or {}).prompt
-                if prompt and vim.startswith(prompt, "You've reached your monthly code completion limit.") then
-                    return -- Fuck you
-                end
-                ido_select(items, opts, accept)
-            end
-        end
-    end
-})

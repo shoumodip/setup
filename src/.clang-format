@@ -4,7 +4,10 @@ BasedOnStyle: LLVM
 BinPackArguments: false
 BinPackParameters: false
 IndentPPDirectives: AfterHash
+SpaceAfterCStyleCast: true
 AlignAfterOpenBracket: AlwaysBreak
+AlignConsecutiveMacros: Consecutive
+AlignConsecutiveDeclarations: Consecutive
 AllowShortEnumsOnASingleLine: false
 AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: Empty
