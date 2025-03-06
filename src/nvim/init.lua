@@ -172,6 +172,8 @@ vim.keymap.set("n", "<leader>i", ido.execute)
 vim.keymap.set("n", "<leader>f", ido.git_files)
 vim.keymap.set("n", "<leader>K", ido.man_pages)
 
+require("compile").bind {q = vim.cmd.close}
+
 local cmp = require("cmp")
 cmp.setup {
     mapping = cmp.mapping.preset.insert {
