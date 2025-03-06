@@ -4,7 +4,7 @@
 sudo xbps-install \
     tmux alacritty neovim zsh zsh-autosuggestions zsh-syntax-highlighting curl ripgrep \
     bspwm sxhkd xsetroot picom xclip xfce4-whiskermenu-plugin libXft \
-    base-devel fonts-roboto-ttf noto-fonts-emoji \
+    base-devel fonts-roboto-ttf noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf-extra \
     mpv mupdf
 
 # Shell
