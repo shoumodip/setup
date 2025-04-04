@@ -33,6 +33,8 @@ link settings.ini ~/.config/gtk-3.0/
 link menurun ~/.local/bin/
 link brave.desktop ~/.local/share/applications/
 
+link allwebp2png ~/.local/bin/
+
 # Icons and Themes
 git clone https://github.com/TheGreatMcPain/gruvbox-material-gtk --depth 1
 sudo mv gruvbox-material-gtk/icons/Gruvbox-Material-Dark /usr/share/icons/

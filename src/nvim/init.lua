@@ -1,3 +1,4 @@
+-- Basics
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
@@ -30,6 +31,7 @@ vim.g.mapleader = " "
 vim.g.c_syntax_for_h = 1
 vim.g.c_no_curly_error = 1
 
+-- Plugins
 local paq_path = vim.fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
 local paq_installed = vim.fn.empty(vim.fn.glob(paq_path)) == 0
 
@@ -69,9 +71,11 @@ if not paq_installed then
     return
 end
 
+-- Colorscheme
 vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 vim.cmd("colorscheme gruvbox-material")
 
+-- Keybindings
 vim.keymap.set("", "H", "<c-u>")
 vim.keymap.set("", "L", "<c-d>")
 vim.keymap.set("", "Q", ":Ex<cr>")
@@ -101,10 +105,6 @@ vim.keymap.set("n", "<leader>j", ":CompileNextWithCol<cr>")
 vim.keymap.set("n", "<leader>k", ":CompilePrevWithCol<cr>")
 vim.keymap.set("n", "<leader>m", ":Mason<cr>")
 
-local snippets = require("snippets")
-vim.keymap.set("i", "<c-k>", snippets)
-vim.keymap.set("n", "<leader>e", snippets)
-
 vim.keymap.set("n", "<leader>/", function ()
     vim.cmd("echohl Question")
     local ok, query = pcall(vim.fn.input, "Search> ")
@@ -121,6 +121,7 @@ vim.keymap.set("n", "<leader>/", function ()
     end
 end)
 
+-- Autocommands
 vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"c", "cpp", "glsl"},
     command = "setlocal commentstring=//%s",
@@ -145,6 +146,7 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
     end
 })
 
+-- Treesitter
 require("nvim-treesitter.configs").setup {
     indent = {
         enable = true,
@@ -163,6 +165,7 @@ require("nvim-treesitter.configs").setup {
     }
 }
 
+-- Ido
 local ido = require("ido")
 ido.bind {jk = ido.exit}
 
@@ -172,8 +175,10 @@ vim.keymap.set("n", "<leader>i", ido.execute)
 vim.keymap.set("n", "<leader>f", ido.git_files)
 vim.keymap.set("n", "<leader>K", ido.man_pages)
 
+-- Compilation Mode
 require("compile").bind {q = vim.cmd.close}
 
+-- LSP
 local cmp = require("cmp")
 cmp.setup {
     mapping = cmp.mapping.preset.insert {
@@ -224,3 +229,5 @@ require("mason-lspconfig").setup_handlers {
         }
     end
 }
+
+vim.diagnostic.config {update_in_insert = true}

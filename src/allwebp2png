@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if ! type magick >/dev/null; then
+    echo "Error: ImageMagick is not installed"
+    exit 1
+fi
+
+for f in $(ls *.webp 2>/dev/null); do
+    echo "Converting $f..."
+    magick $f $(basename $f .webp).png
+done
+
+rm -f *.webp

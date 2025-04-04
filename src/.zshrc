@@ -28,6 +28,25 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
+# Navigation with Fm
+fmcd() {
+    if ! type fm >/dev/null; then
+        echo "Error: Fm is not installed. Download it from https://github.com/shoumodip/fm"
+        return 1
+    fi
+
+    tmp="$(mktemp -uq)"
+    fm -last-path "$tmp" "$@"
+
+    if [ -f "$tmp" ]; then
+      last="$(cat "$tmp")"
+      [ -d "$last" ] && cd "$last"
+      rm "$tmp"
+    fi
+}
+
+bindkey -s "^o" "^ufmcd\\n"
+
 # Aliases
 alias v="nvim"
 alias t="tmux"
@@ -35,7 +54,7 @@ alias mv="mv -fv"
 alias cp="cp -fvr"
 alias rm="rm -fvr"
 alias ls="ls -v --color=auto --group-directories-first"
-alias ll="ls -l"
+alias ll="ls -lh"
 alias diff="diff --color=auto"
 alias grep="grep --color=auto"
 alias tree="tree -C"
@@ -43,21 +62,6 @@ alias tree="tree -C"
 alias xi="sudo xbps-install"
 alias xr="sudo xbps-remove -R"
 alias xq="xbps-query -Rs"
-
-function allwebp2png() {
-    if ! type magick >/dev/null; then
-        echo "Error: ImageMagick is not installed"
-        return 1
-    fi
-
-    for f in *.webp; do
-        echo "Converting $f..."
-        magick $f $(basename $f .webp).png
-    done
-
-    rm *.webp
-    echo "DONE!"
-}
 
 # Environment
 export EDITOR="$(which nvim)"
