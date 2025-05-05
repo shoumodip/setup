@@ -31,18 +31,11 @@ bindkey "^X^E" edit-command-line
 # Navigation with Fm
 fmcd() {
     if ! type fm >/dev/null; then
-        echo "Error: Fm is not installed. Download it from https://github.com/shoumodip/fm"
+        echo "Error: fm is not installed. Download it from https://github.com/shoumodip/fm"
         return 1
     fi
 
-    tmp="$(mktemp -uq)"
-    fm -last-path "$tmp" "$@"
-
-    if [ -f "$tmp" ]; then
-      last="$(cat "$tmp")"
-      [ -d "$last" ] && cd "$last"
-      rm "$tmp"
-    fi
+    cd $(fm -l)
 }
 
 bindkey -s "^o" "^ufmcd\\n"

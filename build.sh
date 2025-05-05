@@ -20,10 +20,10 @@ link .zshrc ~/
 link .profile ~/
 link .gitconfig ~/
 link .clang-format ~/
-link nvim ~/.config/
 
 link bspwmrc ~/.config/bspwm/
 link sxhkdrc ~/.config/sxhkd/
+link init.lua ~/.config/nvim/
 link tmux.conf ~/.config/tmux/
 link alacritty.toml ~/.config/alacritty/
 
@@ -68,4 +68,4 @@ get_sk_util menu
 cd -
 
 # Background
-~/.local/bin/thono -W src/wallpaper.jpg
+~/.local/bin/thono -W "src/wallpapers/Forest Steps.jpg"
