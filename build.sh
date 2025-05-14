@@ -21,9 +21,10 @@ link .profile ~/
 link .gitconfig ~/
 link .clang-format ~/
 
+link nvim ~/.config/
+
 link bspwmrc ~/.config/bspwm/
 link sxhkdrc ~/.config/sxhkd/
-link init.lua ~/.config/nvim/
 link tmux.conf ~/.config/tmux/
 link alacritty.toml ~/.config/alacritty/
 

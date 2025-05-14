@@ -56,6 +56,7 @@ require("paq") {
     "hrsh7th/cmp-nvim-lsp",
     "windwp/nvim-autopairs",
     "neovim/nvim-lspconfig",
+    "garymjr/nvim-snippets",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
 
@@ -178,6 +179,9 @@ vim.keymap.set("n", "<leader>K", ido.man_pages)
 -- Compilation Mode
 require("compile").bind {q = vim.cmd.close}
 
+-- Snippets
+require("snippets").setup {create_cmp_source = true}
+
 -- LSP
 local cmp = require("cmp")
 cmp.setup {
@@ -187,6 +191,8 @@ cmp.setup {
         ["<tab>"] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
+            elseif vim.snippet.active {direction = 1} then
+                vim.schedule(function() vim.snippet.jump(1) end)
             else
                 fallback()
             end
@@ -194,19 +200,20 @@ cmp.setup {
         ["<s-tab>"] = function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
+            elseif vim.snippet.active {direction = -1} then
+                vim.schedule(function() vim.snippet.jump(-1) end)
             else
                 fallback()
             end
         end
     },
-    sources = cmp.config.sources {{name = "nvim_lsp"}},
+    sources = cmp.config.sources {{name = "nvim_lsp"}, {name = "snippets"}},
 }
 
 require("nvim-autopairs").setup {}
 cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 require("mason").setup()
 require("mason-lspconfig").setup_handlers {
