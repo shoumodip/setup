@@ -215,29 +215,29 @@ cmp.setup {
 require("nvim-autopairs").setup {}
 cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 
+require("mason").setup()
+
+local servers = require("mason-lspconfig").get_installed_servers()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-require("mason").setup()
-require("mason-lspconfig").setup_handlers {
-    function (server)
-        require("lspconfig")[server].setup {
-            capabilities = capabilities,
-            on_attach = function (client, buffer)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer = buffer})
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer = buffer})
-                vim.keymap.set("n", "gr", vim.lsp.buf.rename, {buffer = buffer})
-                vim.keymap.set("n", "<leader>l", vim.lsp.buf.references, {buffer = buffer})
-                vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, {buffer = buffer})
-                vim.keymap.set("n", "<leader>j", vim.diagnostic.goto_next, {buffer = buffer})
-                vim.keymap.set("n", "<leader>k", vim.diagnostic.goto_prev, {buffer = buffer})
+for _, server in ipairs(servers) do
+    require("lspconfig")[server].setup {
+        capabilities = capabilities,
+        on_attach = function (client, buffer)
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer = buffer})
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer = buffer})
+            vim.keymap.set("n", "gr", vim.lsp.buf.rename, {buffer = buffer})
+            vim.keymap.set("n", "<leader>l", vim.lsp.buf.references, {buffer = buffer})
+            vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, {buffer = buffer})
+            vim.keymap.set("n", "<leader>j", vim.diagnostic.goto_next, {buffer = buffer})
+            vim.keymap.set("n", "<leader>k", vim.diagnostic.goto_prev, {buffer = buffer})
 
-                if client.server_capabilities.documentFormattingProvider then
-                    vim.api.nvim_buf_set_var(buffer, "lspformat", true)
-                end
+            if client.server_capabilities.documentFormattingProvider then
+                vim.api.nvim_buf_set_var(buffer, "lspformat", true)
             end
-        }
-    end
-}
+        end
+    }
+end
 
 vim.diagnostic.config {
     virtual_text = true,
