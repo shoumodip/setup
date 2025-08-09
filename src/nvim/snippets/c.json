@@ -8,7 +8,22 @@
             "$0",
             "",
             "#endif // $1_H"
-        ],
-        "description": "Header include guard"
+        ]
+    },
+    "ifdef": {
+        "prefix": "#ifdef",
+        "body": [
+            "#ifndef ${1}",
+            "$0",
+            "#endif // $1"
+        ]
+    },
+    "ifndef": {
+        "prefix": "#ifndef",
+        "body": [
+            "#ifndef ${1}",
+            "$0",
+            "#endif // $1"
+        ]
     }
 }

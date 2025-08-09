@@ -64,7 +64,9 @@ require("paq") {
     "tpope/vim-repeat",
     "tpope/vim-fugitive",
     "tpope/vim-surround",
-    "tpope/vim-commentary"
+    "tpope/vim-commentary",
+
+    "perillo/qbe.vim"
 }
 
 if not paq_installed then
@@ -77,9 +79,9 @@ vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 vim.cmd("colorscheme gruvbox-material")
 
 -- Keybindings
-vim.keymap.set("", "H", "<c-u>")
-vim.keymap.set("", "L", "<c-d>")
-vim.keymap.set("", "Q", ":Ex<cr>")
+vim.keymap.set("n", "H", "<c-u>")
+vim.keymap.set("n", "L", "<c-d>")
+vim.keymap.set("n", "Q", ":Ex<cr>")
 vim.keymap.set("n", "U", "<c-r>")
 
 vim.keymap.set("v", "v", "<esc>")
@@ -237,4 +239,7 @@ require("mason-lspconfig").setup_handlers {
     end
 }
 
-vim.diagnostic.config {update_in_insert = true}
+vim.diagnostic.config {
+    virtual_text = true,
+    update_in_insert = true
+}
