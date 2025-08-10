@@ -62,8 +62,8 @@ export GOPATH="$HOME/.local/share/go"
 export CARGO_HOME="$HOME/.local/share/cargo"
 
 # Highlighting
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ZSH_HIGHLIGHT_STYLES[comment]='fg=#928374'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#928374'

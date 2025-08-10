@@ -1,5 +1,5 @@
 # Setup
-Configuration files for Void Linux
+Configuration files for Fedora 42 KDE
 
 ## Quick Start
 ```console

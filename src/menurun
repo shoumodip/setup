@@ -1,2 +1,0 @@
-#!/bin/sh
-echo $PATH | xargs -d ":" -n 1 ls 2>/dev/null | sort -u | menu | sh &
