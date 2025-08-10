@@ -25,6 +25,7 @@ vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.wildignorecase = true
 
+vim.opt.shortmess:append("I")
 vim.opt.timeoutlen = 200
 
 vim.g.mapleader = " "
