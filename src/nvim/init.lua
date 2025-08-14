@@ -55,6 +55,8 @@ require("paq") {
 
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+
     "windwp/nvim-autopairs",
     "neovim/nvim-lspconfig",
     "garymjr/nvim-snippets",
@@ -210,7 +212,12 @@ cmp.setup {
             end
         end
     },
-    sources = cmp.config.sources {{name = "nvim_lsp"}, {name = "snippets"}},
+
+    sources = cmp.config.sources {
+        {name = "nvim_lsp"},
+        {name = "nvim_lsp_signature_help"},
+        {name = "snippets"},
+    },
 }
 
 require("nvim-autopairs").setup {}
