@@ -1,5 +1,5 @@
 # Setup
-Configuration files for Fedora 42 KDE
+Configuration files for Debian KDE
 
 ## Quick Start
 ```console
