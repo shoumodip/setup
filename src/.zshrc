@@ -52,10 +52,6 @@ alias diff="diff --color=auto"
 alias grep="grep --color=auto"
 alias tree="tree -C"
 
-alias xi="sudo xbps-install"
-alias xr="sudo xbps-remove -R"
-alias xq="xbps-query -Rs"
-
 # Environment
 export EDITOR="$(which nvim)"
 export GOPATH="$HOME/.local/share/go"
