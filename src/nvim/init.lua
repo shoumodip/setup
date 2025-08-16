@@ -55,7 +55,6 @@ require("paq") {
 
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
 
     "windwp/nvim-autopairs",
     "neovim/nvim-lspconfig",
@@ -67,9 +66,7 @@ require("paq") {
     "tpope/vim-repeat",
     "tpope/vim-fugitive",
     "tpope/vim-surround",
-    "tpope/vim-commentary",
-
-    "perillo/qbe.vim"
+    "tpope/vim-commentary"
 }
 
 if not paq_installed then
@@ -215,7 +212,6 @@ cmp.setup {
 
     sources = cmp.config.sources {
         {name = "nvim_lsp"},
-        {name = "nvim_lsp_signature_help"},
         {name = "snippets"},
     },
 }

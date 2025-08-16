@@ -41,7 +41,7 @@ fmcd() {
 bindkey -s "^o" "^ufmcd\\n"
 
 # Aliases
-alias v="nvim"
+alias v="$EDITOR"
 alias t="tmux"
 alias mv="mv -fv"
 alias cp="cp -fvr"
@@ -53,7 +53,6 @@ alias grep="grep --color=auto"
 alias tree="tree -C"
 
 # Environment
-export EDITOR="$(which nvim)"
 export GOPATH="$HOME/.local/share/go"
 export CARGO_HOME="$HOME/.local/share/cargo"
 
