@@ -34,4 +34,9 @@ link alacritty.toml ~/.config/alacritty/
 link allwebp2png ~/.local/bin/
 
 # Install neovim
-./nvim.sh
+mkdir -p ~/Software/nvim ~/.local/bin
+
+curl -sL "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz" \
+    | tar xz -C ~/Software/nvim --strip-components 1
+
+ln -sf ~/Software/nvim/bin/nvim ~/.local/bin
