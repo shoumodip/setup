@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Install programs
-sudo apt install alacritty tmux zsh zsh-autosuggestions zsh-syntax-highlighting fonts-jetbrains-mono
+sudo apt install alacritty tmux ripgrep wl-clipboard zsh zsh-autosuggestions zsh-syntax-highlighting fonts-jetbrains-mono
 
 # Install Brave
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
