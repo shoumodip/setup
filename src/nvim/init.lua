@@ -53,12 +53,9 @@ require("paq") {
     "sainnhe/gruvbox-material",
     "nvim-treesitter/nvim-treesitter",
 
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-nvim-lsp",
-
-    "windwp/nvim-autopairs",
+    "saghen/blink.cmp",
     "neovim/nvim-lspconfig",
-    "garymjr/nvim-snippets",
+    "windwp/nvim-autopairs",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
 
@@ -125,17 +122,17 @@ vim.keymap.set("n", "<leader>/", function ()
 end)
 
 -- Autocommands
-vim.api.nvim_create_autocmd({"FileType"}, {
+vim.api.nvim_create_autocmd("FileType", {
     pattern = {"c", "cpp", "glsl"},
     command = "setlocal commentstring=//%s",
 })
 
-vim.api.nvim_create_autocmd({"FileType"}, {
+vim.api.nvim_create_autocmd("FileType", {
     pattern = {"go"},
     command = "setlocal noexpandtab",
 })
 
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
+vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = {"*"},
     callback = function()
         if pcall(vim.api.nvim_buf_get_var, 0, "lspformat") then
@@ -181,67 +178,53 @@ vim.keymap.set("n", "<leader>K", ido.man_pages)
 -- Compilation Mode
 require("compile").bind {q = vim.cmd.close}
 
--- Snippets
-require("snippets").setup {create_cmp_source = true}
-
 -- LSP
-local cmp = require("cmp")
-cmp.setup {
-    mapping = cmp.mapping.preset.insert {
-        ["<cr>"] = cmp.mapping.confirm {select = true},
-        ["<c-c>"] = cmp.mapping.close(),
-        ["<tab>"] = function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif vim.snippet.active {direction = 1} then
-                vim.schedule(function() vim.snippet.jump(1) end)
-            else
-                fallback()
-            end
-        end,
-        ["<s-tab>"] = function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif vim.snippet.active {direction = -1} then
-                vim.schedule(function() vim.snippet.jump(-1) end)
-            else
-                fallback()
-            end
-        end
+local blink = require("blink.cmp")
+blink.setup {
+    fuzzy = {
+        implementation = "lua"
     },
 
-    sources = cmp.config.sources {
-        {name = "nvim_lsp"},
-        {name = "snippets"},
+    keymap = {
+        preset = "enter",
+        ["<tab>"] = { "select_next", "fallback" },
+        ["<s-tab>"] = { "select_prev", "fallback" },
+    },
+
+    sources = {
+        default = { "lsp", "snippets", "path" },
+    },
+
+    completion = {
+        ghost_text = {enabled = true},
+        documentation = {auto_show = true, auto_show_delay_ms = 50}
     },
 }
 
-require("nvim-autopairs").setup {}
-cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
-
 require("mason").setup()
+require("nvim-autopairs").setup {}
 
-local servers = require("mason-lspconfig").get_installed_servers()
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+vim.lsp.enable(require("mason-lspconfig").get_installed_servers())
+vim.lsp.config("*", {capabilities = blink.get_lsp_capabilities()})
 
-for _, server in ipairs(servers) do
-    require("lspconfig")[server].setup {
-        capabilities = capabilities,
-        on_attach = function (client, buffer)
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer = buffer})
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer = buffer})
-            vim.keymap.set("n", "gr", vim.lsp.buf.rename, {buffer = buffer})
-            vim.keymap.set("n", "<leader>l", vim.lsp.buf.references, {buffer = buffer})
-            vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, {buffer = buffer})
-            vim.keymap.set("n", "<leader>j", vim.diagnostic.goto_next, {buffer = buffer})
-            vim.keymap.set("n", "<leader>k", vim.diagnostic.goto_prev, {buffer = buffer})
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function (e)
+        local buffer = e.buf
+        local client = vim.lsp.get_client_by_id(e.data.client_id)
 
-            if client.server_capabilities.documentFormattingProvider then
-                vim.api.nvim_buf_set_var(buffer, "lspformat", true)
-            end
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer = buffer})
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer = buffer})
+        vim.keymap.set("n", "gr", vim.lsp.buf.rename, {buffer = buffer})
+        vim.keymap.set("n", "<leader>l", vim.lsp.buf.references, {buffer = buffer})
+        vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, {buffer = buffer})
+        vim.keymap.set("n", "<leader>j", vim.diagnostic.goto_next, {buffer = buffer})
+        vim.keymap.set("n", "<leader>k", vim.diagnostic.goto_prev, {buffer = buffer})
+
+        if client.server_capabilities.documentFormattingProvider then
+            vim.api.nvim_buf_set_var(buffer, "lspformat", true)
         end
-    }
-end
+    end
+})
 
 vim.diagnostic.config {
     virtual_text = true,
