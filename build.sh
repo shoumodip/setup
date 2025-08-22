@@ -23,12 +23,12 @@ link() {
 }
 
 link .zshrc ~/
+link .zprofile ~/
 link .gitconfig ~/
 link .clang-format ~/
 
 link nvim ~/.config/
 link tmux.conf ~/.config/tmux/
-link profile.sh ~/.config/plasma-workspace/env/
 link alacritty.toml ~/.config/alacritty/
 
 link allwebp2png ~/.local/bin/
