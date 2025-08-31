@@ -19,7 +19,7 @@ vim.opt.hlsearch = false
 vim.opt.showmode = false
 vim.opt.swapfile = false
 vim.opt.fillchars = "eob: "
-vim.opt.statusline = "%f%m"
+vim.opt.statusline = "%f%m%=%{trim(system('git rev-parse --abbrev-ref HEAD 2>/dev/null'))}"
 
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
