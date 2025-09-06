@@ -54,7 +54,9 @@ alias tree="tree -C"
 
 # Environment
 export GOPATH="$HOME/.local/share/go"
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
 export CARGO_HOME="$HOME/.local/share/cargo"
+export ANDROID_HOME="$HOME/Software/android-sdk"
 
 # Highlighting
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
