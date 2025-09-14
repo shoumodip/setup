@@ -5,9 +5,10 @@ if ! type magick >/dev/null; then
     exit 1
 fi
 
-for f in $(ls *.webp 2>/dev/null); do
+ls *.webp 2>/dev/null | while IFS= read -r f
+do
     echo "Converting $f..."
-    magick $f $(basename $f .webp).png
+    magick "$f" "$(basename "$f" ".webp").png"
 done
 
 rm -f *.webp
