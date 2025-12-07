@@ -53,6 +53,7 @@ require("paq") {
     "sainnhe/gruvbox-material",
     "nvim-treesitter/nvim-treesitter",
 
+    "folke/flash.nvim",
     "saghen/blink.cmp",
     "neovim/nvim-lspconfig",
     "windwp/nvim-autopairs",
@@ -121,6 +122,8 @@ vim.keymap.set("n", "<leader>/", function ()
     end
 end)
 
+vim.keymap.set("n", "<leader><leader>", vim.fn["literate#source"])
+
 -- Autocommands
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"c", "cpp", "glsl"},
@@ -177,6 +180,11 @@ vim.keymap.set("n", "<leader>K", ido.man_pages)
 
 -- Compilation Mode
 require("compile").bind {q = vim.cmd.close}
+
+-- Flash
+local flash = require("flash")
+flash.setup {}
+vim.keymap.set({"n", "x", "o"}, "s", flash.jump)
 
 -- LSP
 local blink = require("blink.cmp")
