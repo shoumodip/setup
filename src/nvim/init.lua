@@ -53,12 +53,10 @@ require("paq") {
     "sainnhe/gruvbox-material",
     "nvim-treesitter/nvim-treesitter",
 
-    "folke/flash.nvim",
     "saghen/blink.cmp",
     "neovim/nvim-lspconfig",
     "windwp/nvim-autopairs",
     "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
 
     "tpope/vim-rsi",
     "tpope/vim-repeat",
@@ -181,11 +179,6 @@ vim.keymap.set("n", "<leader>K", ido.man_pages)
 -- Compilation Mode
 require("compile").bind {q = vim.cmd.close}
 
--- Flash
-local flash = require("flash")
-flash.setup {}
-vim.keymap.set({"n", "x", "o"}, "s", flash.jump)
-
 -- LSP
 local blink = require("blink.cmp")
 blink.setup {
@@ -207,7 +200,11 @@ blink.setup {
 require("mason").setup()
 require("nvim-autopairs").setup {}
 
-vim.lsp.enable(require("mason-lspconfig").get_installed_servers())
+vim.lsp.enable(vim.iter(require("mason-registry").get_installed_packages()):fold({}, function(acc, pack)
+	table.insert(acc, pack.spec.neovim and pack.spec.neovim.lspconfig)
+	return acc
+end))
+
 vim.lsp.config("*", {capabilities = blink.get_lsp_capabilities()})
 
 vim.api.nvim_create_autocmd("LspAttach", {
