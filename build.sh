@@ -1,17 +1,10 @@
 #!/bin/sh
 
 # Install programs
-sudo apt install alacritty tmux ripgrep wl-clipboard zsh zsh-autosuggestions zsh-syntax-highlighting fonts-jetbrains-mono
+sudo apt install alacritty tmux ripgrep wl-clipboard zsh zsh-autosuggestions zsh-syntax-highlighting fonts-roboto fonts-jetbrains-mono
 
-# Install Brave
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-sudo curl -fsSLo /etc/apt/sources.list.d/brave-browser-release.sources https://brave-browser-apt-release.s3.brave.com/brave-browser.sources
-
-sudo apt update
-sudo apt install brave-browser
-
-# Remove Firefox and Konqueror
-sudo apt autoremove firefox konqueror
+# Remove Konqueror
+sudo apt autoremove konqueror
 
 # Shell
 sudo chsh -s $(which zsh) $USER
