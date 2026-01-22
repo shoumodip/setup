@@ -19,6 +19,7 @@ vim.opt.hlsearch = false
 vim.opt.showmode = false
 vim.opt.swapfile = false
 vim.opt.fillchars = "eob: "
+vim.opt.winborder = "rounded"
 vim.opt.statusline = "%f%m%=%{trim(system('git rev-parse --abbrev-ref HEAD 2>/dev/null'))}"
 
 vim.opt.smartcase = true
@@ -72,7 +73,18 @@ end
 
 -- Colorscheme
 vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-vim.cmd("colorscheme gruvbox-material")
+vim.cmd([[
+    colorscheme gruvbox-material
+
+    highlight! link Pmenu Normal
+    highlight! link PmenuKind Function
+    highlight! link PmenuExtra Comment
+
+    highlight! link NormalFloat Normal
+    highlight! link FloatBorder Comment
+    highlight! link BlinkCmpDocBorder Comment
+    highlight! link BlinkCmpMenuBorder Comment
+]])
 
 -- Keybindings
 vim.keymap.set("n", "H", "<c-u>")
@@ -190,13 +202,6 @@ compile.setup {
     }
 }
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"odin"},
-    callback = function ()
-        compile.use_pattern("Odin")
-    end
-})
-
 -- LSP
 local blink = require("blink.cmp")
 blink.setup {
@@ -211,6 +216,7 @@ blink.setup {
     },
 
     completion = {
+        menu = {scrollbar = false},
         documentation = {auto_show = true, auto_show_delay_ms = 50}
     },
 }
