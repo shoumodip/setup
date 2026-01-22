@@ -77,8 +77,8 @@ vim.cmd("colorscheme gruvbox-material")
 -- Keybindings
 vim.keymap.set("n", "H", "<c-u>")
 vim.keymap.set("n", "L", "<c-d>")
-vim.keymap.set("n", "Q", ":Ex<cr>")
 vim.keymap.set("n", "U", "<c-r>")
+vim.keymap.set("n", "Q", ":Ex<cr>")
 
 vim.keymap.set("v", "v", "<esc>")
 vim.keymap.set("i", "jk", "<esc>")
@@ -99,9 +99,9 @@ vim.keymap.set("n", "<leader>d", ":bdelete!<cr>")
 
 vim.keymap.set("n", "<leader>h", ":Compile<up>")
 vim.keymap.set("n", "<leader>H", ":Compile ")
-vim.keymap.set("n", "<leader>n", ":CompileNext<cr>")
-vim.keymap.set("n", "<leader>j", ":CompileNextWithCol<cr>")
-vim.keymap.set("n", "<leader>k", ":CompilePrevWithCol<cr>")
+vim.keymap.set("n", "<leader>j", ":CompileNext<cr>")
+vim.keymap.set("n", "<leader>k", ":CompilePrev<cr>")
+vim.keymap.set("n", "<leader>J", ":CompileNextSecondary<cr>")
 vim.keymap.set("n", "<leader>m", ":Mason<cr>")
 
 vim.keymap.set("n", "<leader>/", function ()
@@ -177,7 +177,25 @@ vim.keymap.set("n", "<leader>f", ido.git_files)
 vim.keymap.set("n", "<leader>K", ido.man_pages)
 
 -- Compilation Mode
-require("compile").bind {q = vim.cmd.close}
+local compile = require("compile")
+compile.setup {
+    bindings = {
+        q = vim.cmd.close
+    },
+
+    patterns = {
+        Odin = "[<path>]([<row>]:[<col>])",
+        Rust = "[<path>]:[<row>]:[<col>]",
+        Python = 'File "[<path>]", line [<row>]',
+    }
+}
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"odin"},
+    callback = function ()
+        compile.use_pattern("Odin")
+    end
+})
 
 -- LSP
 local blink = require("blink.cmp")
@@ -212,13 +230,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local buffer = e.buf
         local client = vim.lsp.get_client_by_id(e.data.client_id)
 
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer = buffer})
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer = buffer})
-        vim.keymap.set("n", "gr", vim.lsp.buf.rename, {buffer = buffer})
+        vim.keymap.set("n", "<leader>n", vim.lsp.buf.rename, {buffer = buffer})
         vim.keymap.set("n", "<leader>l", vim.lsp.buf.references, {buffer = buffer})
         vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, {buffer = buffer})
         vim.keymap.set("n", "<leader>j", vim.diagnostic.goto_next, {buffer = buffer})
         vim.keymap.set("n", "<leader>k", vim.diagnostic.goto_prev, {buffer = buffer})
+        vim.keymap.set("n", "<leader>y", function ()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end, {buffer = buffer})
+
+        vim.keymap.set("i", "<c-y>", vim.lsp.buf.signature_help, {buffer = buffer})
 
         if client.server_capabilities.documentFormattingProvider then
             vim.api.nvim_buf_set_var(buffer, "lspformat", true)
