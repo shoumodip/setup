@@ -1,10 +1,13 @@
 #!/bin/sh
 
 # Install programs
-sudo apt install alacritty tmux ripgrep wl-clipboard zsh zsh-autosuggestions zsh-syntax-highlighting fonts-roboto fonts-jetbrains-mono
+sudo apt install alacritty tmux ripgrep wl-clipboard zsh zsh-autosuggestions zsh-syntax-highlighting fonts-roboto
 
-# Remove Konqueror
-sudo apt autoremove konqueror
+# Install Brave
+curl -fsS "https://dl.brave.com/install.sh" | sh
+
+# Remove Firefox and Konqueror
+sudo apt autoremove firefox-esr konqueror
 
 # Shell
 sudo chsh -s $(which zsh) $USER
@@ -33,3 +36,11 @@ curl -sL "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x
     | tar xz -C ~/Software/nvim --strip-components 1
 
 ln -sf ~/Software/nvim/bin/nvim ~/.local/bin
+
+# Install JetBrainsMono Nerd Font
+FONT_DIR_PATH="$HOME/.local/share/fonts/JetBrainsMono Nerd Font"
+FONT_ZIP_PATH="JetBrainsMono.zip"
+
+mkdir -p "$FONT_DIR_PATH" && cd "$FONT_DIR_PATH"
+curl -LO "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/$FONT_ZIP_PATH"
+unzip "$FONT_ZIP_PATH" && rm "$FONT_ZIP_PATH"

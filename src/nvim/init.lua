@@ -19,7 +19,6 @@ vim.opt.hlsearch = false
 vim.opt.showmode = false
 vim.opt.swapfile = false
 vim.opt.fillchars = "eob: "
-vim.opt.winborder = "rounded"
 vim.opt.statusline = "%f%m%=%{trim(system('git rev-parse --abbrev-ref HEAD 2>/dev/null'))}"
 
 vim.opt.smartcase = true
@@ -75,15 +74,11 @@ end
 vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 vim.cmd([[
     colorscheme gruvbox-material
+    highlight! NormalFloat guibg=#3a3735
+    highlight! link Pmenu NormalFloat
 
-    highlight! link Pmenu Normal
     highlight! link PmenuKind Function
     highlight! link PmenuExtra Comment
-
-    highlight! link NormalFloat Normal
-    highlight! link FloatBorder Comment
-    highlight! link BlinkCmpDocBorder Comment
-    highlight! link BlinkCmpMenuBorder Comment
 ]])
 
 -- Keybindings
@@ -216,7 +211,6 @@ blink.setup {
     },
 
     completion = {
-        menu = {scrollbar = false},
         documentation = {auto_show = true, auto_show_delay_ms = 50}
     },
 }
@@ -258,3 +252,8 @@ vim.diagnostic.config {
     virtual_text = true,
     update_in_insert = true
 }
+
+-- Bindings for regular completion menu
+vim.keymap.set("i", "<tab>",   function() return vim.fn.pumvisible() == 1 and "<c-n>" or "<tab>"   end, {expr = true, silent = true})
+vim.keymap.set("i", "<s-tab>", function() return vim.fn.pumvisible() == 1 and "<c-p>" or "<s-tab>" end, {expr = true, silent = true})
+vim.keymap.set("i", "<cr>",    function() return vim.fn.pumvisible() == 1 and "<c-y>" or "<cr>"    end, {expr = true, silent = true})

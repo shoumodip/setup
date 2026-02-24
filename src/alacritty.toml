@@ -2,7 +2,7 @@
 size = 14
 
 [font.normal]
-family = "JetBrains Mono"
+family = "JetBrainsMono Nerd Font"
 
 [colors.primary]
 background = "#282828"
@@ -30,3 +30,7 @@ white = "#d4be98"
 
 [window]
 startup_mode = "maximized"
+
+[terminal.shell]
+program = "tmux"
+args = ["new-session", "-A"]
