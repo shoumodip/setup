@@ -52,6 +52,10 @@ alias diff="diff --color=auto"
 alias grep="grep --color=auto"
 alias tree="tree -C"
 
+winedevcmd() {
+    wine cmd /c "call Z:$HOME/Software/msvc/VC/Auxiliary/Build/vcvars64.bat && cmd"
+}
+
 # Environment
 export GOPATH="$HOME/.local/share/go"
 export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"

@@ -37,6 +37,12 @@ curl -sL "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x
 
 ln -sf ~/Software/nvim/bin/nvim ~/.local/bin
 
+# Install tree-sitter-cli
+curl -sL "https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-cli-linux-x64.zip" \
+    | funzip > ~/.local/bin/tree-sitter
+
+chmod +x ~/.local/bin/tree-sitter
+
 # Install JetBrainsMono Nerd Font
 FONT_DIR_PATH="$HOME/.local/share/fonts/JetBrainsMono Nerd Font"
 FONT_ZIP_PATH="JetBrainsMono.zip"
