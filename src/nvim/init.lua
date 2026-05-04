@@ -116,6 +116,7 @@ compile.setup {
     },
 
     patterns = {
+        Jai = "[<path>]:[<row>],[<col>]",
         Odin = "[<path>]([<row>]:[<col>])",
         Rust = "[<path>]:[<row>]:[<col>]",
         Python = 'File "[<path>]", line [<row>]',
@@ -149,17 +150,42 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
-vim.keymap.set({"n", "x", "o"}, "<tab>", function()
+vim.keymap.set({"n", "x", "o"}, "<a-o>", function()
 	if vim.treesitter.get_parser() then
         require("vim.treesitter._select").select_parent(vim.v.count1)
 	end
 end)
 
-vim.keymap.set({"n", "x", "o"}, "<s-tab>", function()
+vim.keymap.set({"n", "x", "o"}, "<a-i>", function()
 	if vim.treesitter.get_parser() then
 		require("vim.treesitter._select").select_child(vim.v.count1)
 	end
 end)
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "TSUpdate",
+    callback = function()
+        require("nvim-treesitter.parsers").jai = {
+            install_info = {
+                url = "https://github.com/constantitus/tree-sitter-jai",
+                revision = "2763e5001856ea7b5047e780e8dec95a07072d59",
+                queries = "queries",
+            },
+        }
+    end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"jai"},
+    callback = function ()
+        vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
+    end
+})
+
+-- Jai
+vim.filetype.add {
+    extension = {jai = "jai"}
+}
 
 -- Programming
 local blink = require("blink.cmp")
@@ -202,8 +228,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<leader>n", vim.lsp.buf.rename, {buffer = buffer})
         vim.keymap.set("n", "<leader>l", vim.lsp.buf.references, {buffer = buffer})
         vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, {buffer = buffer})
-        vim.keymap.set("n", "<leader>j", vim.diagnostic.goto_next, {buffer = buffer})
-        vim.keymap.set("n", "<leader>k", vim.diagnostic.goto_prev, {buffer = buffer})
+        vim.keymap.set("n", "<leader>j", function () vim.diagnostic.jump {count =  1, float = true} end, {buffer = buffer})
+        vim.keymap.set("n", "<leader>k", function () vim.diagnostic.jump {count = -1, float = true} end, {buffer = buffer})
 
         if client.server_capabilities.documentFormattingProvider then
             vim.api.nvim_buf_set_var(buffer, "lspformat", true)

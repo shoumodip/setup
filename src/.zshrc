@@ -52,15 +52,17 @@ alias diff="diff --color=auto"
 alias grep="grep --color=auto"
 alias tree="tree -C"
 
-winedevcmd() {
-    wine cmd /c "call Z:$HOME/Software/msvc/VC/Auxiliary/Build/vcvars64.bat && cmd"
-}
-
 # Environment
 export GOPATH="$HOME/.local/share/go"
 export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
 export CARGO_HOME="$HOME/.local/share/cargo"
 export ANDROID_HOME="$HOME/Software/android-sdk"
+
+# Wine
+export WINEDEBUG="-all"
+winedevcmd() {
+    wine cmd /c "call Z:$HOME/Software/msvc/VC/Auxiliary/Build/vcvars64.bat && cmd"
+}
 
 # Highlighting
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh

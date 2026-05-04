@@ -1,7 +1,10 @@
 #!/bin/sh
 
 # Install programs
-sudo apt install alacritty tmux ripgrep wl-clipboard zsh zsh-autosuggestions zsh-syntax-highlighting fonts-roboto
+sudo apt install alacritty tmux ripgrep wl-clipboard zsh zsh-autosuggestions zsh-syntax-highlighting fonts-roboto systemd-timesyncd
+
+# Time Syncing
+sudo systemctl enable --now systemd-timesyncd
 
 # Install Brave
 curl -fsS "https://dl.brave.com/install.sh" | sh
