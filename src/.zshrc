@@ -61,9 +61,6 @@ export ANDROID_HOME="$HOME/Software/android-sdk"
 
 # Wine
 export WINEDEBUG="-all"
-winedevcmd() {
-    wine cmd /c "call Z:$HOME/Software/msvc/VC/Auxiliary/Build/vcvars64.bat && cmd"
-}
 
 # Highlighting
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
