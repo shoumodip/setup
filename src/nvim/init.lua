@@ -120,6 +120,8 @@ compile.setup {
         Odin = "[<path>]([<row>]:[<col>])",
         Rust = "[<path>]:[<row>]:[<col>]",
         Python = 'File "[<path>]", line [<row>]',
+
+        ["cl.exe"] = "[<path>]([<row>])",
     }
 }
 

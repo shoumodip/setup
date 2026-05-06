@@ -30,7 +30,7 @@ link nvim ~/.config/
 link tmux.conf ~/.config/tmux/
 link alacritty.toml ~/.config/alacritty/
 
-link winedevcmd ~/.local/bin/
+link wine ~/.local/bin/
 link allwebp2png ~/.local/bin/
 
 # Install neovim
