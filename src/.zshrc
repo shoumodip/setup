@@ -51,6 +51,7 @@ alias ll="ls -lh"
 alias diff="diff --color=auto"
 alias grep="grep --color=auto"
 alias tree="tree -C"
+alias qrcp="qrcp --interface wlo1"
 
 # Environment
 export GOPATH="$HOME/.local/share/go"
