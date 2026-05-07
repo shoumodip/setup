@@ -31,6 +31,8 @@ link tmux.conf ~/.config/tmux/
 link alacritty.toml ~/.config/alacritty/
 
 link wine ~/.local/bin/
+link wineconsole ~/.local/bin/
+
 link allwebp2png ~/.local/bin/
 
 # Install neovim
