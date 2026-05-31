@@ -13,7 +13,7 @@
     "ifdef": {
         "prefix": "#ifdef",
         "body": [
-            "#ifndef ${1}",
+            "#ifdef ${1}",
             "$0",
             "#endif // $1"
         ]

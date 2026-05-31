@@ -54,13 +54,7 @@ vim.pack.add {
 
 -- Colorscheme
 vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-vim.cmd([[
-    colorscheme gruvbox-material
-    highlight! NormalFloat guibg=#3a3735
-    highlight! link Pmenu NormalFloat
-    highlight! link PmenuKind Function
-    highlight! link PmenuExtra Comment
-]])
+vim.cmd("colorscheme gruvbox-material")
 
 -- Basic Keybindings
 vim.keymap.set("n", "H", "<c-u>")
@@ -180,6 +174,7 @@ vim.api.nvim_create_autocmd("User", {
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"jai"},
     callback = function ()
+        vim.bo.commentstring = "//%s"
         vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
     end
 })
