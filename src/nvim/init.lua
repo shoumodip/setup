@@ -54,7 +54,11 @@ vim.pack.add {
 
 -- Colorscheme
 vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-vim.cmd("colorscheme gruvbox-material")
+vim.cmd([[
+    colorscheme gruvbox-material
+    highlight! link String TSString
+    highlight! link Delimiter Grey
+]])
 
 -- Basic Keybindings
 vim.keymap.set("n", "H", "<c-u>")

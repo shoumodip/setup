@@ -28,6 +28,7 @@ link .clang-format ~/
 
 link nvim ~/.config/
 link tmux.conf ~/.config/tmux/
+link fonts.conf ~/.config/fontconfig/
 link alacritty.toml ~/.config/alacritty/
 
 link wine ~/.local/bin/
