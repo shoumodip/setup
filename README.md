@@ -20,3 +20,6 @@ $ sudo apt update
 $ sudo apt install wine wine32 cabextract
 $ winetricks vcrun2022
 ```
+
+### Wallpaper
+[Link](https://4kwallpapers.com/nature/stac-a-phris-arch-26748.html)

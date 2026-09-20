@@ -1,9 +1,9 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "451168851e8e2466bc97ee3e026c3dcb9141ce07",
+      "rev": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8",
       "src": "https://github.com/saghen/blink.cmp",
-      "version": "'v1.6.0'"
+      "version": "'v1.10.0'"
     },
     "bs.vim": {
       "rev": "d99adc4bc9b5d8c1aab1b1e092fd94aa309f5cdf",
@@ -18,27 +18,27 @@
       "src": "https://github.com/shoumodip/fm.vim"
     },
     "gruvbox-material": {
-      "rev": "790afe9dd085aa04eccd1da3626c5fa05c620e53",
+      "rev": "11d779b26a9ab2b3db8c22c6ac9fb6e8ed4fea79",
       "src": "https://github.com/sainnhe/gruvbox-material"
     },
     "ido.nvim": {
-      "rev": "850d1a324ec0a992b4f95b8613582f8cca1e9467",
+      "rev": "5b5b6fff696a689d3dace6eff9e4198df7514eb3",
       "src": "https://github.com/shoumodip/ido.nvim"
     },
     "mason.nvim": {
-      "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
+      "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/williamboman/mason.nvim"
     },
     "nvim-autopairs": {
-      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
+      "rev": "430522f95fe4fb7c511ec64f8c1a90cc6a66c05c",
       "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-lspconfig": {
-      "rev": "8e2084bf5e40c79c1f42210a6ef96a0a4793a763",
+      "rev": "ffd261c09c3dabd0bf1a438f47a8ae3b22f3c3ff",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "c82bf96f0a773d85304feeb695e1e23b2207ac35",
+      "rev": "f603a2f4da48728f80257fb5fbb90145fd1dc173",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "vim-commentary": {

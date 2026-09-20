@@ -43,7 +43,7 @@ vim.pack.add {
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/windwp/nvim-autopairs",
     "https://github.com/williamboman/mason.nvim",
-    {src = "https://github.com/saghen/blink.cmp", version = "v1.6.0"},
+    {src = "https://github.com/saghen/blink.cmp", version = "v1.10.0"},
 
     "https://github.com/tpope/vim-rsi",
     "https://github.com/tpope/vim-repeat",
@@ -53,6 +53,7 @@ vim.pack.add {
 }
 
 -- Colorscheme
+vim.g.gruvbox_material_transparent_background = true
 vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 vim.cmd([[
     colorscheme gruvbox-material
