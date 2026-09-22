@@ -45,7 +45,7 @@ vim.keymap.set("n", "<leader>K", ido.man_pages)
 local compile = require("compile")
 compile.setup {
     bindings = {
-        q = vim.cmd.close
+        q = function () pcall(vim.cmd.close) end
     },
 
     patterns = {

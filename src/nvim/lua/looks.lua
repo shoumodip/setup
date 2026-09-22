@@ -7,6 +7,7 @@ vim.cmd([[
     highlight! link Delimiter Grey
 ]])
 
+vim.opt.laststatus = 3
 vim.opt.statusline = "%{%v:lua.require('looks').statusline()%}"
 
 return {
@@ -38,7 +39,7 @@ return {
         end
 
         -- File Name
-        if vim.bo.buftype == "" then
+        do
             table.insert(components, {
                 value = "%f",
                 style = vim.bo.modified and "Title" or "DefinitionPreviewTitle"
