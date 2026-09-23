@@ -10,6 +10,30 @@ vim.filetype.add {
     extension = {jai = "jai"}
 }
 
+local compile = require("compile")
+compile.setup {
+    notify = false,
+
+    bindings = {
+        q = function ()
+            pcall(vim.cmd.close)
+            vim.cmd("mode")
+        end
+    },
+
+    patterns = {
+        Jai    = [[\(\f\+\):\(\d\+\),\(\d\+\)]],
+        Odin   = [[\(\f\+\)(\(\d\+\):\(\d\+\))]],
+        Python = [[File "\(\f\+\)", line \(\d\+\)]],
+        MSVC   = [[\(\f\+\)(\(\d\+\))]],
+    },
+}
+
+vim.keymap.set("n", "<leader>h", ":Compile<up>")
+vim.keymap.set("n", "<leader>H", ":Compile ")
+vim.keymap.set("n", "<leader>j", compile.next)
+vim.keymap.set("n", "<leader>k", compile.prev)
+
 local blink = require("blink.cmp")
 blink.setup {
     keymap = {

@@ -41,25 +41,3 @@ vim.keymap.set("n", "<leader>b", ido.buffers)
 vim.keymap.set("n", "<leader>i", ido.execute)
 vim.keymap.set("n", "<leader>f", ido.git_files)
 vim.keymap.set("n", "<leader>K", ido.man_pages)
-
-local compile = require("compile")
-compile.setup {
-    bindings = {
-        q = function () pcall(vim.cmd.close) end
-    },
-
-    patterns = {
-        Jai = "[<path>]:[<row>],[<col>]",
-        Odin = "[<path>]([<row>]:[<col>])",
-        Rust = "[<path>]:[<row>]:[<col>]",
-        Python = 'File "[<path>]", line [<row>]',
-
-        ["cl.exe"] = "[<path>]([<row>])",
-    }
-}
-
-vim.keymap.set("n", "<leader>h", ":Compile<up>")
-vim.keymap.set("n", "<leader>H", ":Compile ")
-vim.keymap.set("n", "<leader>j", ":CompileNext<cr>")
-vim.keymap.set("n", "<leader>k", ":CompilePrev<cr>")
-vim.keymap.set("n", "<leader>J", ":CompileNextSecondary<cr>")
