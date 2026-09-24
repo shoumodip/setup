@@ -5,6 +5,7 @@ vim.cmd([[
     colorscheme gruvbox-material
     highlight! link String TSString
     highlight! link Delimiter Grey
+    highlight ErrorMsg gui=bold
 ]])
 
 vim.opt.laststatus = 3
@@ -40,32 +41,10 @@ return {
 
         -- File Name
         do
-            if vim.bo.filetype == "compilation" and type(vim.b.compile_nvim_cmd) == "string" then
-                table.insert(components, {
-                    value = vim.b.compile_nvim_cmd,
-                    style = vim.b.compile_nvim_active and "Title" or "DefinitionPreviewTitle"
-                })
-
-                if not vim.b.compile_nvim_active then
-                    local status = vim.b.compile_nvim_status
-                    if status ~= 0 then
-                        table.insert(components, {
-                            value = string.format("[%d]", status),
-                            style = "MiniTestFail"
-                        })
-                    end
-
-                    table.insert(components, {
-                        value = vim.trim(vim.b.compile_nvim_duration),
-                        style = "Comment"
-                    })
-                end
-            else
-                table.insert(components, {
-                    value = "%f",
-                    style = vim.bo.modified and "Title" or "DefinitionPreviewTitle"
-                })
-            end
+            table.insert(components, {
+                value = "%f",
+                style = vim.bo.modified and "Title" or "DefinitionPreviewTitle"
+            })
         end
 
         -- Git
