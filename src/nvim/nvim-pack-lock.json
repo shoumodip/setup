@@ -10,7 +10,7 @@
       "src": "https://github.com/shoumodip/bs.vim"
     },
     "compile.nvim": {
-      "rev": "8067aa282d196518f9a1226787b65680cb55bb1f",
+      "rev": "200190cd261b7f4a85e411f7914ee1328d327ff4",
       "src": "https://github.com/shoumodip/compile.nvim"
     },
     "fm.vim": {
