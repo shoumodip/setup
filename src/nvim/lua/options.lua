@@ -22,6 +22,7 @@ vim.opt.ignorecase = true
 vim.opt.wildignorecase = true
 
 vim.opt.shortmess:append("I")
+vim.opt.guicursor:append("a:blinkon0")
 vim.opt.timeoutlen = 200
 
 vim.g.mapleader = " "
