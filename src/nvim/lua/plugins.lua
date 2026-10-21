@@ -10,6 +10,8 @@ vim.pack.add {
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/windwp/nvim-autopairs",
     "https://github.com/williamboman/mason.nvim",
+
+    {src = "https://github.com/vonr/align.nvim", version = "v2"},
     {src = "https://github.com/saghen/blink.cmp", version = "v1.10.0"},
 
     "https://github.com/tpope/vim-rsi",

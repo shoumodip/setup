@@ -35,7 +35,7 @@ fmcd() {
         return 1
     fi
 
-    cd $(fm -l)
+    cd "$(fm -l)"
 }
 
 bindkey -s "^o" "^ufmcd\\n"
@@ -61,6 +61,8 @@ export ANDROID_HOME="$HOME/Software/android-sdk"
 
 # Wine
 export WINEDEBUG="-all"
+
+cd_msvc_sdk() { cd "$HOME/Software/msvc/Windows Kits/10/Include/10.0.26100.0"; }
 
 # Highlighting
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh

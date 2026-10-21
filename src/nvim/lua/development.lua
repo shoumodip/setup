@@ -19,14 +19,7 @@ compile.setup {
             pcall(vim.cmd.close)
             vim.cmd("mode")
         end
-    },
-
-    patterns = {
-        Jai    = [[\(\f\+\):\(\d\+\),\(\d\+\)]],
-        Odin   = [[\(\f\+\)(\(\d\+\):\(\d\+\))]],
-        Python = [[File "\(\f\+\)", line \(\d\+\)]],
-        MSVC   = [[\(\f\+\)(\(\d\+\))]],
-    },
+    }
 }
 
 vim.keymap.set("n", "<leader>h", ":Compile<up>")

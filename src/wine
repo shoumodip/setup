@@ -4,4 +4,5 @@ export WINEPATH="$WINEPATH;Z:\\home\\$USER\\Software\\tools-win32"
 export WINEPATH="$WINEPATH;Z:\\home\\$USER\\Software\\curl-win32\\bin"
 export WINEPATH="$WINEPATH;Z:\\home\\$USER\\Software\\clang-win32\\bin"
 export WINEPATH="$WINEPATH;Z:\\home\\$USER\\Software\\odin-win32"
+export WINEPATH="$WINEPATH;Z:\\home\\$USER\\Software\\go-win32\\bin"
 /usr/bin/wine $@
