@@ -18,10 +18,6 @@
       "rev": "28eff9af31be80f0ff6b67a1515e98ec9a59ed0c",
       "src": "https://github.com/shoumodip/compile.nvim"
     },
-    "fm.vim": {
-      "rev": "3a916724ed4edde65e40631722e7f51cbe0632fe",
-      "src": "https://github.com/shoumodip/fm.vim"
-    },
     "gruvbox-material": {
       "rev": "11d779b26a9ab2b3db8c22c6ac9fb6e8ed4fea79",
       "src": "https://github.com/sainnhe/gruvbox-material"
@@ -45,6 +41,10 @@
     "nvim-treesitter": {
       "rev": "29212d826054bb2948fa9d3a99eca9bf6a050eb2",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "oil.nvim": {
+      "rev": "d3733d933833a0e59b813ecec99341527adf0c28",
+      "src": "https://github.com/stevearc/oil.nvim"
     },
     "vim-commentary": {
       "rev": "64a654ef4a20db1727938338310209b6a63f60c9",

@@ -1,6 +1,6 @@
 vim.pack.add {
     "https://github.com/shoumodip/bs.vim",
-    "https://github.com/shoumodip/fm.vim",
+    "https://github.com/stevearc/oil.nvim",
     "https://github.com/shoumodip/ido.nvim",
     "https://github.com/shoumodip/compile.nvim",
     "https://github.com/shoumodip/vim-literate",

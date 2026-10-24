@@ -1,7 +1,9 @@
 vim.keymap.set("n", "H", "<c-u>")
 vim.keymap.set("n", "L", "<c-d>")
 vim.keymap.set("n", "U", "<c-r>")
-vim.keymap.set("n", "Q", ":Ex<cr>")
+
+require("oil").setup {}
+vim.keymap.set("n", "-", ":Oil<cr>")
 
 vim.keymap.set("v", "v", "<esc>")
 vim.keymap.set("i", "jk", "<esc>")
@@ -44,4 +46,4 @@ vim.keymap.set("n", "<leader>K", ido.man_pages)
 
 vim.keymap.set("x", "ga", function()
     require("align").align_to_string {preview = true, regex = true}
-end, {noremap = true, silent = true})
+end)
