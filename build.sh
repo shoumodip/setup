@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Install programs
-sudo apt install alacritty tmux ripgrep wl-clipboard zsh zsh-autosuggestions zsh-syntax-highlighting fonts-roboto systemd-timesyncd
+sudo apt install alacritty tmux ripgrep wl-clipboard fzf zsh zsh-autosuggestions zsh-syntax-highlighting fonts-roboto systemd-timesyncd
 
 # Time Syncing
 sudo systemctl enable --now systemd-timesyncd
