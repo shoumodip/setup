@@ -35,15 +35,13 @@ end)
 
 vim.keymap.set("n", "<leader><leader>", vim.fn["literate#source"])
 
-local ido = require("ido")
-ido.bind {jk = ido.exit}
-
-vim.keymap.set("n", "<leader>F", ido.browse)
-vim.keymap.set("n", "<leader>b", ido.buffers)
-vim.keymap.set("n", "<leader>i", ido.execute)
-vim.keymap.set("n", "<leader>f", ido.git_files)
-vim.keymap.set("n", "<leader>K", ido.man_pages)
-
 vim.keymap.set("x", "ga", function()
     require("align").align_to_string {preview = true, regex = true}
 end)
+
+local fzf = require("fzf")
+vim.keymap.set("n", "<leader>F", fzf.files)
+vim.keymap.set("n", "<leader>f", fzf.git_files)
+vim.keymap.set("n", "<leader>b", fzf.buffers)
+vim.keymap.set("n", "<leader>K", fzf.man_pages)
+vim.keymap.set("n", "<leader>i", fzf.execute)

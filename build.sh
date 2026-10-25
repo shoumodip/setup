@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Install programs
-sudo apt install alacritty tmux ripgrep wl-clipboard fzf zsh zsh-autosuggestions zsh-syntax-highlighting fonts-roboto systemd-timesyncd
+sudo apt install alacritty tmux fd-find ripgrep wl-clipboard fzf zsh zsh-autosuggestions zsh-syntax-highlighting fonts-roboto systemd-timesyncd
 
 # Time Syncing
 sudo systemctl enable --now systemd-timesyncd
@@ -57,3 +57,6 @@ FONT_ZIP_PATH="JetBrainsMono.zip"
 mkdir -p "$FONT_DIR_PATH" && cd "$FONT_DIR_PATH"
 curl -LO "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/$FONT_ZIP_PATH"
 unzip "$FONT_ZIP_PATH" && rm "$FONT_ZIP_PATH"
+
+# Debian installs fd as fdfind
+ln -sf $(which fdfind) ~/.local/bin/fd

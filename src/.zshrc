@@ -64,6 +64,7 @@ export WINEDEBUG="-all"
 cd_msvc_sdk() { cd "$HOME/Software/msvc/Windows Kits/10/Include/10.0.26100.0"; }
 
 # FZF
+export FZF_DEFAULT_COMMAND='fd -t f -HI'
 source <(fzf --zsh)
 
 # Highlighting
