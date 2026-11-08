@@ -52,7 +52,7 @@ function M.run(opts)
     vim.fn.jobstart({"sh", "-c", cmd}, {
         term = true,
         on_exit = function (_, code)
-            vim.api.nvim_buf_delete(buffer, {force = true})
+            vim.api.nvim_win_close(window, true)
             local output = vim.fn.readfile(temp_stdout)
             os.remove(temp_stdout)
 
@@ -125,7 +125,7 @@ function M.git_files()
 end
 
 function M.buffers()
-    local cwd = vim.loop.cwd()
+    local cwd = vim.uv.cwd()
     local refs = {}
     local buffers = {}
     local empties = 1
@@ -157,16 +157,20 @@ function M.buffers()
         table.insert(buffers, {name, item.lastused})
     end
 
+    local placed = false
     local current = vim.api.nvim_get_current_buf()
     for i, buffer in ipairs(buffers) do
         if refs[buffer[1]] == current then
+            placed = true
             current = table.remove(buffers, i)
             break
         end
     end
 
     table.sort(buffers, function (a, b) return a[2] > b[2] end)
-    table.insert(buffers, current)
+    if placed then
+        table.insert(buffers, current)
+    end
 
     for i, buffer in ipairs(buffers) do
         buffers[i] = buffer[1]
@@ -240,7 +244,7 @@ function M.helptags()
             local lines = vim.fn.readfile(file)
             for _, line in ipairs(lines) do
                 if not line:match "^!_TAG_" then
-                    local fields = vim.split(line, delimiter, true)
+                    local fields = vim.split(line, delimiter, {plain = true})
                     if #fields == 3 and not tags_map[fields[1]] then
                         if fields[1] ~= "help-tags" or fields[2] ~= "tags" then
                             table.insert(tags, fields[1])
@@ -270,7 +274,7 @@ function M.rg()
             local comps = vim.split(output, ":")
             local path = comps[1]
             local row = tonumber(comps[2])
-            local col = tonumber(comps[2]) - 1
+            local col = tonumber(comps[3]) - 1
             vim.cmd.edit(path)
             vim.api.nvim_win_set_cursor(0, {row, col})
         end
@@ -288,14 +292,9 @@ function vim.ui.select(items, opts, accept)
         end
     end
 
-    local prompt = opts.prompt
-    if prompt then
-        prompt = prompt.." "
-    end
-
     M.run {
         items = items,
-        title = prompt,
+        title = opts.prompt,
         accept = function (option)
             if opts.format_item then
                 option = lookup[option]

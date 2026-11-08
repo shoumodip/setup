@@ -1,18 +1,9 @@
 {
   "plugins": {
-    "align.nvim": {
-      "rev": "bc5d57df5f4c26f6abee6b6c8529308c2c126d2b",
-      "src": "https://github.com/vonr/align.nvim",
-      "version": "'v2'"
-    },
     "blink.cmp": {
       "rev": "539053d87740e357a96fb304c9a4da2ef27b3576",
       "src": "https://github.com/saghen/blink.cmp",
       "version": "'v1.10.0'"
-    },
-    "bs.vim": {
-      "rev": "d99adc4bc9b5d8c1aab1b1e092fd94aa309f5cdf",
-      "src": "https://github.com/shoumodip/bs.vim"
     },
     "compile.nvim": {
       "rev": "28eff9af31be80f0ff6b67a1515e98ec9a59ed0c",
@@ -22,29 +13,21 @@
       "rev": "11d779b26a9ab2b3db8c22c6ac9fb6e8ed4fea79",
       "src": "https://github.com/sainnhe/gruvbox-material"
     },
-    "mason.nvim": {
-      "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
-      "src": "https://github.com/williamboman/mason.nvim"
-    },
-    "nvim-autopairs": {
-      "rev": "3172f40c16563db871a58f20d205c710ad782311",
-      "src": "https://github.com/windwp/nvim-autopairs"
+    "mini.nvim": {
+      "rev": "f9550dd81d0514927b7ad1794fd8eb8606ca28cd",
+      "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "45a3a444b710511c39abca3b60bb6e23a21e3de5",
+      "rev": "993d048db0d83d8e8ba3f9cb376456321acdcce3",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "29212d826054bb2948fa9d3a99eca9bf6a050eb2",
+      "rev": "19bdfc04f40ed2ccb3340591d125f759b0406875",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "oil.nvim": {
       "rev": "d3733d933833a0e59b813ecec99341527adf0c28",
       "src": "https://github.com/stevearc/oil.nvim"
-    },
-    "vim-commentary": {
-      "rev": "64a654ef4a20db1727938338310209b6a63f60c9",
-      "src": "https://github.com/tpope/vim-commentary"
     },
     "vim-fugitive": {
       "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
@@ -54,17 +37,9 @@
       "rev": "b5edfdbd6bba37e79d3be3883acb5a627c349c6b",
       "src": "https://github.com/shoumodip/vim-literate"
     },
-    "vim-repeat": {
-      "rev": "65846025c15494983dafe5e3b46c8f88ab2e9635",
-      "src": "https://github.com/tpope/vim-repeat"
-    },
     "vim-rsi": {
       "rev": "45540637ead22f011e8215f1c90142e49d946a54",
       "src": "https://github.com/tpope/vim-rsi"
-    },
-    "vim-surround": {
-      "rev": "3d188ed2113431cf8dac77be61b842acb64433d9",
-      "src": "https://github.com/tpope/vim-surround"
     }
   }
 }

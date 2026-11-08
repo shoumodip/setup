@@ -1,5 +1,6 @@
 require("options")
 require("plugins")
+require("mini")
 require("looks")
 require("bindings")
 require("treesitter")

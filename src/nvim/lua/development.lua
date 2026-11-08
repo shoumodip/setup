@@ -12,8 +12,6 @@ vim.filetype.add {
 
 local compile = require("compile")
 compile.setup {
-    notify = false,
-
     bindings = {
         q = function ()
             pcall(vim.cmd.close)
@@ -42,15 +40,10 @@ blink.setup {
     cmdline = {enabled = false}
 }
 
-require("mason").setup()
-require("nvim-autopairs").setup()
-
-vim.lsp.enable(vim.iter(require("mason-registry").get_installed_packages()):fold({}, function(acc, pack)
-	table.insert(acc, pack.spec.neovim and pack.spec.neovim.lspconfig)
-	return acc
-end))
-
-vim.lsp.config("*", {capabilities = blink.get_lsp_capabilities()})
+vim.lsp.enable {
+    "clangd",
+    "gopls",
+}
 
 vim.diagnostic.config {
     virtual_text = true,
