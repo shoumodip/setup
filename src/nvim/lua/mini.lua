@@ -1,5 +1,6 @@
 require("mini.align").setup {}
 require("mini.pairs").setup {}
+require("mini.icons").setup {}
 require("mini.jump2d").setup {}
 
 require("mini.comment").setup {

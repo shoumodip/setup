@@ -23,7 +23,6 @@ function M.run(opts)
         title_pos = opts.title and "center",
     })
 
-    vim.b[buffer].completion = false
     vim.bo[buffer].bufhidden = "wipe"
     vim.wo[window].wrap = false
     vim.wo[window].winhighlight = "Normal:Normal,FloatTitle:Title,FloatBorder:WinSeparator"

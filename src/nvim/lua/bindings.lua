@@ -25,6 +25,7 @@ vim.keymap.set("n", "<leader>/", fzf.rg)
 
 require("oil").setup {
     columns = {
+        "icon",
         "permissions",
         "size",
         "mtime"
