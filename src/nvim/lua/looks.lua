@@ -4,6 +4,16 @@ vim.cmd([[
     colorscheme gruvbox-material
     highlight! link String TSString
     highlight! link Delimiter Grey
+
+    highlight! link Pmenu Normal
+    highlight! link PmenuExtra Comment
+    highlight! link PmenuBorder WinSeparator
+
+    highlight! link BlinkCmpDoc Normal
+    highlight! link BlinkCmpDocBorder WinSeparator
+    highlight! link BlinkCmpDocSeparator WinSeparator
+    highlight! link BlinkCmpMenuBorder WinSeparator
+
     highlight! ErrorMsg gui=bold
 ]])
 
@@ -14,6 +24,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+vim.opt.pumborder = "rounded"
 vim.opt.laststatus = 3
 vim.opt.statusline = "%{%v:lua.require('looks').statusline()%}"
 

@@ -6,9 +6,6 @@ sudo apt install alacritty tmux fd-find ripgrep wl-clipboard fzf zsh zsh-autosug
 # Time Syncing
 sudo systemctl enable --now systemd-timesyncd
 
-# Install Brave
-curl -fsS "https://dl.brave.com/install.sh" | sh
-
 # Remove Firefox and Konqueror
 sudo apt autoremove firefox-esr konqueror
 
@@ -35,6 +32,10 @@ link wine ~/.local/bin/
 link wineconsole ~/.local/bin/
 
 link allwebp2png ~/.local/bin/
+link brave-manager ~/.local/bin/
+
+# Install brave
+~/.local/bin/brave-manager
 
 # Install neovim
 mkdir -p ~/Software/nvim ~/.local/bin
@@ -50,12 +51,12 @@ curl -sL "https://github.com/tree-sitter/tree-sitter/releases/latest/download/tr
 
 chmod +x ~/.local/bin/tree-sitter
 
-# Install JetBrainsMono Nerd Font
-FONT_DIR_PATH="$HOME/.local/share/fonts/JetBrainsMono Nerd Font"
-FONT_ZIP_PATH="JetBrainsMono.zip"
+# Install Iosevka Nerd Font
+FONT_DIR_PATH="$HOME/.local/share/fonts/Iosevka Nerd Font"
+FONT_ZIP_PATH="Iosevka.zip"
 
 mkdir -p "$FONT_DIR_PATH" && cd "$FONT_DIR_PATH"
-curl -LO "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/$FONT_ZIP_PATH"
+curl -LO "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$FONT_ZIP_PATH"
 unzip "$FONT_ZIP_PATH" && rm "$FONT_ZIP_PATH"
 
 # Debian installs fd as fdfind

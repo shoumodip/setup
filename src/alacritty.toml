@@ -1,8 +1,8 @@
 [font]
-size = 14
+size = 17
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "Iosevka Nerd Font"
 
 [colors.primary]
 background = "#282828"

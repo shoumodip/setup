@@ -1,0 +1,101 @@
+#!/bin/sh
+
+EXE="$HOME/.local/bin/brave-browser"
+APP="$HOME/.local/share/applications/brave-browser.desktop"
+BASE="$HOME/.local/share/brave"
+ICON="$HOME/.local/share/icons/hicolor/256x256/apps/brave.png"
+
+confirm() {
+    read -p ". Proceed? (Y/n) " choice
+    [ "$choice" = "" ] || [ "$choice" = "y" ] || [ "$choice" = "Y" ]
+}
+
+echo "Querying latest version..."
+
+install() {
+    URL="$(curl -s "https://api.github.com/repos/brave/brave-browser/releases/latest" \
+         | grep "browser_download_url.*linux-amd64.*zip" \
+         | head -n 1 \
+         | cut -d ":" -f 2,3 \
+         | tr -d ' "')"
+
+    NEW="$(echo "$URL" | sed "s|.*/v||;s|/.*||")"
+
+    if [ -f "$EXE" ]; then
+        OLD=$(realpath "$EXE" | sed "s|$BASE/brave-||;s|/.*||")
+        if [ "$OLD" = "$NEW" ]; then
+            echo "Brave is already up to date!"
+            return
+        fi
+        printf "Brave will be updated ($OLD -> $NEW)"
+    else
+        printf "Brave $NEW will be installed"
+    fi
+
+    if ! confirm; then
+        echo "Cancelled."
+        return
+    fi
+
+    DIR="brave-$NEW"
+    ZIP="brave-browser-$NEW-linux-amd64.zip"
+
+    mkdir -p "$BASE" && cd "$BASE"
+    mkdir -p "$DIR" && cd "$DIR"
+    curl -LO "$URL"
+    unzip "$ZIP" && rm "$ZIP"
+    cd ..
+
+    [ -f "$EXE" ] && unlink "$EXE"
+    mkdir -p "$(dirname "$EXE")"
+    ln -sf "$BASE/$DIR/brave-browser" "$EXE"
+    echo "Brave $NEW installed successfully!"
+}
+
+install
+
+if [ -f "$EXE" ]; then
+    if [ ! -f "$ICON" ]; then
+        mkdir -p "$(dirname "$ICON")"
+        ln -sf "$BASE/$DIR/product_logo_256.png" "$ICON"
+    fi
+
+    if [ ! -f "$APP" ]; then
+        mkdir -p "$(dirname "$APP")"
+        cat <<"EOF" > "$APP"
+[Desktop Entry]
+Type=Application
+Name=Brave
+GenericName=Web Browser
+Comment=Access the Internet
+Terminal=false
+Icon=brave
+Categories=Network;WebBrowser;
+StartupNotify=false
+MimeType=application/xhtml+xml;application/xhtml_xml;text/html;x-scheme-handler/http;x-scheme-handler/https;
+Exec=brave-browser
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=brave-browser
+
+[Desktop Action new-private-window]
+Name=New Private Window
+Exec=brave-browser --incognito
+EOF
+    fi
+
+    ACTUAL="brave-$(realpath "$EXE" | sed "s|$BASE/brave-||;s|/.*||")"
+    OTHERS="$(ls "$BASE" | grep "brave-")"
+
+    for other in $OTHERS; do
+        if [ ! "$other" = "$ACTUAL" ]; then
+            printf "Outdated installation '$other' will be removed"
+            if confirm; then
+                rm -rf "$BASE/$other"
+                echo "Removed '$other'."
+            fi
+        fi
+    done
+fi

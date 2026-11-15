@@ -82,6 +82,8 @@ function M.run(opts)
             vim.api.nvim_chan_send(vim.bo[buffer].channel, "\x03")
         end
     })
+
+    vim.api.nvim_buf_set_name(buffer, opts.title or "Fzf")
 end
 
 function M.execute()

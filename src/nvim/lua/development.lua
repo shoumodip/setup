@@ -34,10 +34,21 @@ blink.setup {
     },
 
     completion = {
-        documentation = {auto_show = true, auto_show_delay_ms = 50}
+        menu = {
+            border = "rounded",
+        },
+
+        documentation = {
+            window = {
+                border = "rounded"
+            },
+
+            auto_show = true,
+            auto_show_delay_ms = 50
+        }
     },
 
-    cmdline = {enabled = false}
+    cmdline = { enabled = false }
 }
 
 vim.lsp.enable {
