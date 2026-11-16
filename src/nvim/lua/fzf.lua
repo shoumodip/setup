@@ -267,9 +267,18 @@ function M.helptags()
 end
 
 function M.rg()
+    local case = ""
+    if vim.opt.ignorecase then
+        case = "-i"
+    end
+
+    if vim.opt.smartcase then
+        case = "-S"
+    end
+
     M.run {
         items = {},
-        flags = "--ansi --disabled --bind 'change:reload(rg --column --color=always {q} || true)'",
+        flags = "--ansi --disabled --bind 'change:reload(rg "..case.." --column --color=always {q} || true)'",
         title = "Ripgrep",
         accept = function (output)
             local comps = vim.split(output, ":")
