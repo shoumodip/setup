@@ -8,7 +8,3 @@ require("mini.comment").setup {
         ignore_blank_line = true
     }
 }
-
-require("mini.surround").setup {
-    n_lines = 10000
-}
